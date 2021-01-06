@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <%- include('head.ejs') %>
+    </head>
+	<body>
+        <%- include('navigation.ejs') %>
+        <div class="text-center mt-4" style="text-align:center" >
+            <header class="align-center">
+                <br>
+                <br>
+                <br>
+                    <h2 class="welcome-font">로그인</h2>
+                    <br>
+                    
+                </header>
+            </div>
+            <div class="row">
+                <div class="text-center mt-4" style="text-align:center">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                        <div class="control-group">
+                            <div class="field first welcome-font" style="font-size: 20pt;">
+                                <label>아이디</label>
+                                <input class="form-control" id="ID" type="ID" placeholder="ID" required="required" data-validation-required-message="Please enter your email address." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="field first welcome-font" style="font-size: 20pt;">
+                                <label>비밀번호</label>
+                              <input class="form-control" id="password" type="password" placeholder="Password" required="required" data-validation-required-message="Please enter your password." />
+                              <p class="help-block text-danger"></p>
+                          </div>
+                      </div>
+                        <br><br>
+                        <div id="success"></div>
+                        <div class="form-group">
+                            <button class="btn" type="button" id="loginBtn" style="width:10%;">로그인</button>
+                        </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            
+            <div class="prefer" style = "margin-top: 100px;" > </div>
+            <div class="text-center mt-4" style="text-align:center">
+                
+            </div>
+		<!-- Scripts -->
+        
+	</body>
+</html>
