@@ -5,10 +5,17 @@ http://templated.co
 Released for free under the Creative Commons Attribution License
 */
 
+:root {
+	--back: #001341;
+	--light: #fffdfa;
+	--red: #A6192E;
+	--red-point: #76232F;
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	background: #E5E6DD;
+	background: #fffdfa;
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 12px;
 	color: #8A8985;
@@ -16,17 +23,16 @@ body {
 h1 {
 	margin: 0;
 	padding: 0;
-	text-transform: uppercase;
 	font-family: 'Do Hyeon', sans-serif;
 	font-weight: 300;
-	color: #000d2c;
+	color: #A6192E;
 }
 h2, h3 {
 	margin: 0;
 	padding: 0;
 	text-transform: uppercase;
 	font-family: 'Do Hyeon', sans-serif;
-	color: #001341;
+	color: #A6192E;
 }
 
 h1 {
@@ -51,20 +57,21 @@ ul, ol {
 
 a {
 	text-decoration: none;
-	color: #001341;
+	color: #A6192E;
 }
 
 a:hover {
 }
 
 #wrapper {
-	overflow: hidden;
-	background: #F1F2E9;
+	
+	background: var(--light);
 }
 
 .container {
-	width: 1200px;
-	margin: 0px auto;
+	
+	display: flex;
+	flex-direction: column;
 }
 
 /* Header */
@@ -96,8 +103,8 @@ a:hover {
 /* Logo */
 
 #logo {
-	overflow: hidden;
-	height: 250px;
+	margin: 50px;
+	color : var(--red);
 }
 
 #logo h1, #logo p {
@@ -109,15 +116,14 @@ a:hover {
 	letter-spacing: -6px;
 	font-family: 'Dancing Script', cursive;
 	font-size: 100px;
-	color : #001341;
 }
 
 #logo p {
 	margin-top: -20px;
 	padding: 0px 0px 0px 5px;
-	font-family: 'Do Hyeon', sans-serif;
+	font-family: 'Dancing Script', sans-serif;
 	font-size: 20px;
-	color: #001341;
+	color: var(--red);
 }
 
 #logo p a {
@@ -128,7 +134,7 @@ a:hover {
 	border: none;
 	background: none;
 	text-decoration: none;
-	color: #001341;
+	color : var(--red);
 }
 
 /* Splash */
@@ -190,13 +196,13 @@ a:hover {
 #menu-wrapper {
 	overflow: hidden;
 	height: 53px;
-	background: #001a57;
+	background: var(--red);
 }
 
 #menu-login , #menu-login a{
 	overflow: hidden;
 	height: 20px;
-	background: #001341;
+	background: #A6192E;
 	text-align: right;
 	font-family: 'Do Hyeon', sans-serif;
 	font-size: 14px;
@@ -237,7 +243,7 @@ a:hover {
 }
 
 #menu a:hover, #menu .current_page_item a {
-	background: #001341;
+	background: var(--red-point);
 	text-decoration: none;
 	color: #FFFFFF;
 }
@@ -253,11 +259,86 @@ a:hover {
 }
 
 /* Content */
+#login-form {
+    display: flex;
+    flex-direction: column;
+	width: 310px;
+	margin-top: 100px;
+}
+
+#login-form input {
+    border: none;
+    height: 33px;
+    border-radius: 3px;
+}
+
+#login-form input[type='submit'] {
+	margin: 10px 0;
+    background-color: var(--red);
+    color:  #E9EAE1;
+}
+
+#login-form input[type='text'] {
+	background-color: var(--light);
+	border-bottom: 2px solid var(--red);
+	border-radius: 0;
+}
+
+#login-form label {
+    font-size: 13px;
+    margin: 5px 0;
+    color: var(--red);
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+	width: 310px;
+}
+
+#register-form input {
+    border: none;
+    height: 33px;
+	border: none;
+	background-color: var(--light);
+	border-bottom: 2px solid var(--red);
+	margin: 10px;
+
+}
+
+#register-form input[type='submit'] {
+    margin: 10px 0;
+    background-color: var(--red);
+    color:  #E9EAE1;
+}
+
+#register-form label {
+    font-size: 13px;
+	margin: 5px 0;
+	color: var(--red);
+
+}
+
+
+#join-box {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#join-box #join {
+	font-size: 12px;
+	text-align: right;
+	margin-right: 5px;
+	width: fit-content;
+}
 
 #content {
-	float: left;
-	width: 752px;
+	display: flex;
+	flex-direction: column; 
+	align-items: center;
+    justify-content: center;
 	padding: 0px 0px 0px 0px;
+	margin-bottom: 100px;
 }
 
 .post {

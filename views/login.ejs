@@ -7,52 +7,28 @@
 
 <body>
     <%- include('navigation.ejs') %>
-        <div class="text-center mt-4" style="text-align:center">
-            <header class="align-center">
-                <br>
-                <br>
-                <br>
-                <h2 class="welcome-font">로그인</h2>
-                <br>
-
-            </header>
-        </div>
-        <div class="row">
-            <div class="text-center mt-4" style="text-align:center">
-                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form id="contactForm" name="sentMessage" novalidate="novalidate" action="/login" method="post">
-                    <div class="control-group">
-                        <div class="field first welcome-font" style="font-size: 20pt;">
-                            <label>이메일</label>
-                            <input class="form-control" name="email" id="login-email" type="email" placeholder="email"
-                                required="required"
-                                data-validation-required-message="Please enter your email address." />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="field first welcome-font" style="font-size: 20pt;">
-                            <label>비밀번호</label>
-                            <input class="form-control" id="login-password" name="password" type="password"
-                                placeholder="Password" required="required"
-                                data-validation-required-message="Please enter your password." />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div id="success"></div>
-                    <div class="form-group">
-                        <input class="btn" type="submit" id="loginBtn" style="width:10%;">로그인</input>
-                    </div>
+        <div id="wrapper">
+            <div id="logo" class="container">
+                <h1><a href="#">Democra ; SEE </a></h1>
+                <p>Vote Your Life</p>
             </div>
-
-            </form>
-        </div>
-        </div>
-
-        <div class="prefer" style="margin-top: 100px;"> </div>
-        <div class="text-center mt-4" style="text-align:center">
-
+            <div id="page" class="container">
+                <div id="content">
+                    <h2 class="welcome-font">로그인</h2>
+                    <form action="/login" method="POST">
+                        <div id="login-form">
+                            <label for="email">email</label>
+                            <input type="text" name="email">
+                            <label for="password">password</label>
+                            <input type="text" name="password">
+                            <input type="submit" value="LOGIN">
+                            <div id="join-box">
+                                <a id="join" href="register1">JOIN</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <!-- Scripts -->
         <%- include('footer.ejs') %>
