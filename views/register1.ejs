@@ -7,33 +7,35 @@
 
 <body>
     <%- include('navigation.ejs') %>
-	<div id="wrapper">
-        <div id="logo" class="container">
-            <h1><a href="#">Democra ; SEE </a></h1>
-            <p>Vote Your Life</p>
-        </div>
-        <div id="page" class="container">
-            <div id="content">
-                <h2 class="welcome-font">교직원용 회원가입</h2>
-                <div style="margin-top: 80PX;"></div>
-                <form action="#" method="post">
-                    <div id="register-form">
-                    <input name="name" id="name" type="text" placeholder="Name">
-                    <input name="email" id="email" type="text" placeholder="Email">
-                    <input name="password" id="password" type="text" placeholder="Password">
-                    <input name="school" id="school" type="text" placeholder="School">
-                    <input name="schoolCode" id="schoolCode" type="text" placeholder="SchoolCode">
-                    <input name="schoolClass" id="schoolClass" type="text" placeholder="SchoolClass">
+        <div id="wrapper">
+            <div id="logo" class="container">
+                <h1><a href="#">Democra ; SEE </a></h1>
+                <p>Vote Your Life</p>
+            </div>
+            <div id="page" class="container">
+                <div id="content">
+                    <h2 class="welcome-font">교직원용 회원가입</h2>
+                    <div style="margin-top: 80PX;"></div>
+                    <form action="#" method="post" id="register1-form">
+                        <div id="register-form">
+                            <input name="name" id="name" type="text" placeholder="Name">
+                            <input name="email" id="email" type="text" placeholder="Email">
+                            <input name="password" id="password" type="text" placeholder="Password">
+                            <input name="school" id="school" type="text" placeholder="School">
+                            <input name="schoolCode" id="schoolCode" type="text" placeholder="SchoolCode">
+                            <input name="schoolClass" id="schoolClass" type="text" placeholder="SchoolClass">
 
-                </div>
+                        </div>
 
-                <div style="text-align:center; margin-top: 20px;">
-                <h5 class="bold-font" style="font-size: 20pt;"><a href="index" class="button">등록</a></h5>
+                        <div style="text-align:center; margin-top: 20px;">
+                            <h5 class="bold-font" style="font-size: 20pt;"><a href="index" id="button"
+                                    class="button">등록</a></h5>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-        
-        <!-- Scripts -->
+                <%- include('footer.ejs') %>
+
+                    <!-- Scripts -->
 
 </body>
 
