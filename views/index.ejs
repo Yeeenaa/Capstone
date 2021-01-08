@@ -44,10 +44,16 @@ Released   : 20121201
 							<i class="fas fa-id-badge"></i>
 						</a>
 						<%}else if(user.role==='teacher' ){ %>
-							<a href="/teacher">학생 승인</a>
-							<a href="/logout">로그아웃</a>
+							<a href="/teacher">
+								<i class="far fa-user"></i>
+							</a>
+							<a href="/logout">
+								<i class="fas fa-sign-out-alt"></i>
+							</a>
 							<%}else{%>
-								<a href="/logout">로그아웃</a>
+								<a href="/logout">
+									<i class="fas fa-sign-out-alt"></i>
+								</a>
 								<%}%>
 				</div>
 		</div>
