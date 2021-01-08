@@ -10,6 +10,9 @@ Released for free under the Creative Commons Attribution License
 	--light: #fffdfa;
 	--red: #A6192E;
 	--red-point: #76232F;
+	--grey:  #909090;
+
+	--space: 16px;
 }
 
 body {
@@ -47,17 +50,17 @@ h3 {
 	font-size: 1.6em;
 }
 
-p, ul, ol {
-	margin-top: 0;
-	line-height: 180%;
-}
-
-ul, ol {
+ul {
+	list-style: none;
 }
 
 a {
 	text-decoration: none;
-	color: #A6192E;
+	color: var(--light);
+}
+
+i {
+	color: var(--light);
 }
 
 a:hover {
@@ -103,7 +106,7 @@ a:hover {
 /* Logo */
 
 #logo {
-	margin: 50px;
+	margin: 10px 0;
 	color : var(--red);
 }
 
@@ -194,61 +197,44 @@ a:hover {
 /* Menu */
 
 #menu-wrapper {
-	overflow: hidden;
-	height: 53px;
+	display: flex;
 	background: var(--red);
+	justify-content: space-between;
+	align-items: center;
 }
 
-#menu-login , #menu-login a{
-	overflow: hidden;
-	height: 20px;
-	background: #A6192E;
-	text-align: right;
-	font-family: 'Do Hyeon', sans-serif;
-	font-size: 14px;
-	color: #FFFFFF;
-	padding-right: 30px;
-	padding-block: 2px;
-}
-
-#menu {
-	overflow: hidden;
-	height: 52px;
-}
-
-#menu ul {
+#menu-items ul {
+	display: flex;
+	justify-content: space-around;
 	margin: 0;
-	padding: 0px 0px 0px 0px;
-	list-style: none;
-	line-height: normal;
-	text-align: center;
+	padding: 0;
 }
 
-#menu li {
-	display: inline-block;
-}
-
-#menu a {
+#menu-items ul li a{
+	font-weight: bold;
 	display: block;
-	padding: 0px 30px;
-	line-height: 52px;
-	border: none;
-	text-decoration: none;
-	text-transform: lowercase;
-	text-align: center;
-	text-transform: uppercase;
-	font-family: 'Do Hyeon', sans-serif;
-	font-size: 14px;
-	color: #FFFFFF;
+	line-height: 60px;
+	padding: 0 15px;
+	font-size: 13px;
 }
 
-#menu a:hover, #menu .current_page_item a {
-	background: var(--red-point);
-	text-decoration: none;
-	color: #FFFFFF;
+#menu-items ul li a:hover {
+	color: var(--red-point);
 }
 
-#menu .current_page_item a {
+#access {
+	margin-right: var(--space);
+}
+
+#access i {
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+#logo-top {
+	margin-left: var(--space);
+	font-size: 20px;
+	color: var(--light);
 }
 
 /* Page */
@@ -272,8 +258,8 @@ a:hover {
     border-radius: 3px;
 }
 
-#login-form input[type='submit'] {
-	margin: 10px 0;
+input[type='submit'] {
+	margin: 10px ;
     background-color: var(--red);
     color:  #E9EAE1;
 }
@@ -309,7 +295,7 @@ a:hover {
 #register-form input[type='submit'] {
     margin: 10px 0;
     background-color: var(--red);
-    color:  #E9EAE1;
+    color:  var(--red);
 }
 
 #register-form label {
@@ -317,6 +303,48 @@ a:hover {
 	margin: 5px 0;
 	color: var(--red);
 
+}
+
+ .welcome-font {
+	margin-bottom:30px;
+	font-size: var(--space);
+}
+#login-box #register-form input[type="submit"]{
+	margin: 10px ;
+    background-color: var(--red);
+	color:  #E9EAE1;
+	border-radius: 4px;
+}
+
+#login-box{
+	width: 345px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 70px;
+	flex-direction: column;
+}
+
+#reg-box {
+	width: 345px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 70px;
+	flex-direction: column;
+}
+
+#reg-box input[type='submit'] {
+	margin: 10px ;
+    background-color: var(--red);
+	color:  #E9EAE1;
+	border-radius: 4px;
+}
+
+.button {
+	color: var(--red);
 }
 
 
@@ -328,8 +356,9 @@ a:hover {
 #join-box #join {
 	font-size: 12px;
 	text-align: right;
-	margin-right: 5px;
+	margin-right: 10px;
 	width: fit-content;
+	color: var(--grey);
 }
 
 #content {
