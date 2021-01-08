@@ -14,24 +14,20 @@
         </div>
         <div id="page" class="container">
             <div id="content">
-                <h2 class="welcome-font">학생용 회원가입</h2>
-                <div style="margin-top: 80PX;"></div>
-                <form action="#" method="post">
-                    <div id="register-form">
-                    <input name="name" id="name" type="text" placeholder="Name">
-                    <input name="email" id="email" type="text" placeholder="Email">
-                    <input name="password" id="password" type="text" placeholder="Password">
-                    <input name="school" id="school" type="text" placeholder="School">
-                    <input name="schoolClass" id="schoolClass" type="text" placeholder="SchoolClass">
-                    <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
-                    <div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div>
-                    
-                </div>
-
-                <div style="text-align:center; margin-top: 20px;">
-                <h5 class="bold-font" style="font-size: 20pt;"><a href="/" class="button">등록</a></h5>
-                </div>
-            </form>
+				<div id="reg-box">
+					<h2 class="welcome-font">학생 회원가입</h2>
+					<form action="#" method="post">
+						<div id="register-form">
+						<input name="name"type="text" placeholder="Name">
+						<input name="email" type="email" placeholder="Email">
+						<input name="password" type="password" placeholder="Password">
+						<input name="school" type="text" placeholder="School">
+						<input name="schoolClass" type="text" placeholder="SchoolClass">
+						<input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
+						<input type="submit" value="JOIN">
+					</form>
+				</div>
+            </div>
         </div>
         
         <!-- Scripts -->
