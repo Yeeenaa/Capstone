@@ -9,6 +9,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 <link href="public/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<script>    
+    function characterCheck() {
+            var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
+            var obj = document.getElementsByName("cmtTxt")[0]
+            if (RegExp.test(obj.value)) {
+                alert("특수문자는 입력하실 수 없습니다.");
+                obj.value = obj.value.substring(0, obj.value.length - 1);//특수문자를 지우는 구문
+            }
+        }
+</script>
 </head>
 <body>
 <div id="wrapper">
@@ -37,7 +47,7 @@
                     <caption style="font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판</caption>
                         <tr>
                         <td>작성자</td>
-                        <td><input type = text name = name size=20> </td>
+                        <td><input onkeyup="characterCheck()" type = text name = name size=20 placeholder="실명"> </td>
                         </tr>
  
                         <tr>
@@ -47,7 +57,7 @@
  
                         <tr>
                         <td>내용</td>
-                        <td><textarea name = content cols=180 rows=30></textarea></td>
+                        <td><textarea name = content cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"></textarea></td>
                         </tr>
  
                         <tr>
@@ -57,9 +67,8 @@
                         </tr>
                         </table>
 
-                        <div class="text">
-                            <input type="button" onclick="location.href='#';" value="작성"/>
-                        </div>
+                        <button onclick="location.href= 'board.html';">목록</button>
+                        <button onclick="location.href= '#';">작성</button>
                 </td>
                 </tr>
         </table>
