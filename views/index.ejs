@@ -83,9 +83,10 @@ Released   : 20121201
 			</div>
 			<!-- end #content -->
 			<div id="sidebar">
-				<div>
+				<div class="parents">
 					<h2>이달의 일정</h2>
 					<div id="calendar"></div>
+					<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 				</div>
 			</div>
 			<!-- end #sidebar -->
@@ -128,9 +129,7 @@ Released   : 20121201
 			</div>
 		</div>
 	</div>
-
-
+	<%- include('calendar.ejs')%>
 	<!-- end #footer -->
-</body>
-
+	</body>
 </html>
