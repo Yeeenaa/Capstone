@@ -9,16 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 <link href="public/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<script>    
-    function characterCheck() {
-            var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
-            var obj = document.getElementsByName("cmtTxt")[0]
-            if (RegExp.test(obj.value)) {
-                alert("특수문자는 입력하실 수 없습니다.");
-                obj.value = obj.value.substring(0, obj.value.length - 1);//특수문자를 지우는 구문
-            }
-        }
-</script>
+<link href="public/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">

@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 <link href="public/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="public/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body> 
 <div id="wrapper">
@@ -58,9 +59,29 @@
                <td width="50" text-align="center"></td>
                <td width="50" text-align="center"></td>
             </tr>
+            <tr>
+                <td width="30" text-align="center"></td>
+                <td width="500" text-align="center"></td>
+                <td width="100" text-align="center"></td>
+                <td width="200" text-align="center"></td>
+                <td width="50" text-align="center"></td>
+                <td width="50" text-align="center"></td>
+             </tr>
+
            </tbody>
         </table>
     </form>
+    <hr style="margin:2em;">
+    <div class="container">
+        <form style="margin :auto", action="#", method="GET">
+            <select>
+                <option value="title">제목</option>
+                <option value="name">작성자</option>
+            </select>
+            <input type="text" name="search" size="30" required="required">
+            <input type="button" value="검색">
+        </form>
+    </div>
 
 <div id="footer">
 	<p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat phasellus etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.  Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>

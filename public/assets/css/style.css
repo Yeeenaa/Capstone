@@ -668,115 +668,28 @@ input[type='submit'] {
 	background: url(images/img04.png) no-repeat center top;
 }
 
-<<<<<<< HEAD
-/* Table */
-table {
-	text-align : center;
-	width : 100%;
-	border-top : 1px solid #444444;
-	border-collapse : collapse;
+/* button */
+button {
+	width : 60px;
+	height : 35px;
+	color: #FFFFFF;
+	background : #A6192E;
+	font-size : 10px;
+	border : none;
+	border-radius : 10px;
+	float : right;
+	margin : 10px;
 }
 
-tr {
-	border-bottom : 1px solid #444444;
-	padding : 10px;
+button:focus {
+	outline : 0;
 }
 
-td {
-	border-bottom : 1px solid #efefef;
-	padding : 10px;
+button:hover {
+	cursor : pointer;
 }
 
-.text {
-	text-align : center;
-	padding-top : 20px;
-	color:#000000
-}
 
-.text:hover {
-	text-decoration: underline;
-}
-
-a:link {
-	color : #4683c4; text-decoration:none;
-}
-
-a:hover { 
-	text-decoration : underline;
-}
-
-table.table2{
-border-collapse: separate;
-border-spacing: 1px;
-text-align: left;
-line-height: 1.5;
-border-top: 1px solid #ccc;
-margin : 20px 10px;
-}
-
-table.table2 tr {
- width: 50px;
- padding: 10px;
-font-weight: bold;
-vertical-align: top;
-border-bottom: 1px solid #ccc;
-}
-
-table.table2 td {
- width: 100px;
- padding: 10px;
- vertical-align: top;
- border-bottom: 1px solid #ccc;
-}
-
-table.writeTable{
-	width : "100%";
-	border-collapse: separate;
-	border-spacing: 1px;
-	text-align: left;
-	line-height: 1.5;
-	border-top: 1px solid #ccc;
-	margin : 20px 10px;
-	}
-
-	table.writeTable tr {
-	width : "100%";
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	border-bottom: 1px solid #ccc;
-	}
-
-	table.writeTable td {
-	font-size : 15px;
-	width : "100%";
-	padding: 10px;
-	vertical-align: top;
-	border-bottom: 1px solid #ccc;
-	}
-
-	/* button */
-	button {
-		width : 60px;
-		height : 35px;
-		color: #FFFFFF;
-		background : #A6192E;
-		font-size : 10px;
-		border : none;
-		border-radius : 10px;
-		float : right;
-		margin : 10px;
-	}
-
-	button:focus {
-		outline : 0;
-	}
-
-	button:hover {
-		cursor : pointer;
-	}
-
-=======
 /*calendar*/
 *, *:before, *:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
