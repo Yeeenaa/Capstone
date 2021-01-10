@@ -1,8 +1,8 @@
 <header>
-    <div id="wrapper">
+	<div id="wrapper">
 		<div id="menu-wrapper">
 			<div id="logo-top">
-				<a href="/">Democra;SEE</a> 
+				<a href="/">Democra;SEE</a>
 			</div>
 			<ul id="menu-items">
 				<li><a href="/application">입후보 신청</a></li>
@@ -14,28 +14,49 @@
 				<li><a href="#">공지사항</a></li>
 				<li><a href="#">BRAND</a></li>
 			</ul>
+
+			<%if(!user){%>
+				<div id="access">
+					<a href="login">
+						<i class="fas fa-sign-in-alt"></i>
+					</a>
+					<a href="register1">
+						<i class="fas fa-chalkboard-teacher"></i>
+					</a>
+					<a href="register2">
+						<i class="fas fa-id-badge"></i>
+					</a>
+				</div>
+				<a href="#" class="toggle-btn">
+					<i class="fas fa-bars"></i>
+				</a>
+		</div>
+		<%}else if(user && user.role==='teacher' ){%>
 			<div id="access">
-				<a href="login">
-					<i class="fas fa-sign-in-alt"></i>
+				<a href="/teacher">
+					미승인 명단
 				</a>
-				<a href="register1">
-					<i class="fas fa-chalkboard-teacher"></i>
+				<a href="/logout">
+					<i class="fas fa-sign-out-alt"></i>
 				</a>
-				<a href="register2">
-					<i class="fas fa-id-badge"></i>
+				<a href="#" class="toggle-btn">
+					<i class="fas fa-bars"></i>
 				</a>
 			</div>
-			<a href="#" class="toggle-btn">
-				<i class="fas fa-bars"></i>
-			</a>
-		</div>
-		
-	<script>
-		const toggleBtn = document.querySelector('.toggle-btn');
-		const menu = document.querySelector('#menu-items');
+			<%}else{%>
+				<div id="access">
+					<a href="/logout">
+						<i class="fas fa-sign-out-alt"></i>
+					</a>
+				</div>
+				<%}%>
 
-		toggleBtn.addEventListener('click', () => {
-			menu.classList.toggle('active');
-		});
-	</script>
+					<script>
+						const toggleBtn = document.querySelector('.toggle-btn');
+						const menu = document.querySelector('#menu-items');
+
+						toggleBtn.addEventListener('click', () => {
+							menu.classList.toggle('active');
+						});
+					</script>
 </header>
