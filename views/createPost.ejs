@@ -4,10 +4,8 @@
 
 
 <head>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>입후보 신청</title>
+    <%- include('head.ejs') %>
+    <title>토론게시판</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -16,16 +14,16 @@
 </head>
 
 <body>
+    <%- include('navigation.ejs') %>
     <div id="wrapper">
-        <%- include('navigation.ejs') %>
         <div id="logo" class="container">
-            <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
-            <p style="font-size:20px;">Vote Your Life</p>
+            <h1><a href="#">Democra ; SEE </a></h1>
+            <p>Vote Your Life</p>
         </div>
         <table>
             <tr>
                 <table width="100%" class="writeTable" id="postTable">
-                    <caption style="font-size : 20px; color : white; padding: 10px; background : #A6192E;">입후보 신청
+                    <caption style="font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
                     </caption>
                     <tr>
                         <td>제목</td>

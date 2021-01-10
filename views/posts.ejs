@@ -3,9 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <%- include('head.ejs') %>
     <title>토론게시판</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
@@ -15,12 +13,12 @@
 </head>
 
 <body>
+    <%- include('navigation.ejs') %>
     <div id="wrapper">
-        <%- include('navigation.ejs') %>
-            <div id="logo" class="container">
-                <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
-                <p style="font-size:20px;">Vote Your Life</p>
-            </div>
+        <div id="logo" class="container">
+            <h1><a href="#">Democra ; SEE </a></h1>
+            <p>Vote Your Life</p>
+        </div>
             <%if(category!=='edu' || user.role==='admin' ){%>
                 <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
                 <%}%>
@@ -38,7 +36,6 @@
                             </thread>
                             <tbody>
                                 <%posts.forEach(post=> {%>
-
                                     <tr>
                                         <td width="100" text-align="center">
                                             <%=post.school%>
@@ -59,7 +56,6 @@
                                             <%= post.viewCount%>
                                         </td>
                                     </tr>
-
                                     <%})%>
                             </tbody>
                         </table>
