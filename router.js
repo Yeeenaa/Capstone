@@ -4,9 +4,12 @@ const {
     mustLogin,
     checkLogin,
     login,
-    getNotAuthList,
     logout,
+    renderNotAuths,
+    renderApplications,
+    renderDebates,
 } = require('./controller');
+
 const router = express.Router();
 
 router.get('/', checkLogin, function (req, res) {
@@ -27,22 +30,17 @@ router.get('/login', function (req, res) {
 
 router.post('/login', login);
 
-router.get('/teacher', mustLogin, getNotAuthList);
+router.get('/teacher', mustLogin, renderNotAuths);
 
 router.get('/logout', logout);
 
-router.get('/application', mustLogin, async (req, res) => {
-    const response = await axios
-        .get(`${backend}/api/apply`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
-    console.log(response.data);
+router.get('/application', mustLogin, renderApplications);
+router.route('/application/create').get(mustLogin, (req, res) => {
+    if (req.user.role !== 'student') {
+        return res.send('권한이 없습니다');
+    }
 
-    res.send(`reponse: ${response.data.aplications}`);
+    return res.render('createApplication');
 });
 
 router.get('/pledge', mustLogin, async (req, res) => {
@@ -73,19 +71,10 @@ router.get('/evaluation', mustLogin, async (req, res) => {
     res.send(`reponse: ${response.data}`);
 });
 
-router.get('/debate', mustLogin, async (req, res) => {
-    const response = await axios
-        .get(`${backend}/api/question`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
-    console.log(response.data);
-
-    res.send(`reponse: ${response.data.questions}`);
-});
+router.get('/debate', mustLogin, renderDebates);
+router.get('/debate/create', mustLogin, (req, res) =>
+    res.render('createPost', {category: 'debate'})
+);
 
 router.get('/edu', mustLogin, async (req, res) => {
     const response = await axios

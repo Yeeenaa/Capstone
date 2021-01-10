@@ -69,7 +69,7 @@ exports.logout = async (req, res) => {
     res.cookie('jwt', 'hi', cookieOptions);
     res.redirect('/');
 };
-exports.getNotAuthList = (req, res) => {
+exports.renderNotAuths = (req, res) => {
     axios
         .get(`${backend}/api/auth/teacher`, {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
@@ -79,6 +79,40 @@ exports.getNotAuthList = (req, res) => {
         })
         .catch((e) => {
             console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderApplications = (req, res) => {
+    axios
+        .get(`${backend}/api/apply`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            console.log(response.data);
+            res.render('applications', {
+                applications: response.data.applications,
+            });
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderDebates = (req, res) => {
+    axios
+        .get(`${backend}/api/post?page=1&category=debate`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            res.render('posts', {
+                posts: response.data.posts,
+                category: 'debate',
+            });
+        })
+        .catch((e) => {
+            console.log(e);
             return res.send('invalid input');
         });
 };

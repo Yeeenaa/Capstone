@@ -33,47 +33,50 @@
             <h1 style="font-size:40px; line-height:1.5em;"><a href="main.html">Democra ; SEE </a></h1>
             <p style="font-size:20px;">Vote Your Life</p>
         </div>
+        <button onclick="location.href= '/application/create';">글쓰기</button>
         <form action="#" method="GET">
             <table>
-                <tr>
-                    <table width="100%" class="writeTable">
-                        <caption style="font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
-                        </caption>
-                        <tr>
-                            <td>작성자</td>
-                            <td><input onkeyup="characterCheck()" type=text name=name size=20 placeholder="실명"> </td>
-                        </tr>
+                <thread>
+                    <tr>
+                        <td width="30">번호</td>
+                        <td width="500">제목</td>
+                        <td width="100">작성자</td>
+                        <td width="200">작성일</td>
+                        <td width="50">댓글</td>
+                        <td width="50">조회수</td>
+                    </tr>
+                </thread>
+                <tbody>
+                    <td width="30" text-align="center"></td>
+                    <td width="500" text-align="center"></td>
+                    <td width="100" text-align="center"></td>
+                    <td width="200" text-align="center"></td>
+                    <td width="50" text-align="center"></td>
+                    <td width="50" text-align="center"></td>
+                    <tr>
+                        <td width="30" text-align="center"></td>
+                        <td width="500" text-align="center"></td>
+                        <td width="100" text-align="center"></td>
+                        <td width="200" text-align="center"></td>
+                        <td width="50" text-align="center"></td>
+                        <td width="50" text-align="center"></td>
+                    </tr>
 
-                        <tr>
-                            <td>제목</td>
-                            <td><input type=text name=title size=60></td>
-                        </tr>
-
-                        <tr>
-                            <td>내용</td>
-                            <td><textarea name=content cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"></textarea>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>첨부하기</td>
-                            <td><input type="file" name="FileName"></td>
-                        </tr>
-
-                        <tr>
-                            <td>비밀번호</td>
-                            <td>
-                                <input type=password name=pw size=10 maxlength=10>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <button onclick="location.href= 'board.html';">목록</button>
-                    <button onclick="location.href= '#';">작성</button>
-                    </td>
-                </tr>
+                </tbody>
             </table>
         </form>
+        <hr style="margin:2em;">
+        <div class="container">
+            <form style="margin :auto" , action="#" , method="GET">
+                <select>
+                    <option value="title">제목</option>
+                    <option value="name">작성자</option>
+                </select>
+                <input type="text" name="search" size="30" required="required">
+                <input type="button" value="검색">
+            </form>
+        </div>
+
         <div id="footer">
             <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat phasellus
                 etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
