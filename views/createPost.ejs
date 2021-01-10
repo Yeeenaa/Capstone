@@ -26,14 +26,20 @@
                     <caption style="font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
                     </caption>
                     <tr>
+                        <td>이름</td>
+                        <td><input type=text name="Txt" id="title" style="width: 100px;"
+                            onkeyup="characterCheck()" onkeydown="characterCheck()"></td>
+                    </tr>
+                    <tr>
                         <td>제목</td>
                         <td><input type=text name="title" id="title" style="width: 600px;"></td>
                     </tr>
 
                     <tr>
                         <td>내용</td>
-                        <td><textarea name="content" id="content" cols=180 rows=30
-                                placeholder="욕설 및 비방하는 글은 제한하고 있습니다"></textarea>
+                        <td><textarea name="Txt" id="content" cols=180 rows=30
+                                placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
+                                onkeyup="koreanEnglish()" onkeydown="koreanEnglish()"></textarea>
                         </td>
                     </tr>
 
@@ -53,6 +59,37 @@
                 etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
                     href="http://fotogrph.com/">Fotogrph</a>.</p>
         </div>
+
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function characterCheck() {
+                var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi
+                var obj = document.getElementsByName("Txt")[0]
+                if (RegExp.test(obj.value)) {
+                    alert("특수문자는 입력하실 수 없습니다.");
+                    obj.value = obj.value.substring(0, obj.value.length - 1);
+                }
+            }
+
+            function checkKey(){
+                var char_ASCII = event.keyCode;
+                if ((char_ASCII >= 12592) || (char_ASCII <= 12687)){
+                    return 3;
+                }
+                else if ((char_ASCII>=65 && char_ASCII<=90) || (char_ASCII>=97 && char_ASCII<=122)){
+                    return 2;
+                }
+            }
+
+            function koreanEnglish(){
+                if(checkKey() != 2 && checkKey() !=3){
+                    event.returnValue = false;
+                    alert("한글과 영어만 입력할 수 있습니다.");
+                    return;
+                }
+            }
+        </script>
+ 
         <%- include('footer.ejs')%>
 
             <!-- end #footer -->
