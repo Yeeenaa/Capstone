@@ -3,23 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>토론게시판</title>
+    <%- include('head.ejs') %>
+    <title>입후보 신청</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
-    <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="wrapper">
-        <%- include('navigation.ejs') %>
+    <%- include('navigation.ejs') %>
+	<div id="wrapper">
         <div id="logo" class="container">
-            <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
-            <p style="font-size:20px;">Vote Your Life</p>
+            <h1><a href="#">Democra ; SEE </a></h1>
+            <p>Vote Your Life</p>
         </div>
         <button onclick="location.href= '/application/create';">글쓰기</button>
         <form action="#" method="GET">
