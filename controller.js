@@ -116,3 +116,20 @@ exports.renderDebates = (req, res) => {
             return res.send('invalid input');
         });
 };
+
+exports.renderEduPosts = (req, res) => {
+    axios
+        .get(`${backend}/api/post?page=1&category=edu`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            res.render('posts', {
+                posts: response.data.posts,
+                category: 'edu',
+            });
+        })
+        .catch((e) => {
+            console.log(e);
+            return res.send('invalid input');
+        });
+};

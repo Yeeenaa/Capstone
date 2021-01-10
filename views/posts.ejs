@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 	<div id="wrapper">
         <div id="logo" class="container">
             <h1><a href="#">Democra ; SEE </a></h1>
@@ -30,50 +31,76 @@
                 </thread>
                 <tbody>
                     <%posts.forEach(post=> {%>
+=======
+    <div id="wrapper">
+        <%- include('navigation.ejs') %>
+            <div id="logo" class="container">
+                <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
+                <p style="font-size:20px;">Vote Your Life</p>
+            </div>
+            <%if(category!=='edu' || user.role==='admin' ){%>
+                <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
+                <%}%>
+                    <form action="#" method="GET">
+                        <table>
+                            <thread>
+                                <tr>
+                                    <td width="30">학교</td>
+                                    <td width="500">제목</td>
+                                    <td width="100">작성자</td>
+                                    <td width="200">작성일</td>
+                                    <td width="50">댓글</td>
+                                    <td width="50">조회수</td>
+                                </tr>
+                            </thread>
+                            <tbody>
+                                <%posts.forEach(post=> {%>
+>>>>>>> 26ae2c354f45634158f09bb94f56b0178e24f469
 
-                        <tr>
-                            <td width="100" text-align="center">
-                                <%=post.school%>
-                            </td>
-                            <td width="300" text-align="center">
-                                <%=post.title%>
-                            </td>
-                            <td width="300" text-align="center">
-                                <%= post.user.name%>
-                            </td>
-                            <td width="100" text-align="center">
-                                <%=post.createdAt%>
-                            </td>
-                            <td width="100" text-align="center">
-                                <%=post.commentCount%>개
-                            </td>
-                            <td width="100" text-align="center">
-                                <%= post.viewCount%>
-                            </td>
-                        </tr>
+                                    <tr>
+                                        <td width="100" text-align="center">
+                                            <%=post.school%>
+                                        </td>
+                                        <td width="300" text-align="center">
+                                            <%=post.title%>
+                                        </td>
+                                        <td width="300" text-align="center">
+                                            <%= post.user.name%>
+                                        </td>
+                                        <td width="100" text-align="center">
+                                            <%=post.createdAt%>
+                                        </td>
+                                        <td width="100" text-align="center">
+                                            <%=post.commentCount%>개
+                                        </td>
+                                        <td width="100" text-align="center">
+                                            <%= post.viewCount%>
+                                        </td>
+                                    </tr>
 
-                        <%})%>
-                </tbody>
-            </table>
-        </form>
-        <hr style="margin:2em;">
-        <div class="container">
-            <form style="margin :auto" , action="#" , method="GET">
-                <select>
-                    <option value="title">제목</option>
-                    <option value="name">작성자</option>
-                </select>
-                <input type="text" name="search" size="30" required="required">
-                <input type="button" value="검색">
-            </form>
-        </div>
+                                    <%})%>
+                            </tbody>
+                        </table>
+                    </form>
+                    <hr style="margin:2em;">
+                    <div class="container">
+                        <form style="margin :auto" , action="#" , method="GET">
+                            <select>
+                                <option value="title">제목</option>
+                                <option value="name">작성자</option>
+                            </select>
+                            <input type="text" name="search" size="30" required="required">
+                            <input type="button" value="검색">
+                        </form>
+                    </div>
 
-        <div id="footer">
-            <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat phasellus
-                etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
-                    href="http://fotogrph.com/">Fotogrph</a>.</p>
-        </div>
-        <!-- end #footer -->
+                    <div id="footer">
+                        <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
+                            phasellus
+                            etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by
+                            <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+                    </div>
+                    <!-- end #footer -->
 </body>
 
 </html>
