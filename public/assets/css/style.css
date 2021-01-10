@@ -318,7 +318,8 @@ input:focus {
 }
 
 #menu-items a:hover {
-	color: var(--red-point);
+  color: var(--red-point);
+  text-decoration: none;
 }
 
 #access i {
@@ -406,7 +407,7 @@ input[type='submit'] {
 
 }
 
- .welcome-font {
+.welcome-font {
 	margin-bottom:30px;
 	font-size: var(--space);
 }
@@ -471,6 +472,8 @@ input[type='submit'] {
 	margin-bottom: 100px;
 }
 
+
+/* createPost */
 .post {
 	overflow: hidden;
 }
@@ -1208,4 +1211,3 @@ button:hover {
     @keyframes fadeOutShink  {
       to { opacity: 0; padding: 0px; height: 0px; }
     }
->>>>>>> 8df4adfef3aebe65ceaa2ec11f648c878fc8462e
