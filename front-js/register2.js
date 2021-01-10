@@ -37,6 +37,7 @@ export default class Register2 {
                     window.location.replace('/login');
                 })
                 .catch((error) => {
+                    console.log(error.message);
                     alert('입력값을 확인하세요');
                 });
         });
