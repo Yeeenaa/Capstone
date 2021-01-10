@@ -1,42 +1,16 @@
 const express = require('express');
 const axios = require('axios');
+const {
+    mustLogin,
+    checkLogin,
+    login,
+    logout,
+    renderNotAuths,
+    renderApplications,
+    renderDebates,
+} = require('./controller');
 
 const router = express.Router();
-
-const checkLogin = async (req, res, next) => {
-    if (req.cookies.jwt && req.cookies.jwt !== 'hi') {
-        const token = req.cookies.jwt;
-
-        const response = await axios.get(`${backend}/api/user`, {
-            headers: {Authorization: `Bearer ${token}`},
-        });
-
-        req.user = response.data.user;
-        res.locals.user = req.user;
-        return next();
-    }
-    res.locals.user = false;
-    next();
-};
-
-const mustLogin = async (req, res, next) => {
-    if (!req.cookies.jwt || req.cookies.jwt === 'hi') {
-        return res.send('error: must login');
-    }
-
-    const token = req.cookies.jwt;
-
-    const response = await axios.get(`${backend}/api/user`, {
-        headers: {Authorization: `Bearer ${token}`},
-    });
-
-    req.user = response.data.user;
-    res.locals.user = req.user;
-    next();
-};
-
-const backend =
-    'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
 
 router.get('/', checkLogin, function (req, res) {
     res.render('index');
@@ -54,67 +28,19 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 
-router.post('/login', async (req, res) => {
-    const {email, password} = req.body;
+router.post('/login', login);
 
-    const response = await axios
-        .post(`${backend}/api/auth/login`, {
-            email,
-            password,
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
+router.get('/teacher', mustLogin, renderNotAuths);
 
-    const cookieOptions = {
-        expires: new Date(Date.now() + 7 * 24 * 60 * 1000),
-        httpOnly: true,
-        // secure: process.env.NODE_ENV === 'production'
-    };
+router.get('/logout', logout);
 
-    res.cookie('jwt', response.data.token, cookieOptions);
-    res.redirect('/');
-});
+router.get('/application', mustLogin, renderApplications);
+router.route('/application/create').get(mustLogin, (req, res) => {
+    if (req.user.role !== 'student') {
+        return res.send('권한이 없습니다');
+    }
 
-router.get('/teacher', async (req, res) => {
-    const response = await axios
-        .get(`${backend}/api/auth/teacher`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
-
-    console.log(response.data);
-
-    res.send(`reponse: ${response.data.students}`);
-});
-
-router.get('/logout', async (req, res) => {
-    const cookieOptions = {
-        expires: new Date(Date.now() + 1000),
-        httpOnly: true,
-        // secure: process.env.NODE_ENV === 'production'
-    };
-
-    res.cookie('jwt', 'hi', cookieOptions);
-    res.redirect('/');
-});
-
-router.get('/application', mustLogin, async (req, res) => {
-    const response = await axios
-        .get(`${backend}/api/apply`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
-    console.log(response.data);
-
-    res.send(`reponse: ${response.data.aplications}`);
+    return res.render('createApplication');
 });
 
 router.get('/pledge', mustLogin, async (req, res) => {
@@ -145,19 +71,10 @@ router.get('/evaluation', mustLogin, async (req, res) => {
     res.send(`reponse: ${response.data}`);
 });
 
-router.get('/debate', mustLogin, async (req, res) => {
-    const response = await axios
-        .get(`${backend}/api/question`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
-    console.log(response.data);
-
-    res.send(`reponse: ${response.data.questions}`);
-});
+router.get('/debate', mustLogin, renderDebates);
+router.get('/debate/create', mustLogin, (req, res) =>
+    res.render('createPost', {category: 'debate'})
+);
 
 router.get('/edu', mustLogin, async (req, res) => {
     const response = await axios
