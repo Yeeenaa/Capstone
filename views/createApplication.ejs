@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>입후보 신청</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="menu-wrapper">
+            <div id="menu" class="container">
+                <ul>
+                    <li><a href="main.html">Homepage</a></li>
+                    <li class="current_page_item"><a href="board.html">토론게시판</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Links</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="logo" class="container">
+            <h1 style="font-size:40px; line-height:1.5em;"><a href="main.html">Democra ; SEE </a></h1>
+            <p style="font-size:20px;">Vote Your Life</p>
+        </div>
+        <form action="#" method="GET">
+            <table>
+                <tr>
+                    <table width="100%" class="writeTable">
+                        <caption style="font-size : 20px; color : white; padding: 10px; background : #A6192E;">입후보 신청
+                        </caption>
+                        <tr>
+                            <td>제목</td>
+                            <td><input type=text name=title size=60></td>
+                        </tr>
+
+                        <tr>
+                            <td>내용</td>
+                            <td><textarea name=content cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>첨부하기</td>
+                            <td><input type="file" name="FileName"></td>
+                        </tr>
+
+                        <tr>
+                            <td>비밀번호</td>
+                            <td>
+                                <input type=password name=pw size=10 maxlength=10>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button onclick="location.href= 'board.html';">목록</button>
+                    <button onclick="location.href= '#';">작성</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div id="footer">
+            <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat phasellus
+                etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
+                    href="http://fotogrph.com/">Fotogrph</a>.</p>
+        </div>
+        <!-- end #footer -->
+</body>
+
+</html>

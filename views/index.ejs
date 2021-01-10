@@ -17,35 +17,49 @@ Released   : 20121201
 </head>
 
 <body>
-	<div id="menu-login">
-		<%if(!user){%>
-			<a href="login">로그인</a>
-			<a href="register1">교직원 회원가입</a>
-			<a href="register2">학생 회원가입</a>
-			<%}else if(user.role==='teacher' ){ %>
-				<a href="/teacher">학생 승인</a>
-				<a href="/logout">로그아웃</a>
-				<%}else{%>
-					<a href="/logout">로그아웃</a>
-					<%}%>
-	</div>
-
 	<div id="wrapper">
 		<div id="menu-wrapper">
-			<div id="menu" class="container">
-
-				<ul>
-					<li class="current_page_item"><a href="/">홈</a></li>
-					<li><a href="/application">입후보 신청</a></li>
-					<li><a href="/pledge">공약 게시판</a></li>
-					<li><a href="/evaluation">공약 이행률</a></li>
-					<li><a href="#">공청회</a></li>
-					<li><a href="/debate">토론 게시판</a></li>
-					<li><a href="/edu">투표 교육</a></li>
-				</ul>
+			<div id="logo-top">
+				<a href="/">Democra;SEE</a> 
 			</div>
+				<div id="menu-items">
+					<ul>
+						<li><a href="/application">입후보 신청</a></li>
+						<li><a href="/pledge">공약 게시판</a></li>
+						<li><a href="/evaluation">공약 이행률</a></li>
+						<li><a href="#">공청회</a></li>
+						<li><a href="/debate">토론 게시판</a></li>
+						<li><a href="/edu">투표 교육</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">BRAND</a></li>
+					</ul>
+				</div>
+				<div id="access">
+					<%if(!user){%>
+						<a href="login">
+							<i class="fas fa-sign-in-alt"></i>
+						</a>
+						<a href="register1">
+							<i class="fas fa-chalkboard-teacher"></i>
+						</a>
+						<a href="register2">
+							<i class="fas fa-id-badge"></i>
+						</a>
+						<%}else if(user.role==='teacher' ){ %>
+							<a href="/teacher">
+								<i class="far fa-user"></i>
+							</a>
+							<a href="/logout">
+								<i class="fas fa-sign-out-alt"></i>
+							</a>
+							<%}else{%>
+								<a href="/logout">
+									<i class="fas fa-sign-out-alt"></i>
+								</a>
+								<%}%>
+				</div>
 		</div>
-		<div id="logo" class="container">
+		<div id="logo">
 			<h1><a href="#">Democra ; SEE </a></h1>
 			<p>Vote Your Life</p>
 		</div>
@@ -71,9 +85,10 @@ Released   : 20121201
 			</div>
 			<!-- end #content -->
 			<div id="sidebar">
-				<div>
+				<div class="parents">
 					<h2>이달의 일정</h2>
 					<div id="calendar"></div>
+					<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 				</div>
 			</div>
 			<!-- end #sidebar -->
@@ -116,9 +131,7 @@ Released   : 20121201
 			</div>
 		</div>
 	</div>
-
-
+	<%- include('calendar.ejs')%>
 	<!-- end #footer -->
-</body>
-
+	</body>
 </html>
