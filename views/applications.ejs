@@ -11,26 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+    <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="menu-wrapper">
-            <div id="menu" class="container">
-                <ul>
-                    <li><a href="main.html">Homepage</a></li>
-                    <li class="current_page_item"><a href="board.html">토론게시판</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Photos</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Links</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
+        <%- include('navigation.ejs') %>
         <div id="logo" class="container">
-            <h1 style="font-size:40px; line-height:1.5em;"><a href="main.html">Democra ; SEE </a></h1>
+            <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
             <p style="font-size:20px;">Vote Your Life</p>
         </div>
         <button onclick="location.href= '/application/create';">글쓰기</button>
