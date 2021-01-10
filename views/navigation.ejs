@@ -34,13 +34,10 @@
 		<%}else if(user && user.role==='teacher' ){%>
 			<div id="access">
 				<a href="/teacher">
-					미승인 명단
+					<i class="far fa-clipboard"></i>
 				</a>
 				<a href="/logout">
 					<i class="fas fa-sign-out-alt"></i>
-				</a>
-				<a href="#" class="toggle-btn">
-					<i class="fas fa-bars"></i>
 				</a>
 			</div>
 			<%}else{%>
