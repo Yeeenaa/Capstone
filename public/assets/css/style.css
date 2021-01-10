@@ -303,21 +303,21 @@ input:focus {
   padding: 20px 20px;
 }
 
-#menu-items ul {
+#menu-items{
 	display: flex;
 	justify-content: space-around;
 	margin: 0;
 	padding: 0;
 }
 
-#menu-items ul li a{
+#menu-items a{
 	font-weight: bold;
 	display: block;
 	padding: 0 15px;
 	font-size: 13px;
 }
 
-#menu-items ul li a:hover {
+#menu-items a:hover {
 	color: var(--red-point);
 }
 
@@ -1077,14 +1077,14 @@ button:hover {
         align-items: flex-start;
       }
 
-      #menu-items ul{
+      #menu-items{
         display: none;
         flex-direction: column;
         align-items: center;
         width: 100vw;
       }
 
-      #menu-items ul:active {
+      #menu-items:active {
         display: flex;
       }
 

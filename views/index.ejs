@@ -17,52 +17,8 @@ Released   : 20121201
 </head>
 
 <body>
-	<div id="wrapper">
-		<div id="menu-wrapper">
-			<div id="logo-top">
-				<a href="/">Democra;SEE</a> 
-			</div>
-				<div id="menu-items">
-					<ul>
-						<li><a href="/application">입후보 신청</a></li>
-						<li><a href="/pledge">공약 게시판</a></li>
-						<li><a href="/evaluation">공약 이행률</a></li>
-						<li><a href="#">공청회</a></li>
-						<li><a href="/debate">토론 게시판</a></li>
-						<li><a href="/edu">투표 교육</a></li>
-						<li><a href="#">공지사항</a></li>
-						<li><a href="#">BRAND</a></li>
-					</ul>
-				</div>
-				<div id="access">
-					<%if(!user){%>
-						<a href="login">
-							<i class="fas fa-sign-in-alt"></i>
-						</a>
-						<a href="register1">
-							<i class="fas fa-chalkboard-teacher"></i>
-						</a>
-						<a href="register2">
-							<i class="fas fa-id-badge"></i>
-						</a>
-						<%}else if(user.role==='teacher' ){ %>
-							<a href="/teacher">
-								<i class="far fa-user"></i>
-							</a>
-							<a href="/logout">
-								<i class="fas fa-sign-out-alt"></i>
-							</a>
-							<%}else{%>
-								<a href="/logout">
-									<i class="fas fa-sign-out-alt"></i>
-								</a>
-								<%}%>
-				</div>
-				
-				<a href="#" class="toggle-btn">
-					<i class="fas fa-bars"></i>
-				</a>
-		</div>
+	<%- include('navigation.ejs') %>
+	
 		<div id="logo">
 			<h1><a href="#">Democra ; SEE </a></h1>
 			<p>Vote Your Life</p>
@@ -137,5 +93,14 @@ Released   : 20121201
 	</div>
 	<%- include('calendar.ejs')%>
 	<!-- end #footer -->
+	
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn');
+		const menu = document.querySelector('#menu-items');
+
+		toggleBtn.addEventListener('click', () => {
+			menu.classList.toggle('active');
+		});
+	</script>
 	</body>
 </html>
