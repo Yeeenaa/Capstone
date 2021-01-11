@@ -37,9 +37,9 @@
 
                     <tr>
                         <td>내용</td>
-                        <td><textarea name="Txt" id="content" cols=180 rows=30
+                        <td><textarea name="txts" id="content" cols=180 rows=30
                                 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
-                                onkeyup="koreanEnglish()" onkeydown="koreanEnglish()"></textarea>
+                                onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
                         </td>
                     </tr>
 
@@ -86,6 +86,19 @@
                     event.returnValue = false;
                     alert("한글과 영어만 입력할 수 있습니다.");
                     return;
+                }
+            }
+
+            function checkWord(){
+                var swearList = new Array("바보", "멍청이");
+                var tmp;
+                for(i = 0; i < swearList.length; i++){
+                    tmp = txts.value.toLowerCase().indexOf(swearList[i]);
+
+                    if(tmp >= 0){
+                        alert("해당 단어는 입력할 수 없습니다.");
+                        break;
+                    }
                 }
             }
         </script>
