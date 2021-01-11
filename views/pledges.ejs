@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <%- include('head.ejs') %>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>토론게시판</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
@@ -13,14 +15,14 @@
 </head>
 
 <body>
-    <%- include('navigation.ejs') %>
     <div id="wrapper">
-        <div id="logo" class="container">
-            <h1><a href="#">Democra ; SEE </a></h1>
-            <p>Vote Your Life</p>
-        </div>
-            <%if(category!=='edu' || user.role==='admin' ){%>
-                <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
+        <%- include('navigation.ejs') %>
+            <div id="logo" class="container">
+                <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
+                <p style="font-size:20px;">Vote Your Life</p>
+            </div>
+            <%if(user.role==='candidate' ){%>
+                <button onclick="location.href= '/pledge/create';">글쓰기</button>
                 <%}%>
                     <form action="#" method="GET">
                         <table>
@@ -30,34 +32,28 @@
                                     <td width="500">제목</td>
                                     <td width="100">작성자</td>
                                     <td width="200">작성일</td>
-                                    <td width="50">댓글</td>
-                                    <td width="50">조회수</td>
                                 </tr>
                             </thread>
                             <tbody>
-                                <%posts.forEach(post=> {%>
+                                <%pledges.forEach(pledge=> {%>
+
                                     <tr>
                                         <td width="100" text-align="center">
-                                            <%=post.school%>
+                                            <%=pledge.school%>
                                         </td>
                                         <td width="300" text-align="center">
-                                            <a href="/<%=category%>/<%=post.id%>" style="color: black">
-                                                <%=post.title%>
+                                            <a href="/pledge/<%=pledge.candidateId%>" style="color: black">
+                                                <%=pledge.title%>
                                             </a>
                                         </td>
-                                        <td width=" 300" text-align="center">
-                                            <%= post.user.name%>
+                                        <td width="100" text-align="center">
+                                            <%=pledge.candidate.name%>
                                         </td>
                                         <td width="100" text-align="center">
-                                            <%=post.createdAt%>
-                                        </td>
-                                        <td width="100" text-align="center">
-                                            <%=post.commentCount%>개
-                                        </td>
-                                        <td width="100" text-align="center">
-                                            <%= post.viewCount%>
+                                            <%=pledge.createdAt%>
                                         </td>
                                     </tr>
+
                                     <%})%>
                             </tbody>
                         </table>
