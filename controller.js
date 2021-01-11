@@ -89,10 +89,63 @@ exports.renderApplications = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            console.log(response.data);
             res.render('applications', {
                 applications: response.data.applications,
             });
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderOneApplication = (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.send('관리자 전용: 권한이 없습니다');
+    }
+
+    axios
+        .get(`${backend}/api/apply/${req.params.id}`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            console.log(response.data);
+            res.send(
+                `${response.data.application[0]}
+                <button id="permitButton" value="true,AA,<%=token%>">승인</button>`
+            );
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderPledges = (req, res) => {
+    axios
+        .get(`${backend}/api/pledge`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            console.log(response.data.pledges);
+            res.render('pledges', {
+                pledges: response.data.pledges,
+            });
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderOnePledge = (req, res) => {
+    axios
+        .get(`${backend}/api/pledge/${req.params.id}`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            console.log(response.data);
+            res.send(response.data.pledge);
         })
         .catch((e) => {
             console.log(e.message);
@@ -112,7 +165,7 @@ exports.renderDebates = (req, res) => {
             });
         })
         .catch((e) => {
-            console.log(e);
+            console.log(e.message);
             return res.send('invalid input');
         });
 };
@@ -130,6 +183,21 @@ exports.renderEduPosts = (req, res) => {
         })
         .catch((e) => {
             console.log(e);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderOnePost = (req, res) => {
+    axios
+        .get(`${backend}/api/post/${req.params.id}`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            console.log(response.data);
+            res.send(response.data);
+        })
+        .catch((e) => {
+            console.log(e.message);
             return res.send('invalid input');
         });
 };

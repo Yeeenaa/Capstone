@@ -8660,21 +8660,63 @@ var CreatePost = /*#__PURE__*/function () {
             category = _this$button$value$sp2[0],
             token = _this$button$value$sp2[1];
 
-        _axios.default.post("".concat(backend, "/api/post"), {
-          title: _this.title.value,
-          content: _this.content.value,
-          category: category
-        }, {
-          headers: {
-            Authorization: "Bearer ".concat(token)
-          }
-        }).then(function (response) {
-          alert('게시글 작성 완료');
-          window.location.replace("/".concat(category));
-        }).catch(function (error) {
-          alert('입력값을 확인하세요');
-          window.location.replace("/".concat(category, "/create"));
-        });
+        if (category === 'pledge') {
+          var form = new FormData();
+          form.append('title', _this.title.value);
+          form.append('content', _this.content.value); // form.append('video', category)
+          // form.append('images', category)
+
+          _axios.default.post("".concat(backend, "/api/pledge"), form, {
+            headers: {
+              Authorization: "Bearer ".concat(token),
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then(function (response) {
+            alert('게시글 작성 완료');
+            window.location.replace("/pledge");
+          }).catch(function (error) {
+            alert('입력값을 확인하세요');
+            window.location.replace("/pledge/create");
+          });
+        } else if (category === 'apply') {
+          _axios.default.post("".concat(backend, "/api/apply"), {
+            title: _this.title.value,
+            content: _this.content.value
+          }, {
+            headers: {
+              Authorization: "Bearer ".concat(token)
+            }
+          }).then(function (response) {
+            alert('게시글 작성 완료');
+            window.location.replace("/application");
+          }).catch(function (error) {
+            alert('입력값을 확인하세요');
+            window.location.replace("/application/create");
+          });
+        } else {
+          var _form = new FormData();
+
+          _form.append('title', _this.title.value);
+
+          _form.append('content', _this.content.value);
+
+          _form.append('category', category); // form.append('video', category)
+          // form.append('images', category)
+
+
+          _axios.default.post("".concat(backend, "/api/post"), _form, {
+            headers: {
+              Authorization: "Bearer ".concat(token),
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then(function (response) {
+            alert('게시글 작성 완료');
+            window.location.replace("/".concat(category));
+          }).catch(function (error) {
+            alert('입력값을 확인하세요');
+            window.location.replace("/".concat(category, "/create"));
+          });
+        }
       });
     }
   }]);
@@ -8999,7 +9041,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9106" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6406" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

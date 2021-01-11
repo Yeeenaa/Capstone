@@ -4,69 +4,79 @@
 
 <head>
     <%- include('head.ejs') %>
-    <title>입후보 신청</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-    <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+        <title>입후보 신청</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
+        <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
-    <%- include('navigation.ejs') %>
-	<div id="wrapper">
-        <div id="logo" class="container">
-            <h1><a href="#">Democra ; SEE </a></h1>
-            <p>Vote Your Life</p>
-        </div>
-        <button onclick="location.href= '/application/create';">글쓰기</button>
-        <form action="#" method="GET">
-            <table>
-                <thread>
-                    <tr>
-                        <td width="30">번호</td>
-                        <td width="500">제목</td>
-                        <td width="100">작성자</td>
-                        <td width="200">작성일</td>
-                        <td width="50">댓글</td>
-                        <td width="50">조회수</td>
-                    </tr>
-                </thread>
-                <tbody>
-                    <td width="30" text-align="center"></td>
-                    <td width="500" text-align="center"></td>
-                    <td width="100" text-align="center"></td>
-                    <td width="200" text-align="center"></td>
-                    <td width="50" text-align="center"></td>
-                    <td width="50" text-align="center"></td>
-                    <tr>
-                        <td width="30" text-align="center"></td>
-                        <td width="500" text-align="center"></td>
-                        <td width="100" text-align="center"></td>
-                        <td width="200" text-align="center"></td>
-                        <td width="50" text-align="center"></td>
-                        <td width="50" text-align="center"></td>
-                    </tr>
+    <div id="wrapper">
+        <%- include('navigation.ejs') %>
+            <div id="logo" class="container">
+                <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
+                <p style="font-size:20px;">Vote Your Life</p>
+            </div>
+            <%if(user.role==='student' ){%>
+                <button onclick="location.href= '/application/create';">글쓰기</button>
+                <%}%>
+                    <form action="#" method="GET">
+                        <table>
+                            <thread>
+                                <tr>
+                                    <td width="100">학교</td>
+                                    <td width="500">제목</td>
+                                    <td width="100">작성자</td>
+                                    <td width="100">여부</td>
+                                    <td width="200">작성일</td>
+                                </tr>
+                            </thread>
+                            <tbody>
+                                <%applications.forEach(app=> {%>
+                                    <tr>
+                                        <td width="100" text-align="center">
+                                            <%=app.school%>
+                                        </td>
+                                        <td width="500" text-align="center">
+                                            <a href="/application/<%=app.userId%>" style="color: black">
+                                                <%=app.title%>
+                                            </a>
+                                        </td>
+                                        <td width=" 100" text-align="center">
+                                            이름
+                                        <td width="100" text-align="center">
+                                            <%=app.isConclude%>
+                                        </td>
+                                        <td width="200" text-align="center">
+                                            <%=app.createdAt%>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+                            </tbody>
+                        </table>
+                    </form>
+                    <hr style="margin:2em;">
+                    <div class="container">
+                        <form style="margin :auto" , action="#" , method="GET">
+                            <select>
+                                <option value="title">제목</option>
+                                <option value="name">작성자</option>
+                            </select>
+                            <input type="text" name="search" size="30" required="required">
+                            <input type="button" value="검색">
+                        </form>
+                    </div>
+                    >>>>>>> work
 
-                </tbody>
-            </table>
-        </form>
-        <hr style="margin:2em;">
-        <div class="container">
-            <form style="margin :auto" , action="#" , method="GET">
-                <select>
-                    <option value="title">제목</option>
-                    <option value="name">작성자</option>
-                </select>
-                <input type="text" name="search" size="30" required="required">
-                <input type="button" value="검색">
-            </form>
-        </div>
-
-        <div id="footer">
-            <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat phasellus
-                etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
-                    href="http://fotogrph.com/">Fotogrph</a>.</p>
-        </div>
-        <!-- end #footer -->
+                    <div id="footer">
+                        <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
+                            phasellus
+                            etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by
+                            <a href="http://fotogrph.com/">Fotogrph</a>.
+                        </p>
+                    </div>
+                    <!-- end #footer -->
 </body>
 
 </html>
