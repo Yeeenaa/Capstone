@@ -37,7 +37,7 @@
 
                     <tr>
                         <td>내용</td>
-                        <td><textarea name="txts" id="content" cols=180 rows=30
+                        <td><textarea name ="content" id="txtContent" cols=180 rows=30
                                 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
                                 onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
                         </td>
@@ -71,36 +71,23 @@
                 }
             }
 
-            function checkKey(){
-                var char_ASCII = event.keyCode;
-                if ((char_ASCII >= 12592) || (char_ASCII <= 12687)){
-                    return 3;
-                }
-                else if ((char_ASCII>=65 && char_ASCII<=90) || (char_ASCII>=97 && char_ASCII<=122)){
-                    return 2;
-                }
-            }
-
-            function koreanEnglish(){
-                if(checkKey() != 2 && checkKey() !=3){
-                    event.returnValue = false;
-                    alert("한글과 영어만 입력할 수 있습니다.");
-                    return;
-                }
-            }
-
             function checkWord(){
-                var swearList = new Array("바보", "멍청이");
-                var tmp;
-                for(i = 0; i < swearList.length; i++){
-                    tmp = txts.value.toLowerCase().indexOf(swearList[i]);
+                var word = document.getElementById("txtContent").value;
 
-                    if(tmp >= 0){
-                        alert("해당 단어는 입력할 수 없습니다.");
-                        break;
+                var swearWordArr = new Array("바보", "멍청이");
+                orgword = word.toLowerCase();
+                awdrgy = 0;
+
+                while(awdrgy <= swearWordArr.length - 1){
+                    if(orgword.indexOf(swearWordArr[awdrgy]) > -1){
+                        alert(swearWordArr[awdrgy] + "은(는) 입력하실 수 없습니다.");
+                        return replace(orgword,"");
                     }
+
+                    awdrgy++;
                 }
             }
+
         </script>
  
         <%- include('footer.ejs')%>
