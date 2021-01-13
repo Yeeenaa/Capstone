@@ -4,22 +4,22 @@
 
 <head>
     <%- include('head.ejs') %>
-    <title>토론게시판</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
-    <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
+        <title>토론게시판</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <%- include('navigation.ejs') %>
-    <div id="wrapper">
-        <div id="logo" class="container">
-            <h1><a href="#">Democra ; SEE </a></h1>
-            <p>Vote Your Life</p>
-        </div>
-            <%if(category!=='edu' || user.role==='admin' ){%>
+        <div id="wrapper">
+            <div id="logo" class="container">
+                <h1><a href="#">Democra ; SEE </a></h1>
+                <p>Vote Your Life</p>
+            </div>
+            <%if(category==='debate' || user.role==='admin' ){%>
                 <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
                 <%}%>
                     <form action="#" method="GET">
