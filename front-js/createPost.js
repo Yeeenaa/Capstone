@@ -56,11 +56,11 @@ export default class CreatePost {
                     )
                     .then((response) => {
                         alert('게시글 작성 완료');
-                        window.location.replace(`/application`);
+                        window.location.replace(`/apply`);
                     })
                     .catch((error) => {
                         alert('입력값을 확인하세요');
-                        window.location.replace(`/application/create`);
+                        window.location.replace(`/apply/create`);
                     });
             } else {
                 const form = new FormData();
