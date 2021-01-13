@@ -1060,7 +1060,7 @@ button:hover {
 
 
     /* ---------------------------------- */
-    @media screen and (max-width: 873px) {
+    @media screen and (max-width: 977px) {
       #menu-wrapper {
         flex-direction: column;
         align-items: flex-start;
@@ -1093,7 +1093,8 @@ button:hover {
       }
     }
 
-    @media screen and (min-width: 874px) and (max-width: 1005px) {
+
+    @media screen and (min-width: 978px) and (max-width: 1388px) {
       #access {
         display: none;
       }
