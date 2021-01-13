@@ -18,7 +18,7 @@
                 <p style="font-size:20px;">Vote Your Life</p>
             </div>
             <%if(user.role==='student' ){%>
-                <button onclick="location.href= '/application/create';">글쓰기</button>
+                <button onclick="location.href= '/apply/create';">글쓰기</button>
                 <%}%>
                     <form action="#" method="GET">
                         <table>
@@ -38,7 +38,7 @@
                                             <%=app.school%>
                                         </td>
                                         <td width="500" text-align="center">
-                                            <a href="/application/<%=app.userId%>" style="color: black">
+                                            <a href="/apply/<%=app.userId%>" style="color: black">
                                                 <%=app.title%>
                                             </a>
                                         </td>
