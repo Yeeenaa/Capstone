@@ -26,14 +26,20 @@
                     <caption style=" font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
                     </caption>
                     <tr>
+                        <td>이름</td>
+                        <td><input type=text name="Txt" id="title" style="width: 100px;"
+                            onkeyup="characterCheck()" onkeydown="characterCheck()"></td>
+                    </tr>
+                    <tr>
                         <td>제목</td>
                         <td><input type=text name="title" id="title" style="width: 600px;"></td>
                     </tr>
 
                     <tr>
                         <td>내용</td>
-                        <td><textarea name="content" id="content" cols=180 rows=30
-                                placeholder="욕설 및 비방하는 글은 제한하고 있습니다"></textarea>
+                        <td><textarea name ="content" id="txtContent" cols=180 rows=30
+                                placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
+                                onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
                         </td>
                     </tr>
 
@@ -53,6 +59,37 @@
                 etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
                     href="http://fotogrph.com/">Fotogrph</a>.</p>
         </div>
+
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function characterCheck() {
+                var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi
+                var obj = document.getElementsByName("Txt")[0]
+                if (RegExp.test(obj.value)) {
+                    alert("특수문자는 입력하실 수 없습니다.");
+                    obj.value = obj.value.substring(0, obj.value.length - 1);
+                }
+            }
+
+            function checkWord(){
+                var word = document.getElementById("txtContent").value;
+
+                var swearWordArr = new Array("바보", "멍청이");
+                orgword = word.toLowerCase();
+                awdrgy = 0;
+
+                while(awdrgy <= swearWordArr.length - 1){
+                    if(orgword.indexOf(swearWordArr[awdrgy]) > -1){
+                        alert(swearWordArr[awdrgy] + "은(는) 입력하실 수 없습니다.");
+                        return replace(orgword,"");
+                    }
+
+                    awdrgy++;
+                }
+            }
+
+        </script>
+ 
         <%- include('footer.ejs')%>
 
             <!-- end #footer -->
