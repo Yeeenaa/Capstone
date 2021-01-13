@@ -8688,10 +8688,10 @@ var CreatePost = /*#__PURE__*/function () {
             }
           }).then(function (response) {
             alert('게시글 작성 완료');
-            window.location.replace("/application");
+            window.location.replace("/apply");
           }).catch(function (error) {
             alert('입력값을 확인하세요');
-            window.location.replace("/application/create");
+            window.location.replace("/apply/create");
           });
         } else {
           var _form = new FormData();
@@ -9041,7 +9041,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6406" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8135" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -23,7 +23,7 @@ Released   : 20121201
 			<h1><a href="#">Democra ; SEE </a></h1>
 			<p>Vote Your Life</p>
 		</div>
-		<div id="page" class="container">
+		<!-- <div id="page" class="container">
 			<div id="content">
 				<div class="post">
 					<h2 class="title"><a href="#">DEMOCRA ; SEE</a></h2>
@@ -41,56 +41,72 @@ Released   : 20121201
 							porta lectus.</p>
 					</div>
 				</div>
-				<div style="clear: both;">&nbsp;</div>
-			</div>
+			</div> -->
 			<!-- end #content -->
-			<div id="sidebar">
-				<div class="parents">
+			<section id="sidebar">
+				<div class="left-calendar">
 					<h2>이달의 일정</h2>
 					<div id="calendar"></div>
 					<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 				</div>
-			</div>
-			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
-		</div>
+				<div class="right-notifications">
+					<div id="notes">
+						<div class="notes-title">
+							<span>공지사항</span>
+							<a href="#"><i class="fas fa-plus"></i></a>
+						</div>
+						<ul class="list-style2">
+							<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
+							<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
+							<li><a href="#">Phasellus nec erat sit amet nibh pellentesque congue.</a></li>
+							<li><a href="#">Cras vitae metus aliquam risus pellentesque pharetra.</a></li>
+							<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
+						</ul>
+					</div>
+					<div id="notes">
+						<div class="notes-title">
+							<span>토론게시판</span>
+							<a href="#"><i class="fas fa-plus"></i></a>
+						</div>
+						<ul class="list-style2">
+							<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
+							<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
+							<li><a href="#">Phasellus nec erat sit amet nibh pellentesque congue.</a></li>
+							<li><a href="#">Cras vitae metus aliquam risus pellentesque pharetra.</a></li>
+							<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
+						</ul>
+					</div>
+					<div id="notes">
+						<div class="notes-title">
+							<span>공약이행</span>
+							<a href="#"><i class="fas fa-plus"></i></a>
+						</div>
+						<ul class="list-style2">
+							<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
+							<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
+							<li><a href="#">Phasellus nec erat sit amet nibh pellentesque congue.</a></li>
+							<li><a href="#">Cras vitae metus aliquam risus pellentesque pharetra.</a></li>
+							<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
 		<!-- end #page -->
 
-	</div>
-	<div id="footer-bg">
-		<div id="footer-content" class="container">
-			<div id="column1">
-				<h2>공지사항</h2>
-				<ul class="list-style2">
-					<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
-					<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
-					<li><a href="#">Phasellus nec erat sit amet nibh pellentesque congue.</a></li>
-					<li><a href="#">Cras vitae metus aliquam risus pellentesque pharetra.</a></li>
-					<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
-				</ul>
-			</div>
-			<div id="column2">
-				<h2>토론게시판</h2>
-				<ul class="list-style2">
-					<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
-					<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
-					<li><a href="#">Phasellus nec erat sit amet nibh pellentesque congue.</a></li>
-					<li><a href="#">Cras vitae metus aliquam risus pellentesque pharetra.</a></li>
-					<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
-				</ul>
-			</div>
-			<div id="column3">
-				<h2>공약이행</h2>
-				<ul class="list-style2">
-					<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
-					<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
-					<li><a href="#">Phasellus nec erat sit amet nibh pellentesque congue.</a></li>
-					<li><a href="#">Cras vitae metus aliquam risus pellentesque pharetra.</a></li>
-					<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
-				</ul>
-			</div>
+	<footer>
+		<div id="footer-content">
+			<ul>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">GUIDE</a></li>
+				<li>Email : <a href="#">dcrasee@gmail.com</a></li>
+			</ul>
 		</div>
-	</div>
+		<div id="qna">
+			<label>Q&A</label>
+			<a href="#"><i class="fas fa-comment"></i></a>
+		</div>
+	</footer>
 	<%- include('calendar.ejs')%>
 	<!-- end #footer -->
 	

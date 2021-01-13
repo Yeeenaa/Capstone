@@ -39,21 +39,21 @@ router.get('/teacher', mustLogin, renderNotAuths);
 
 router.get('/logout', checkLogin, logout);
 
-router.get('/application', mustLogin, renderApplications);
-router.get('/application/:id', mustLogin, renderOneApplication);
-router.route('/application/create').get(mustLogin, (req, res) => {
+router.get('/apply', mustLogin, renderApplications);
+router.route('/apply/create').get(mustLogin, (req, res) => {
     if (req.user.role !== 'student') {
         return res.send('권한이 없습니다');
     }
-    return res.render('createApplication');
+    return res.render('createPost', {category: 'apply'});
 });
+router.get('/apply/:id', mustLogin, renderOneApplication);
 
 router.get('/pledge', mustLogin, renderPledges);
 router.get('/pledge/create', mustLogin, (req, res) => {
     if (req.user.role !== 'candidate') {
         return res.send('권한이 없습니다');
     }
-    return res.render('createPledge');
+    return res.render('createPost', {category: 'pledge'});
 });
 router.get('/pledge/:id', mustLogin, renderOnePledge);
 
