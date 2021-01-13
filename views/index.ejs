@@ -50,8 +50,11 @@ Released   : 20121201
 					<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 				</div>
 				<div class="right-notifications">
-					<div id="column1">
-						<h2>공지사항</h2>
+					<div id="notes">
+						<div class="notes-title">
+							<span>공지사항</span>
+							<a href="#"><i class="fas fa-plus"></i></a>
+						</div>
 						<ul class="list-style2">
 							<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
 							<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
@@ -60,8 +63,11 @@ Released   : 20121201
 							<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
 						</ul>
 					</div>
-					<div id="column2">
-						<h2>토론게시판</h2>
+					<div id="notes">
+						<div class="notes-title">
+							<span>토론게시판</span>
+							<a href="#"><i class="fas fa-plus"></i></a>
+						</div>
 						<ul class="list-style2">
 							<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
 							<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
@@ -70,8 +76,11 @@ Released   : 20121201
 							<li><a href="#">Maecenas vitae orci vitae tellus feugiat eleifend.</a></li>
 						</ul>
 					</div>
-					<div id="column3">
-						<h2>공약이행</h2>
+					<div id="notes">
+						<div class="notes-title">
+							<span>공약이행</span>
+							<a href="#"><i class="fas fa-plus"></i></a>
+						</div>
 						<ul class="list-style2">
 							<li class="first"><a href="#">Pellentesque quis elit non lectus gravida blandit.</a></li>
 							<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
@@ -82,17 +91,22 @@ Released   : 20121201
 					</div>
 				</div>
 			</section>
-			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
-		</div>
 		<!-- end #page -->
 
-	</div>
-	<div id="footer-bg">
-		<div id="footer-content" class="container">
-			
+	<footer>
+		<div id="footer-content">
+			<ul>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">GUIDE</a></li>
+				<li>Email : <a href="#">dcrasee@gmail.com</a></li>
+			</ul>
 		</div>
-	</div>
+		<div id="qna">
+			<label>Q&A</label>
+			<a href="#"><i class="fas fa-comment"></i></a>
+		</div>
+	</footer>
 	<%- include('calendar.ejs')%>
 	<!-- end #footer -->
 	
