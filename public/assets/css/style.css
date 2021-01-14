@@ -278,7 +278,7 @@ input:focus {
   display: none;
   position: absolute;
   right: 32px;
-  font-size: var(--max);
+  font-size: var(--super);
 }
 
 /* Page */
@@ -365,6 +365,71 @@ input:focus {
 	margin-bottom: 100px;
 }
 
+
+/*posts*/
+#post-wrap {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#post-wrap button {
+  margin: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--red);
+  color: var(--light);
+  font-size: var(--mid);
+  border-radius: 4px;
+}
+
+#write-wrap {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#search {
+  display: flex;
+  padding: 0;
+  padding: 0 10px;
+  align-items: center;
+  width: fit-content;
+}
+
+#write-wrap select, input[type="text"], button {
+  border: none;
+  height: 24px;
+  font-size: var(--max);
+  background-color: var(--light);
+  color: var(--back);
+}
+
+#write-wrap select {
+  font-weight: bolder;
+}
+
+#write-wrap input[type="text"] {
+  margin-left: 10px;
+  border-bottom: 1px solid var(--back);
+}
+
+#write-wrap button {
+  padding: 0;
+}
+
+#write-wrap button i{
+  color: var(--back);
+  font-size: 18px;
+  position: relative;
+  right: 28px;
+  bottom: 4px;
+}
+
+#wrapper td {
+  font-size: var(--mid);
+}
 
 /* createPost */
 .post {
@@ -557,7 +622,7 @@ footer {
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  margin: 100px 0 40px 0;
+  margin: 200px 0 40px 0;
 }
 
 #qna {
