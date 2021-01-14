@@ -12,7 +12,10 @@ Released for free under the Creative Commons Attribution License
 	--red-point: #76232F;
 	--grey:  #909090;
 
-	--space: 16px;
+  --min: 9px;
+  --mid: 10px;
+  --max: 12px;
+  --super: 20px;
 }
 
 body {
@@ -166,24 +169,7 @@ input:focus {
 /* Logo */
 
 #logo {
-	margin: 100px 0 100px 0;
-	color : var(--red);
-}
-
-#logo h1, #logo p {
-	text-align: center;
-}
-
-#logo h1 {  
-	letter-spacing: -3px;
-  font-size: 100px;
-  margin: 0;
-}
-
-#logo p {
-	font-size: 20px;
-  color: var(--red);
-  margin: 10px 0;
+	margin: 80px 0 60px 0;
 }
 
 #logo a {
@@ -267,7 +253,7 @@ input:focus {
 	font-weight: bold;
 	display: block;
 	padding: 0 15px;
-	font-size: 15px;
+	font-size: var(--max);
 }
 
 #menu-items a:hover {
@@ -276,22 +262,23 @@ input:focus {
 }
 
 #access i {
-	font-size: 25px;
+	font-size: var(--super);
 	margin-left: 15px;
 }
 
 #logo-top {
   display: flex;
   align-items: center;
-	font-size: 25px;
+	font-size: var(--super);
   color: var(--light);
+  font-family: 'Yeon Sung';
 }
 
 .toggle-btn {
   display: none;
   position: absolute;
   right: 32px;
-  font-size: 22px;
+  font-size: var(--super);
 }
 
 /* Page */
@@ -301,85 +288,39 @@ input:focus {
 }
 
 /* Content */
-#login-form {
-  display: flex;
-  flex-direction: column;
-	width: 310px;
-	margin-top: 100px;
-}
-
-#login-form input {
-  border: none;
-  height: 33px;
-  border-radius: 3px;
-}
-
-input[type='submit'] {
-	margin: 10px ;
-  background-color: var(--red);
-  color:  #E9EAE1;
-}
-
-#login-form input[type='text'] {
-	background-color: var(--light);
-	border-bottom: 2px solid var(--red);
-	border-radius: 0;
-}
-
-#login-form label {
-  font-size: 13px;
-  margin: 5px 0;
-  color: var(--red);
-}
-
 #register-form {
   display: flex;
   flex-direction: column;
-	width: 310px;
+	width: 300px;
 }
 
 #register-form input {
   border: none;
-  height: 40px;
+  height: 28px;
 	border: none;
 	background-color: var(--light);
 	border-bottom: 2px solid var(--red);
 	margin: 10px;
-  font-size: 14px;
+  font-size: var(--mid);
 }
 
 #register-form input[type='submit'] {
   margin: 10px 0;
   background-color: var(--red);
-  color:  var(--red);
+  color: var(--red);
   cursor: pointer;
-}
-
-#register-form label {
-  font-size: 13px;
-	margin: 5px 0;
-	color: var(--red);
-
 }
 
 .welcome-font {
 	margin-bottom:30px;
 	font-size: var(--space);
 }
-#login-box #register-form input[type="submit"]{
+
+#register-form input[type="submit"]{
 	margin: 10px ;
   background-color: var(--red);
 	color:  #E9EAE1;
 	border-radius: 4px;
-}
-
-#login-box{
-	width: 345px;
-	height: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
 }
 
 #reg-box {
@@ -402,14 +343,13 @@ input[type='submit'] {
 	color: var(--red);
 }
 
-
 #join-box {
 	display: flex;
 	justify-content: flex-end;
 }
 
 #join-box #join {
-	font-size: 12px;
+	font-size: 10px;
 	text-align: right;
 	margin-right: 10px;
 	width: fit-content;
@@ -425,6 +365,71 @@ input[type='submit'] {
 	margin-bottom: 100px;
 }
 
+
+/*posts*/
+#post-wrap {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#post-wrap button {
+  margin: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--red);
+  color: var(--light);
+  font-size: var(--mid);
+  border-radius: 4px;
+}
+
+#write-wrap {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#search {
+  display: flex;
+  padding: 0;
+  padding: 0 10px;
+  align-items: center;
+  width: fit-content;
+}
+
+#write-wrap select, input[type="text"], button {
+  border: none;
+  height: 24px;
+  font-size: var(--max);
+  background-color: var(--light);
+  color: var(--back);
+}
+
+#write-wrap select {
+  font-weight: bolder;
+}
+
+#write-wrap input[type="text"] {
+  margin-left: 10px;
+  border-bottom: 1px solid var(--back);
+}
+
+#write-wrap button {
+  padding: 0;
+}
+
+#write-wrap button i{
+  color: var(--back);
+  font-size: 18px;
+  position: relative;
+  right: 28px;
+  bottom: 4px;
+}
+
+#wrapper td {
+  font-size: var(--mid);
+}
 
 /* createPost */
 .post {
@@ -509,7 +514,7 @@ input[type='submit'] {
 #sidebar h2 {
   text-align: center;
   border-bottom: 3px solid #E0E1D6;
-  font-size: 26px;
+  font-size: var(--super);
   font-weight: bold;
   color: var(--back);
   margin: 24px 0;
@@ -547,9 +552,9 @@ input[type='submit'] {
   display: flex;
   justify-content: space-between;
   border-bottom: 3px solid #E0E1D6;
-  margin: 0px 0px 30px 0px;
+  margin: 0px 0px 10px 0px;
   padding: 0px 0px 10px 0px;
-  font-size: 18px;
+  font-size: var(--max);
   font-weight: bold;
   color: var(--back);
 	text-shadow: 1px 1px 1px var(--grey);
@@ -563,12 +568,13 @@ input[type='submit'] {
 }
 
 .list-style2 li {
-  margin: 7px 0;
+  margin: 3px 0;
   border-top: 1px solid #E0E1D6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
+  font-size: var(--min);
 }
 
 .list-style2 a {
@@ -616,7 +622,7 @@ footer {
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  margin: 100px 0 40px 0;
+  margin: 200px 0 40px 0;
 }
 
 #qna {
@@ -626,7 +632,7 @@ footer {
 
 #qna i {
   color: #373737;
-  font-size: 20px;
+  font-size: var(--max);
   margin-left: 5px;
 }
 
@@ -636,20 +642,20 @@ footer {
 
 #qna label {
   color: #373737;
-  font-size: 12px;
+  font-size: var(--min);
   margin-left: 20px;
 }
 
 #footer-content ul {
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 #footer-content ul a, #footer-content ul li, #qna{
   color: #373737;
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--min);
 }
 
 #footer-content ul li {
@@ -795,7 +801,7 @@ button:hover {
       background: var(--light);
       text-align: center;
       position:relative;
-	  z-index: 100;
+	    z-index: 100;
 	  color : black;
     }
     
@@ -1057,10 +1063,11 @@ button:hover {
 
 
     /* ---------------------------------- */
-    @media screen and (max-width: 977px) {
+    @media screen and (max-width:880px) {
       #menu-wrapper {
         flex-direction: column;
         align-items: flex-start;
+        justify-content: center;
       }
 
       #menu-items{
@@ -1079,9 +1086,6 @@ button:hover {
       }
 
       #access {
-        /* display: flex;
-        justify-content: center;
-        width: 100vw; */
         display: none;
       }
 
@@ -1090,12 +1094,10 @@ button:hover {
       }
     }
 
-
-    @media screen and (min-width: 978px) and (max-width: 1388px) {
+    @media screen and (min-width: 881px) and (max-width: 1000px) {
       #access {
         display: none;
       }
-    }
     /* ---------------------------------- */
 
 
