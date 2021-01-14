@@ -6,16 +6,16 @@
 				<a href="/">DEMOCRA; SEE</a>
 			</div>
 			<ul id="menu-items">
-				<li><a href="/application">입후보 신청</a></li>
+				<li><a href="/apply">입후보 신청</a></li>
 				<li><a href="/pledge">공약 게시판</a></li>
 				<li><a href="/evaluation">공약 이행률</a></li>
 				<li><a href="#">공청회</a></li>
 				<li><a href="/debate">토론 게시판</a></li>
 				<li><a href="/edu">투표 교육</a></li>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="/notice">공지사항</a></li>
 				<li><a href="#">BRAND</a></li>
 			</ul>
-			
+
 
 			<%if(!user){%>
 				<div id="access">
@@ -55,20 +55,20 @@
 					<i class="fas fa-bars"></i>
 				</a>
 				<%}%>
-	</div>		
-	
+	</div>
+
 	<div id="logo">
 		<a href="#">
 			<img src="/img/logo1.png" width="500" alt="logo1">
 		</a>
 	</div>
 
-					<script>
-						const toggleBtn = document.querySelector('.toggle-btn');
-						const menu = document.querySelector('#menu-items');
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn');
+		const menu = document.querySelector('#menu-items');
 
-						toggleBtn.addEventListener('click', () => {
-							menu.classList.toggle('active');
-						});
-					</script>
+		toggleBtn.addEventListener('click', () => {
+			menu.classList.toggle('active');
+		});
+	</script>
 </header>
