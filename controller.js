@@ -100,7 +100,7 @@ exports.renderIndex = async function (req, res) {
         debates = debates.data.posts.splice(0, 4);
         eduPosts = eduPosts.data.posts.splice(0, 4);
 
-        console.log(debates);
+        // console.log(debates);
         res.render('index', {
             notices,
             debates,
@@ -152,7 +152,6 @@ exports.renderOneApplication = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            console.log(response.data);
             res.send(
                 `${response.data.application[0]}
                 <button id="permitButton" value="true,AA,<%=token%>">승인</button>`
@@ -253,7 +252,6 @@ exports.renderOnePost = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            console.log(response.data);
             res.send(response.data);
         })
         .catch((e) => {

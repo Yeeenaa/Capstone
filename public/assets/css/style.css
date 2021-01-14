@@ -19,9 +19,13 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #fffdfa;
-	font-family: Tahoma, Geneva, sans-serif;
+	font-family: Spartan, sans-serif;
 	font-size: 12px;
 	color: #8A8985;
+}
+
+form {
+	font-family: Spartan, sans-serif;
 }
 
 ul {
@@ -172,27 +176,19 @@ input:focus {
 
 #logo h1 {  
 	letter-spacing: -3px;
-	font-family: 'Dancing Script', cursive;
   font-size: 100px;
   margin: 0;
 }
 
 #logo p {
-	font-family: 'Dancing Script', sans-serif;
 	font-size: 20px;
   color: var(--red);
   margin: 10px 0;
 }
 
-#logo p a {
-	color: #001341;
-}
-
 #logo a {
-	border: none;
-	background: none;
-	text-decoration: none;
-	color : var(--red);
+  display: flex;
+  justify-content: center;
 }
 
 /* Splash */
@@ -263,7 +259,8 @@ input:focus {
 	display: flex;
 	justify-content: space-around;
 	margin: 0;
-	padding: 0;
+  padding: 0;
+  align-items: center;
 }
 
 #menu-items a{
@@ -284,6 +281,8 @@ input:focus {
 }
 
 #logo-top {
+  display: flex;
+  align-items: center;
 	font-size: 25px;
   color: var(--light);
 }
@@ -303,22 +302,22 @@ input:focus {
 
 /* Content */
 #login-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 	width: 310px;
 	margin-top: 100px;
 }
 
 #login-form input {
-    border: none;
-    height: 33px;
-    border-radius: 3px;
+  border: none;
+  height: 33px;
+  border-radius: 3px;
 }
 
 input[type='submit'] {
 	margin: 10px ;
-    background-color: var(--red);
-    color:  #E9EAE1;
+  background-color: var(--red);
+  color:  #E9EAE1;
 }
 
 #login-form input[type='text'] {
@@ -328,36 +327,36 @@ input[type='submit'] {
 }
 
 #login-form label {
-    font-size: 13px;
-    margin: 5px 0;
-    color: var(--red);
+  font-size: 13px;
+  margin: 5px 0;
+  color: var(--red);
 }
 
 #register-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 	width: 310px;
 }
 
 #register-form input {
-    border: none;
-    height: 33px;
+  border: none;
+  height: 40px;
 	border: none;
 	background-color: var(--light);
 	border-bottom: 2px solid var(--red);
 	margin: 10px;
-
+  font-size: 14px;
 }
 
 #register-form input[type='submit'] {
-    margin: 10px 0;
-    background-color: var(--red);
-    color:  var(--red);
-    cursor: pointer;
+  margin: 10px 0;
+  background-color: var(--red);
+  color:  var(--red);
+  cursor: pointer;
 }
 
 #register-form label {
-    font-size: 13px;
+  font-size: 13px;
 	margin: 5px 0;
 	color: var(--red);
 
@@ -369,7 +368,7 @@ input[type='submit'] {
 }
 #login-box #register-form input[type="submit"]{
 	margin: 10px ;
-    background-color: var(--red);
+  background-color: var(--red);
 	color:  #E9EAE1;
 	border-radius: 4px;
 }
@@ -380,7 +379,6 @@ input[type='submit'] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 70px;
 	flex-direction: column;
 }
 
@@ -390,13 +388,12 @@ input[type='submit'] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 70px;
 	flex-direction: column;
 }
 
 #reg-box input[type='submit'] {
 	margin: 10px ;
-    background-color: var(--red);
+  background-color: var(--red);
 	color:  #E9EAE1;
 	border-radius: 4px;
 }
@@ -566,7 +563,7 @@ input[type='submit'] {
 }
 
 .list-style2 li {
-	padding: 7px 0px 7px 0px;
+  margin: 7px 0;
   border-top: 1px solid #E0E1D6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -1060,7 +1057,7 @@ button:hover {
 
 
     /* ---------------------------------- */
-    @media screen and (max-width: 873px) {
+    @media screen and (max-width: 977px) {
       #menu-wrapper {
         flex-direction: column;
         align-items: flex-start;
@@ -1093,7 +1090,8 @@ button:hover {
       }
     }
 
-    @media screen and (min-width: 874px) and (max-width: 1005px) {
+
+    @media screen and (min-width: 978px) and (max-width: 1388px) {
       #access {
         display: none;
       }

@@ -20,6 +20,7 @@
                 <p>Vote Your Life</p>
             </div>
             <%if(category==='debate' || user.role==='admin' ){%>
+
                 <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
                 <%}%>
                     <form action="#" method="GET">
@@ -74,14 +75,7 @@
                         </form>
                     </div>
 
-                    <div id="footer">
-                        <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
-                            phasellus
-                            etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by
-                            <a href="http://fotogrph.com/">Fotogrph</a>.
-                        </p>
-                    </div>
-                    <!-- end #footer -->
+                    <%- include('footer.ejs')%>
 </body>
 
 </html>

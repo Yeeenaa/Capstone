@@ -19,30 +19,6 @@ Released   : 20121201
 <body>
 	<%- include('navigation.ejs') %>
 
-		<div id="logo">
-			<h1><a href="#">Democra ; SEE </a></h1>
-			<p>Vote Your Life</p>
-		</div>
-		<!-- <div id="page" class="container">
-			<div id="content">
-				<div class="post">
-					<h2 class="title"><a href="#">DEMOCRA ; SEE</a></h2>
-					<div class="entry">
-						<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel,
-							tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin
-							imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer
-							hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante.
-							In
-							id eros. Suspendisse lacus turpis, egestas at sem. Mauris quam enim, in, rhoncus ut, lobortis a, est.
-							Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer.
-							Pellentesque viverra vulputate enim. Aliquam erat volutpat. Pellentesque tristique ante ut risus.
-							Quisque
-							dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum
-							porta lectus.</p>
-					</div>
-				</div>
-			</div> -->
-		<!-- end #content -->
 		<section id="sidebar">
 			<div class="left-calendar">
 				<h2>이달의 일정</h2>
@@ -56,12 +32,17 @@ Released   : 20121201
 						<a href="#"><i class="fas fa-plus"></i></a>
 					</div>
 					<ul class="list-style2">
-						<%notices.forEach(notice=> {%>
-							<li><a href="#">
-									<%=notice.title%>
-								</a></li>
-
-							<%})%>
+						<%notices.forEach((notice, i)=> {%>
+							<%if(i===0){%>
+								<li class="first"><a href="/notice/<%=notice.id%>">
+										<%=notice.title%>
+									</a></li>
+								<%}else{%>
+									<li><a href="/notice/<%=notice.id%>">
+											<%=notice.title%>
+										</a></li>
+									<%}%>
+										<%})%>
 					</ul>
 				</div>
 				<div id="notes">
@@ -72,11 +53,11 @@ Released   : 20121201
 					<ul class="list-style2">
 						<%debates.forEach((notice, i)=> {%>
 							<%if(i===0){%>
-								<li class="first"><a href="#">
+								<li class="first"><a href="/debate/<%=notice.id%>">
 										<%=notice.title%>
 									</a></li>
 								<%}else{%>
-									<li><a href="#">
+									<li><a href="/debate/<%=notice.id%>">
 											<%=notice.title%>
 										</a></li>
 									<%}%>
@@ -91,11 +72,11 @@ Released   : 20121201
 					<ul class="list-style2">
 						<%eduPosts.forEach((notice, i)=> {%>
 							<%if(i===0){%>
-								<li class="first"><a href="#">
+								<li class="first"><a href="/edu/<%=notice.id%>">
 										<%=notice.title%>
 									</a></li>
 								<%}else{%>
-									<li><a href="#">
+									<li><a href="/edu/<%=notice.id%>">
 											<%=notice.title%>
 										</a></li>
 									<%}%>
