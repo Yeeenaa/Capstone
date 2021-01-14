@@ -15,7 +15,8 @@
 <body>
     <%- include('navigation.ejs') %>
 
-    <div id="wrapper">
+
+        <div id="wrapper">
             <%if(category!=='edu' || user.role==='admin' ){%>
 
                 <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
@@ -71,8 +72,8 @@
                             <input type="button" value="검색">
                         </form>
                     </div>
-                    
-	<%- include('footer.ejs')%>
+
+                    <%- include('footer.ejs')%>
 </body>
 
 </html>
