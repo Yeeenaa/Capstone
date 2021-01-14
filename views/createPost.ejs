@@ -5,12 +5,12 @@
 
 <head>
     <%- include('head.ejs') %>
-    <title>토론게시판</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
-    <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
+        <title>토론게시판</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -65,28 +65,31 @@
                     alert("특수문자는 입력하실 수 없습니다.");
                     obj.value = obj.value.substring(0, obj.value.length - 1);
                 }
-            }
 
-            function checkWord(){
-                var word = document.getElementById("txtContent").value;
+                function checkWord() {
+                    var word = document.getElementById("content").value;
 
-                var swearWordArr = new Array("바보", "멍청이");
-                orgword = word.toLowerCase();
-                awdrgy = 0;
+                    var swearWordArr = new Array("바보", "멍청이");
+                    orgword = word.toLowerCase();
+                    awdrgy = 0;
 
-                while(awdrgy <= swearWordArr.length - 1){
-                    if(orgword.indexOf(swearWordArr[awdrgy]) > -1){
-                        alert(swearWordArr[awdrgy] + "은(는) 입력하실 수 없습니다.");
-                        return replace(orgword,"");
+                    while (awdrgy <= swearWordArr.length - 1) {
+                        if (orgword.indexOf(swearWordArr[awdrgy]) > -1) {
+                            alert(swearWordArr[awdrgy] + "은(는) 입력하실 수 없습니다.");
+                            return replace(orgword, "");
+                        }
+
+                        awdrgy++;
                     }
-
-                    awdrgy++;
                 }
-            }
 
-        </script>
- 
-        <%- include('footer.ejs')%>
+
+            </script>
+
+            <%- include('footer.ejs')%>
+
+                <!-- end #footer -->
+
 </body>
 
 </html>

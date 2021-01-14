@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-const backend =
-    'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
+import {backend} from './main';
 
 export default class Pledge {
     constructor() {

@@ -1,6 +1,5 @@
 const axios = require('axios');
-const backend =
-    'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
+const backend = 'http://ec2-13-124-175-42.ap-northeast-2.compute.amazonaws.com';
 
 exports.checkLogin = async (req, res, next) => {
     if (req.cookies.jwt && req.cookies.jwt !== 'hi') {
@@ -69,6 +68,50 @@ exports.logout = async (req, res) => {
     res.cookie('jwt', 'hi', cookieOptions);
     res.redirect('/');
 };
+
+exports.renderIndex = async function (req, res) {
+    if (!req.user) {
+        return res.render('index', {
+            notices: [],
+            debates: [],
+            eduPosts: [],
+        });
+    }
+
+    try {
+        let notices = axios.get(`${backend}/api/post?page=1&category=notice`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        });
+
+        let debates = axios.get(`${backend}/api/post?page=1&category=debate`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        });
+
+        let eduPosts = axios.get(`${backend}/api/post?page=1&category=edu`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        });
+        [notices, debates, eduPosts] = await Promise.all([
+            notices,
+            debates,
+            eduPosts,
+        ]);
+
+        notices = notices.data.posts.splice(0, 4);
+        debates = debates.data.posts.splice(0, 4);
+        eduPosts = eduPosts.data.posts.splice(0, 4);
+
+        console.log(debates);
+        res.render('index', {
+            notices,
+            debates,
+            eduPosts,
+        });
+    } catch (e) {
+        console.log(e);
+        res.send(e.message);
+    }
+};
+
 exports.renderNotAuths = (req, res) => {
     axios
         .get(`${backend}/api/auth/teacher`, {
@@ -179,6 +222,23 @@ exports.renderEduPosts = (req, res) => {
             res.render('posts', {
                 posts: response.data.posts,
                 category: 'edu',
+            });
+        })
+        .catch((e) => {
+            console.log(e);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderNotices = (req, res) => {
+    axios
+        .get(`${backend}/api/post?page=1&category=notice`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            res.render('posts', {
+                posts: response.data.posts,
+                category: 'notice',
             });
         })
         .catch((e) => {
