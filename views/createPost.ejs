@@ -15,93 +15,81 @@
 
 <body>
     <%- include('navigation.ejs') %>
-        <<<<<<< HEAD <<<<<<< HEAD <div id="wrapper">
-            <div id="logo" class="container">
-                <h1><a href="#">Democra ; SEE </a></h1>
-                <p>Vote Your Life</p>
-            </div>
-            <table>
-                <tr>
-                    <table width="100%" class="writeTable" id="postTable">
-                        <caption style=" font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
-                        </caption>
-                        <tr>
-                            <td>이름</td>
-                            <td><input type=text name="Txt" style="width: 100px;" onkeyup="characterCheck()"
-                                    onkeydown="characterCheck()"></td>
-                        </tr>
-                        <tr>
-                            <td>제목</td>
-                            <td><input type=text name="title" id="title" style="width: 600px;"></td>
-                        </tr>
 
-                        <tr>
-                            <td>내용</td>
-                            <td><textarea name="content" id="content" cols=180 rows=30
-                                    placeholder="욕설 및 비방하는 글은 제한하고 있습니다" onkeyup="checkWord()"
-                                    onkeydown="checkWord()"></textarea>
-                            </td>
-                        </tr>
+        <table>
+            <tr>
+                <table width="100%" class="writeTable" id="postTable">
+                    <caption style=" font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
+                    </caption>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type=text name="Txt" style="width: 100px;" onkeyup="characterCheck()"
+                                onkeydown="characterCheck()"></td>
+                    </tr>
+                    <tr>
+                        <td>제목</td>
+                        <td><input type=text name="title" id="title" style="width: 600px;"></td>
+                    </tr>
 
-                        <tr>
-                            <td>첨부하기</td>
-                            <td><input type="file" id="file" name="FileName"></td>
-                        </tr>
+                    <tr>
+                        <td>내용</td>
+                        <td><textarea name="content" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
+                                onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
+                        </td>
+                    </tr>
 
-                    </table>
+                    <tr>
+                        <td>첨부하기</td>
+                        <td><input type="file" id="file" name="FileName"></td>
+                    </tr>
 
-                    <button><a href="/<%=category%>">목록</a></button>
-                    <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
-                </tr>
-            </table>
-            <div id="footer">
-                <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
-                    phasellus
-                    etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
-                        href="http://fotogrph.com/">Fotogrph</a>.</p>
-            </div>
+                </table>
 
-            <!-- Scripts -->
-            <script type="text/javascript">
-                function characterCheck() {
-                    var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi
-                    var obj = document.getElementsByName("Txt")[0]
-                    if (RegExp.test(obj.value)) {
-                        alert("특수문자는 입력하실 수 없습니다.");
-                        obj.value = obj.value.substring(0, obj.value.length - 1);
-                    }
+                <button><a href="/<%=category%>">목록</a></button>
+                <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
+            </tr>
+        </table>
+        <div id="footer">
+            <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
+                phasellus
+                etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
+                    href="http://fotogrph.com/">Fotogrph</a>.</p>
+        </div>
 
-
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function characterCheck() {
+                var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi
+                var obj = document.getElementsByName("Txt")[0]
+                if (RegExp.test(obj.value)) {
+                    alert("특수문자는 입력하실 수 없습니다.");
+                    obj.value = obj.value.substring(0, obj.value.length - 1);
                 }
 
-                function checkWord() {
-                    var word = document.getElementById("content").value;
 
-                    var swearWordArr = new Array("바보", "멍청이");
-                    orgword = word.toLowerCase();
-                    awdrgy = 0;
+            }
 
-                    while (awdrgy <= swearWordArr.length - 1) {
-                        if (orgword.indexOf(swearWordArr[awdrgy]) > -1) {
-                            alert(swearWordArr[awdrgy] + "은(는) 입력하실 수 없습니다.");
-                            return replace(orgword, "");
-                        }
+            function checkWord() {
+                var word = document.getElementById("content").value;
 
-                        awdrgy++;
+                var swearWordArr = new Array("바보", "멍청이");
+                orgword = word.toLowerCase();
+                awdrgy = 0;
+
+                while (awdrgy <= swearWordArr.length - 1) {
+                    if (orgword.indexOf(swearWordArr[awdrgy]) > -1) {
+                        alert(swearWordArr[awdrgy] + "은(는) 입력하실 수 없습니다.");
+                        return replace(orgword, "");
                     }
+
+                    awdrgy++;
                 }
-            </script>
+            }
+        </script>
 
-            <%- include('footer.ejs')%>
+        <%- include('footer.ejs')%>
 
-                <!-- end #footer -->
-                <<<<<<< HEAD=======</script>
-
-                    <%- include('footer.ejs')%>
-                        >>>>>>> 23072f2be3630ef11fe5d5fdfa174a5d2ccde5d3
-                        =======
-
-                        >>>>>>> 5c4a42cc6cb7891b683e358c41821bc0ca3993e7
+            <!-- end #footer -->
 </body>
 
 </html>
