@@ -1,6 +1,5 @@
 const axios = require('axios');
-const backend =
-    'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
+const backend = 'http://ec2-13-124-175-42.ap-northeast-2.compute.amazonaws.com';
 
 exports.checkLogin = async (req, res, next) => {
     if (req.cookies.jwt && req.cookies.jwt !== 'hi') {

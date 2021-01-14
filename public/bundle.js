@@ -8407,6 +8407,8 @@ exports.default = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _main = require("./main");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8414,8 +8416,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var backend = 'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
 
 var Register1 = /*#__PURE__*/function () {
   function Register1() {
@@ -8439,7 +8439,7 @@ var Register1 = /*#__PURE__*/function () {
       this.button.addEventListener('click', function (e) {
         e.preventDefault();
 
-        _axios.default.post("".concat(backend, "/api/auth/register"), {
+        _axios.default.post("".concat(_main.backend, "/api/auth/register"), {
           name: _this.name.value,
           email: _this.email.value,
           password: _this.password.value,
@@ -8460,7 +8460,7 @@ var Register1 = /*#__PURE__*/function () {
 }();
 
 exports.default = Register1;
-},{"axios":"../node_modules/axios/index.js"}],"register2.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"register2.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8470,6 +8470,8 @@ exports.default = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _main = require("./main");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8477,8 +8479,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var backend = 'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
 
 var Register2 = /*#__PURE__*/function () {
   function Register2() {
@@ -8509,7 +8509,7 @@ var Register2 = /*#__PURE__*/function () {
         form.append('schoolClass', _this.schoolClass.value);
         form.append('photo', photo.files[0]);
 
-        _axios.default.patch("".concat(backend, "/api/auth/register"), form, {
+        _axios.default.patch("".concat(_main.backend, "/api/auth/register"), form, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -8528,7 +8528,7 @@ var Register2 = /*#__PURE__*/function () {
 }();
 
 exports.default = Register2;
-},{"axios":"../node_modules/axios/index.js"}],"userAuth.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"userAuth.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8537,6 +8537,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _main = require("./main");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8557,8 +8559,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var backend = 'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
 
 var UserAuth = /*#__PURE__*/function () {
   function UserAuth() {
@@ -8583,7 +8583,7 @@ var UserAuth = /*#__PURE__*/function () {
           id = _btn$value$split2[0];
           token = _btn$value$split2[1];
 
-          _axios.default.post("".concat(backend, "/api/auth/teacher/").concat(id), {}, {
+          _axios.default.post("".concat(_main.backend, "/api/auth/teacher/").concat(id), {}, {
             headers: {
               Authorization: "Bearer ".concat(token)
             }
@@ -8605,7 +8605,7 @@ var UserAuth = /*#__PURE__*/function () {
 }();
 
 exports.default = UserAuth;
-},{"axios":"../node_modules/axios/index.js"}],"createPost.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"createPost.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8614,6 +8614,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _main = require("./main");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8634,8 +8636,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var backend = 'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
 
 var CreatePost = /*#__PURE__*/function () {
   function CreatePost() {
@@ -8666,7 +8666,7 @@ var CreatePost = /*#__PURE__*/function () {
           form.append('content', _this.content.value); // form.append('video', category)
           // form.append('images', category)
 
-          _axios.default.post("".concat(backend, "/api/pledge"), form, {
+          _axios.default.post("".concat(_main.backend, "/api/pledge"), form, {
             headers: {
               Authorization: "Bearer ".concat(token),
               'Content-Type': 'multipart/form-data'
@@ -8679,7 +8679,7 @@ var CreatePost = /*#__PURE__*/function () {
             window.location.replace("/pledge/create");
           });
         } else if (category === 'apply') {
-          _axios.default.post("".concat(backend, "/api/apply"), {
+          _axios.default.post("".concat(_main.backend, "/api/apply"), {
             title: _this.title.value,
             content: _this.content.value
           }, {
@@ -8704,7 +8704,7 @@ var CreatePost = /*#__PURE__*/function () {
           // form.append('images', category)
 
 
-          _axios.default.post("".concat(backend, "/api/post"), _form, {
+          _axios.default.post("".concat(_main.backend, "/api/post"), _form, {
             headers: {
               Authorization: "Bearer ".concat(token),
               'Content-Type': 'multipart/form-data'
@@ -8725,8 +8725,13 @@ var CreatePost = /*#__PURE__*/function () {
 }();
 
 exports.default = CreatePost;
-},{"axios":"../node_modules/axios/index.js"}],"main.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"main.js":[function(require,module,exports) {
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.backend = void 0;
 
 require("core-js/modules/es6.array.copy-within.js");
 
@@ -8994,6 +8999,9 @@ var _createPost = _interopRequireDefault(require("./createPost"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var backend = 'http://ec2-54-180-120-197.ap-northeast-2.compute.amazonaws.com';
+exports.backend = backend;
+
 if (document.querySelector('#register1-form')) {
   // register1.ejs
   new _register.default();
@@ -9041,7 +9049,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8135" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11620" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
