@@ -14,12 +14,10 @@
 
 <body>
     <%- include('navigation.ejs') %>
+
+
         <div id="wrapper">
-            <div id="logo" class="container">
-                <h1><a href="#">Democra ; SEE </a></h1>
-                <p>Vote Your Life</p>
-            </div>
-            <%if(category==='debate' || user.role==='admin' ){%>
+            <%if(category!=='edu' || user.role==='admin' ){%>
 
                 <button onclick="location.href= '/<%=category%>/create';">글쓰기</button>
                 <%}%>
