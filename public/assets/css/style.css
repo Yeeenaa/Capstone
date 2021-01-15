@@ -10,7 +10,8 @@ Released for free under the Creative Commons Attribution License
 	--light: #fffdfa;
 	--red: #A6192E;
 	--red-point: #76232F;
-	--grey:  #909090;
+  --grey:  #909090;
+  --light-grey: #d9d9d9;
 
   --min: 9px;
   --mid: 10px;
@@ -373,13 +374,20 @@ input:focus {
 }
 
 #post-wrap button {
-  margin: 10px;
-  padding: 5px 10px;
-  border: none;
-  background-color: var(--red);
-  color: var(--light);
+  margin: 15px;
+  padding: 7px 15px;
+  border: 1px solid var(--grey);
+  background-color: var(--light);
+  color: var(--back);
   font-size: var(--mid);
-  border-radius: 4px;
+  font-weight: bolder;
+  height: fit-content;
+}
+
+#post-wrap button:hover {
+  background-color: var(--back);
+  color: var(--light);
+  border-color: var(--back);
 }
 
 #write-wrap {
@@ -432,6 +440,96 @@ input:focus {
 }
 
 /* createPost */
+    
+.writeTable{
+  display: flex;
+  flex-direction: column;
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: left;
+  line-height: 1.5;
+  margin : 20px 150px;
+}
+
+.writeTable table {
+  
+	border-collapse : collapse;
+}
+
+.writeTable tr {
+  display: table-row;
+  border: 1px solid #ccc;
+}
+
+
+.writeTable caption {
+  font-size: var(--super);
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: var(--back);
+}
+
+.writeTable td {
+  width: 90px;
+  padding: 10px 0 8px 20px;
+  font-size: var(--max);
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+  color: var(--back);
+}
+
+td.ta {
+  padding: 10px;
+}
+
+
+.writeTable input {
+  border: 1px solid var(--light-grey);
+  float: left;
+  padding: 4px 4px;
+  font-size: var(--mid);
+  margin: 0;
+}
+
+.writeTable button, a {
+  color: black;
+}
+
+.writeTable textarea {
+  display: flex;
+  width: 100%;
+  border: none;
+  border: 1px solid var(--light-grey);
+  margin: 0;
+}
+
+#list-wrap {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+}
+
+#list-wrap #postButton, #list-wrap a{
+  margin: 10px;
+  padding: 7px 15px;
+  border: 1px solid var(--grey);
+  background-color: var(--light);
+  color: var(--back);
+  font-size: var(--mid);
+  font-weight: bolder;
+  height: fit-content;
+}
+
+#list-wrap #postButton:hover, #list-wrap a:hover {
+  background-color: var(--back);
+  color: var(--light);
+  border-color: var(--back);
+  text-decoration: none;
+}
+
+/*
 .post {
 	overflow: hidden;
 }
@@ -500,7 +598,7 @@ input:focus {
 	background: url(images/img08.jpg) no-repeat left top;
 	text-align: center;
 	color: #FFFFFF;
-}
+} */
 
 /* Sidebar */
 

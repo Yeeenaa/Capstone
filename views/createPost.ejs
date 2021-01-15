@@ -9,53 +9,43 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
         <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
         <script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <%- include('navigation.ejs') %>
-
-        <table>
+    <div class="writeTable">
+        <table id="postTable">
+            <caption>토론게시판</caption>
             <tr>
-                <table width="100%" class="writeTable" id="postTable">
-                    <caption style=" font-size : 20px; color : white; padding: 10px; background : #A6192E;">토론게시판
-                    </caption>
-                    <tr>
-                        <td>이름</td>
-                        <td><input type=text name="Txt" style="width: 100px;" onkeyup="characterCheck()"
-                                onkeydown="characterCheck()"></td>
-                    </tr>
-                    <tr>
-                        <td>제목</td>
-                        <td><input type=text name="title" id="title" style="width: 600px;"></td>
-                    </tr>
+                <td>이름</th>
+                <td><input type=text name="Txt" style="width: 100px;" onkeyup="characterCheck()"
+                        onkeydown="characterCheck()"></td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td><input type=text name="title" id="title" style="width: 600px;"></td>
+            </tr>
 
-                    <tr>
-                        <td>내용</td>
-                        <td><textarea name="content" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
-                                onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
-                        </td>
-                    </tr>
+            <tr>
+                <td colspan="2" class="ta">
+                    <textarea name="container" id="container" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
+                        onkeyup="checkWord()" onkeydown="checkWord()">
+                    </textarea>
+                </td>
+            </tr>
 
-                    <tr>
-                        <td>첨부하기</td>
-                        <td><input type="file" id="file" name="FileName"></td>
-                    </tr>
-
-                </table>
-
-                <button><a href="/<%=category%>">목록</a></button>
-                <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
+            <tr>
+                <td>첨부하기</td>
+                <td><input type="file" id="file" name="FileName"></td>
             </tr>
         </table>
-        <div id="footer">
-            <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
-                phasellus
-                etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a
-                    href="http://fotogrph.com/">Fotogrph</a>.</p>
+        <div id="list-wrap">
+            <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
+            <a href="/<%=category%>">목록</a>
         </div>
-
+    </div>
+    
         <!-- Scripts -->
         <script type="text/javascript">
             function characterCheck() {
