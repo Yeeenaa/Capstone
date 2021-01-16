@@ -5,10 +5,12 @@ const {
     checkLogin,
     login,
     logout,
+    renderIndex,
     renderNotAuths,
     renderApplications,
     renderDebates,
     renderEduPosts,
+    renderNotices,
     renderOnePost,
     renderOneApplication,
     renderPledges,
@@ -17,9 +19,7 @@ const {
 
 const router = express.Router();
 
-router.get('/', checkLogin, function (req, res) {
-    res.render('index');
-});
+router.get('/', checkLogin, renderIndex);
 
 router.get('/register1', checkLogin, function (req, res) {
     res.render('register1');
@@ -85,6 +85,14 @@ router.get('/edu/create', mustLogin, (req, res) => {
     res.render('createPost', {category: 'edu'});
 });
 
-router.get('/edu/:id', mustLogin, renderOnePost);
+router.get('/notice', mustLogin, renderNotices);
+router.get('/notice/create', mustLogin, (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.send('관리자 권한이 필요합니다.');
+    }
+    res.render('createPost', {category: 'notice'});
+});
+
+router.get('/notice/:id', mustLogin, renderOnePost);
 
 module.exports = router;

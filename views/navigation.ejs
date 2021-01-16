@@ -2,7 +2,8 @@
 	<div id="wrapper">
 		<div id="menu-wrapper">
 			<div id="logo-top">
-				<img src="/img/logo1.png" width="300" alt="logo1">
+				<img src="/img/icon.png" width="40" alt="icon">
+				<a href="/">DEMOCRA; SEE</a>
 			</div>
 			<ul id="menu-items">
 				<li><a href="/apply">입후보 신청</a></li>
@@ -11,9 +12,10 @@
 				<li><a href="#">공청회</a></li>
 				<li><a href="/debate">토론 게시판</a></li>
 				<li><a href="/edu">투표 교육</a></li>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="/notice">공지사항</a></li>
 				<li><a href="#">BRAND</a></li>
 			</ul>
+
 
 			<%if(!user){%>
 				<div id="access">
@@ -53,13 +55,20 @@
 					<i class="fas fa-bars"></i>
 				</a>
 				<%}%>
+	</div>
 
-					<script>
-						const toggleBtn = document.querySelector('.toggle-btn');
-						const menu = document.querySelector('#menu-items');
+	<div id="logo">
+		<a href="#">
+			<img src="/img/logo1.png" width="500" alt="logo1">
+		</a>
+	</div>
 
-						toggleBtn.addEventListener('click', () => {
-							menu.classList.toggle('active');
-						});
-					</script>
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn');
+		const menu = document.querySelector('#menu-items');
+
+		toggleBtn.addEventListener('click', () => {
+			menu.classList.toggle('active');
+		});
+	</script>
 </header>

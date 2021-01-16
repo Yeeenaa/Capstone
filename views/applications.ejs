@@ -13,10 +13,6 @@
 <body>
     <div id="wrapper">
         <%- include('navigation.ejs') %>
-            <div id="logo" class="container">
-                <h1 style="font-size:40px; line-height:1.5em;"><a href="/">Democra ; SEE </a></h1>
-                <p style="font-size:20px;">Vote Your Life</p>
-            </div>
             <%if(user.role==='student' ){%>
                 <button onclick="location.href= '/apply/create';">글쓰기</button>
                 <%}%>
@@ -59,24 +55,22 @@
                     <hr style="margin:2em;">
                     <div class="container">
                         <form style="margin :auto" , action="#" , method="GET">
-                            <select>
-                                <option value="title">제목</option>
-                                <option value="name">작성자</option>
-                            </select>
-                            <input type="text" name="search" size="30" required="required">
-                            <input type="button" value="검색">
+                            <div id="write-wrap">
+                                <select>
+                                    <option value="title">제목</option>
+                                    <option value="name">작성자</option>
+                                </select>
+                                
+                                <input type="text" name="search" size="30" required="required">
+                                <button>
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            
                         </form>
                     </div>
-                    >>>>>>> work
-
-                    <div id="footer">
-                        <p>© 2012 Untitled Inc. All rights reserved. Lorem ipsum dolor sit amet nullam blandit consequat
-                            phasellus
-                            etiam lorem. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by
-                            <a href="http://fotogrph.com/">Fotogrph</a>.
-                        </p>
-                    </div>
-                    <!-- end #footer -->
+                    
+	<%- include('footer.ejs')%>
 </body>
 
 </html>
