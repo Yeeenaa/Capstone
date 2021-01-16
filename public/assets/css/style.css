@@ -69,7 +69,7 @@ input:focus {
 }
 
 #mail-content {
-  padding: 30px 40px 40px 40px;
+  padding: 30px 30px 30px 30px;
 }
 
 #mail-bar {
@@ -88,21 +88,22 @@ input:focus {
 }
 
 #mail-box p:first-child {
-  font-size: 19px;
+  font-size: 15px;
   text-align: center;
   font-weight: bold;
   color: var(--grey);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #mail-box p:nth-child(2) {
   line-height: 33px;
+  font-size: 11px;
 }
 
 #mail-box p:nth-child(3) {
   color: var(--grey);
   font-weight: bold;
-  font-size: 15px;
+  font-size: 12px;
   text-align: center;
   margin: 30px 0;
 }
@@ -110,25 +111,25 @@ input:focus {
 #mail-box p:nth-child(4) {
   text-align: center;
   margin: 40px 0 10px 0;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: bolder;
 }
 
 #mail-list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
 }
 
 #mail-list span {
-  margin-left: 4px;
+  margin-left: 10px;
 }
 
 #mail-list a{
   color: black;
   text-align: center;
-  font-size: 12px;
+  font-size: 9px;
   padding-bottom: 3px;
 }
 
@@ -143,16 +144,16 @@ input:focus {
   justify-content: center;
   height: fit-content;
   line-height: 35px;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 #register-now {
   text-align: center;
   background-color: var(--red);
-  padding: 0 30px;
-  font-size: 13px;
+  padding: 0 15px;
+  font-size: 10px;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 /* Banner */
@@ -279,6 +280,7 @@ input:focus {
   display: none;
   position: absolute;
   right: 32px;
+  top: 27px;
   font-size: var(--super);
 }
 
@@ -452,7 +454,6 @@ input:focus {
 }
 
 .writeTable table {
-  
 	border-collapse : collapse;
 }
 
@@ -493,7 +494,7 @@ td.ta {
   margin: 0;
 }
 
-.writeTable button, a {
+.writeTable button,.writeTable a {
   color: black;
 }
 
@@ -1175,7 +1176,7 @@ button:hover {
         width: 100vw;
       }
 
-      #menu-items:active {
+      #menu-items.active {
         display: flex;
       }
 
