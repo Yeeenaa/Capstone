@@ -13,6 +13,7 @@ export default class LoadPosts {
         this.container = document.querySelector(
             '#wrapper > form > table > tbody:nth-child(2)'
         );
+        this.loading = document.querySelector('.loading');
         this.events();
     }
 
@@ -35,6 +36,7 @@ export default class LoadPosts {
             this.container.innerHTML = ``;
             this.addDataToDOM(response.data.posts);
         });
+
         window.addEventListener('scroll', async (e) => {
             const {
                 scrollTop,
@@ -45,7 +47,8 @@ export default class LoadPosts {
             const [category, token] = this.button.value.split(',AA,');
 
             if (clientHeight + scrollTop >= scrollHeight - 5) {
-                // show the loading animation
+                // need to show the loading animation
+                this.loading.classList.add('show');
                 const response = await axios.get(`${backend}/api/post`, {
                     headers: {Authorization: `Bearer ${token}`},
                     params: {
@@ -58,7 +61,8 @@ export default class LoadPosts {
                 setTimeout(() => {
                     this.addDataToDOM(response.data.posts, category);
                     this.currentPage++;
-                }, 10);
+                    this.loading.classList.remove('show');
+                }, 1000);
             }
         });
     }
