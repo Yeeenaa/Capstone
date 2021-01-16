@@ -24,7 +24,7 @@
                         <table>
                             <thread>
                                 <tr>
-                                    <td width="30">학교</td>
+                                    <td width="100">학교</td>
                                     <td width="500">제목</td>
                                     <td width="100">작성자</td>
                                     <td width="200">작성일</td>
@@ -54,15 +54,21 @@
                             </tbody>
                         </table>
                     </form>
-                    <hr style="margin:2em;">
+                    <!-- <hr style="margin:2em;"> -->
                     <div class="container">
                         <form style="margin :auto" , action="#" , method="GET">
-                            <select>
-                                <option value="title">제목</option>
-                                <option value="name">작성자</option>
-                            </select>
-                            <input type="text" name="search" size="30" required="required">
-                            <input type="button" value="검색">
+                            <div id="write-wrap">
+                                <select>
+                                    <option value="title">제목</option>
+                                    <option value="name">작성자</option>
+                                </select>
+                                
+                                <input type="text" name="search" size="30" required="required">
+                                <button>
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            
                         </form>
                     </div>
                     
