@@ -1,19 +1,19 @@
 /* Table */
-table {
-	text-align : center;
-	width : 100%;
-	border-top : 1px solid #444444;
-	border-collapse : collapse;
-}
 
 tr {
-	border-bottom : 1px solid #444444;
 	padding : 10px;
 }
 
 td {
-	border-bottom : 1px solid #efefef;
+	border-top : 1px solid #efefef;
 	padding : 10px;
+}
+
+table {
+	text-align : center;
+	width : 100%;
+    border-bottom : 1px solid #efefef;
+	border-collapse : collapse;
 }
 
 .text {
