@@ -5,6 +5,7 @@ export default class CreatePost {
     constructor() {
         this.title = document.querySelector('#title');
         this.content = document.querySelector('#content');
+        this.file = document.querySelector('#file');
         this.button = document.querySelector('#postButton');
         this.events();
     }
@@ -12,6 +13,7 @@ export default class CreatePost {
     events() {
         this.button.addEventListener('click', (e) => {
             e.preventDefault();
+            let error = false;
 
             const [category, token] = this.button.value.split(',AA,');
 
@@ -20,24 +22,40 @@ export default class CreatePost {
 
                 form.append('title', this.title.value);
                 form.append('content', this.content.value);
-                // form.append('video', category)
-                // form.append('images', category)
 
-                axios
-                    .post(`${backend}/api/pledge`, form, {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            'Content-Type': 'multipart/form-data',
-                        },
-                    })
-                    .then((response) => {
-                        alert('게시글 작성 완료');
-                        window.location.replace(`/pledge`);
-                    })
-                    .catch((error) => {
-                        alert('입력값을 확인하세요');
-                        window.location.replace(`/pledge/create`);
+                if (this.file.files.length !== 0) {
+                    [...this.file.files].forEach((f, i) => {
+                        if (f.type.split('/')[0] === 'image') {
+                            form.append('images', this.file.files[i]);
+                        } else if (f.type.split('/')[0] === 'video') {
+                            form.append('video', this.file.files[i]);
+                        } else {
+                            alert('이미지나 동영상만 첨부 가능합니다.');
+                            error = true;
+                            return window.location.replace(
+                                `/${category}/create`
+                            );
+                        }
                     });
+                }
+
+                if (!error) {
+                    axios
+                        .post(`${backend}/api/pledge`, form, {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-Type': 'multipart/form-data',
+                            },
+                        })
+                        .then((response) => {
+                            alert('게시글 작성 완료');
+                            window.location.replace(`/pledge`);
+                        })
+                        .catch((error) => {
+                            alert('입력값을 확인하세요');
+                            window.location.replace(`/pledge/create`);
+                        });
+                }
             } else if (category === 'apply') {
                 axios
                     .post(
@@ -66,24 +84,41 @@ export default class CreatePost {
                 form.append('title', this.title.value);
                 form.append('content', this.content.value);
                 form.append('category', category);
-                // form.append('video', category)
-                // form.append('images', category)
 
-                axios
-                    .post(`${backend}/api/post`, form, {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            'Content-Type': 'multipart/form-data',
-                        },
-                    })
-                    .then((response) => {
-                        alert('게시글 작성 완료');
-                        window.location.replace(`/${category}`);
-                    })
-                    .catch((error) => {
-                        alert('입력값을 확인하세요');
-                        window.location.replace(`/${category}/create`);
+                if (this.file.files.length !== 0) {
+                    [...this.file.files].forEach((f, i) => {
+                        if (f.type.split('/')[0] === 'image') {
+                            form.append('images', this.file.files[i]);
+                        } else if (f.type.split('/')[0] === 'video') {
+                            form.append('video', this.file.files[i]);
+                        } else {
+                            alert('이미지나 동영상만 첨부 가능합니다.');
+                            error = true;
+                            return window.location.replace(
+                                `/${category}/create`
+                            );
+                        }
                     });
+                }
+
+                if (!error) {
+                    axios
+                        .post(`${backend}/api/post`, form, {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-Type': 'multipart/form-data',
+                            },
+                        })
+                        .then((response) => {
+                            alert('게시글 작성 완료');
+                            window.location.replace(`/${category}`);
+                        })
+                        .catch((error) => {
+                            alert('입력값을 확인하세요');
+                            window.location.replace(`/${category}/create`);
+                            console.log(error.message);
+                        });
+                }
             }
         });
     }
