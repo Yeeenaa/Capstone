@@ -14,38 +14,33 @@
 
 <body>
     <%- include('navigation.ejs') %>
-    <div class="writeTable">
-        <table id="postTable">
-            <caption>토론게시판</caption>
-            <tr>
-                <td>이름</th>
-                <td><input type=text name="Txt" style="width: 100px;" onkeyup="characterCheck()"
-                        onkeydown="characterCheck()"></td>
-            </tr>
-            <tr>
-                <td>제목</td>
-                <td><input type=text name="title" id="title" style="width: 600px;"></td>
-            </tr>
+        <div class="writeTable">
+            <table id="postTable">
+                <caption>토론게시판</caption>
+                <tr>
+                    <td>제목</td>
+                    <td><input type=text name="title" id="title" style="width: 600px;"></td>
+                </tr>
 
-            <tr>
-                <td colspan="2" class="ta">
-                    <textarea name="container" id="container" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
-                        onkeyup="checkWord()" onkeydown="checkWord()">
+                <tr>
+                    <td colspan="2" class="ta">
+                        <textarea name="container" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
+                            onkeyup="checkWord()" onkeydown="checkWord()">
                     </textarea>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>첨부하기</td>
-                <td><input type="file" id="file" name="FileName"></td>
-            </tr>
-        </table>
-        <div id="list-wrap">
-            <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
-            <a href="/<%=category%>">목록</a>
+                <tr>
+                    <td>첨부하기</td>
+                    <td><input type="file" multiple="multiple" id="file" name="FileName"></td>
+                </tr>
+            </table>
+            <div id="list-wrap">
+                <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
+                <a href="/<%=category%>">목록</a>
+            </div>
         </div>
-    </div>
-    
+
         <!-- Scripts -->
         <script type="text/javascript">
             function characterCheck() {

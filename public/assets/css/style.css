@@ -236,52 +236,49 @@ input:focus {
 /* Menu */
 
 #menu-wrapper {
-	display: flex;
+  display: flex;
 	background: var(--red);
 	justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
 }
 
-#menu-items{
+#menu-items {
 	display: flex;
 	justify-content: space-around;
 	margin: 0;
   padding: 0;
-  align-items: center;
 }
 
-#menu-items a{
+#menu-items li a {
 	font-weight: bold;
-	display: block;
 	padding: 0 15px;
 	font-size: var(--max);
 }
 
-#menu-items a:hover {
+#menu-items li a:hover {
   color: var(--red-point);
   text-decoration: none;
 }
 
+#access {
+  margin-left: 13px;
+}
+
 #access i {
-	font-size: var(--super);
-	margin-left: 15px;
+  font-size: var(--super);
+  padding: 0 5px;
 }
 
 #logo-top {
   display: flex;
   align-items: center;
 	font-size: var(--super);
-  color: var(--light);
   font-family: 'Yeon Sung';
 }
 
 .toggle-btn {
   display: none;
-  position: absolute;
-  right: 32px;
-  top: 27px;
-  font-size: var(--super);
 }
 
 /* Page */
@@ -483,6 +480,10 @@ input:focus {
 
 td.ta {
   padding: 10px;
+}
+
+textarea#content {
+  margin: 0;
 }
 
 
@@ -1162,7 +1163,7 @@ button:hover {
 
 
     /* ---------------------------------- */
-    @media screen and (max-width:880px) {
+    /* @media screen and (max-width:880px) {
       #menu-wrapper {
         flex-direction: column;
         align-items: flex-start;
@@ -1191,12 +1192,58 @@ button:hover {
       .toggle-btn {
         display: block;
       }
-    }
+    } */
 
-    @media screen and (min-width: 881px) and (max-width: 1000px) {
-      #access {
+    @media screen and (max-width: 1000px) {
+      #menu-wrapper {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+      
+      #logo-top {
         display: none;
       }
+
+      #menu-items {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      
+      #menu-items.active {
+        display: flex;
+      }
+
+      a.toggle-btn{
+        display: block;
+        position: absolute;
+        font-size: var(--super);
+        right: 32px;
+      }
+
+      #access {
+        margin: 0;
+      }
+      
+
+      /* #menu-wrapper {
+        flex-direction: row;
+      }
+
+      #menu-items{
+      }
+
+      #menu-items.active {
+        display: flex;
+      }
+
+      #menu-items li {
+        margin: 8px 0;
+      }
+
+ */
     /* ---------------------------------- */
 
 
