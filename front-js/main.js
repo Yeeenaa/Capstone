@@ -5,9 +5,10 @@ import Register2 from './register2';
 import UserAuth from './userAuth';
 import CreatePost from './createPost';
 import LoadPosts from './loadPosts';
+import ViewPost from './viewPost';
 
-export const backend =
-    'http://ec2-15-165-236-62.ap-northeast-2.compute.amazonaws.com';
+export const backend = 'https://dcrasee.tk';
+// export const backend = 'http://localhost:4000';
 
 if (document.querySelector('#register1-form')) {
     // register1.ejs
@@ -31,4 +32,8 @@ if (document.querySelector('#postTable')) {
 
 if (document.querySelector('#write-wrap > input[type=text]')) {
     new LoadPosts();
+}
+
+if (document.querySelector('#commentForm')) {
+    new ViewPost();
 }
