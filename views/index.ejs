@@ -14,9 +14,6 @@ Released   : 20121201
 
 <head>
 	<%- include('head.ejs') %>
-	<link rel="stylesheet" type="text/css" href="public/assets/css/jsCalendar.css">
-	<script type="text/javascript" src="public/jsCalendar.js"></script>
-
 </head>
 
 <body>
@@ -25,7 +22,7 @@ Released   : 20121201
 		<section id="sidebar">
 			<div class="left-calendar">
 				<h2>이달의 일정</h2>
-					<div class="auto-jsCalendar material-theme"></div>
+				<div class="auto-jsCalendar material-theme custom-red"></div>
 			</div>
 			<div class="right-notifications">
 				<div id="notes">
@@ -103,9 +100,7 @@ Released   : 20121201
 				<a href="http://pf.kakao.com/_nsjmK"><i class="fas fa-comment"></i></a>
 			</div>
 		</footer>
-		<%- include('calendar.ejs')%>
 			<!-- end #footer -->
-
 			<script>
 				const toggleBtn = document.querySelector('.toggle-btn');
 				const menu = document.querySelector('#menu-items');
@@ -114,6 +109,8 @@ Released   : 20121201
 					menu.classList.toggle('active');
 				});
 			</script>
+			<%-include('jsCalendar.ejs')%>
 </body>
 
+<!-- Custom color on calendar -->
 </html>
