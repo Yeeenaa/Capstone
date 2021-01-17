@@ -14,104 +14,104 @@ Released   : 20121201
 
 <head>
 	<%- include('head.ejs') %>
+	<%- include('banner.ejs') %>
 </head>
 
 <body>
 	<%- include('navigation.ejs') %>
-
-		<section id="sidebar">
-			<div class="left-calendar">
-				<h2>이달의 일정</h2>
-				<div id="calendar"></div>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-			</div>
-			<div class="right-notifications">
-				<div id="notes">
-					<div class="notes-title">
-						<span>공지사항</span>
-						<a href="/notice"><i class="fas fa-plus"></i></a>
-					</div>
-					<ul class="list-style2">
-						<%notices.forEach((notice, i)=> {%>
-							<%if(i===0){%>
-								<li class="first"><a href="/notice/<%=notice.id%>">
-										<%=notice.title%>
-									</a></li>
-								<%}else{%>
-									<li><a href="/notice/<%=notice.id%>">
-											<%=notice.title%>
-										</a></li>
-									<%}%>
-										<%})%>
-					</ul>
+	<section id="sidebar">
+		<div class="banner">
+			<ul>
+				<li><img src="/img/poster1.jpg"></li>
+				<li><img src="/img/poster2.jpg"></li>
+				<li><img src="/img/poster3.jpg"></li>
+			</ul>		
+		</div>
+		<div class="right-notifications">
+			<div id="notes">
+				<div class="notes-title">
+					<span>공지사항</span>
+					<a href="/notice"><i class="fas fa-plus"></i></a>
 				</div>
-				<div id="notes">
-					<div class="notes-title">
-						<span>토론게시판</span>
-						<a href="/debate"><i class="fas fa-plus"></i></a>
-					</div>
-					<ul class="list-style2">
-						<%debates.forEach((notice, i)=> {%>
-							<%if(i===0){%>
-								<li class="first"><a href="/debate/<%=notice.id%>">
-										<%=notice.title%>
-									</a></li>
-								<%}else{%>
-									<li><a href="/debate/<%=notice.id%>">
-											<%=notice.title%>
-										</a></li>
-									<%}%>
-										<%})%>
-					</ul>
-				</div>
-				<div id="notes">
-					<div class="notes-title">
-						<span>투표 교육</span>
-						<a href="/edu"><i class="fas fa-plus"></i></a>
-					</div>
-					<ul class="list-style2">
-						<%eduPosts.forEach((notice, i)=> {%>
-							<%if(i===0){%>
-								<li class="first"><a href="/edu/<%=notice.id%>">
-										<%=notice.title%>
-									</a></li>
-								<%}else{%>
-									<li><a href="/edu/<%=notice.id%>">
-											<%=notice.title%>
-										</a></li>
-									<%}%>
-										<%})%>
-					</ul>
-				</div>
-			</div>
-		</section>
-		<!-- end #page -->
-
-		<footer>
-			<div id="footer-content">
-				<ul>
-					<li><a href="#">ABOUT</a></li>
-					<li><a href="#">PRIVACY</a></li>
-					<li><a href="#">GUIDE</a></li>
-					<li>Email : <a href="#">dcrasee@gmail.com</a></li>
+				<ul class="list-style2">
+					<%notices.forEach((notice, i)=> {%>
+					<%if(i===0){%>
+						<li class="first"><a href="/notice/<%=notice.id%>">
+							<%=notice.title%>
+						</a></li>
+						<%}else{%>
+						<li><a href="/notice/<%=notice.id%>">
+							<%=notice.title%>
+						</a></li>
+						<%}%>
+						<%})%>
 				</ul>
 			</div>
-			<div id="qna">
-				<label>Q&A</label>
-				<a href="http://pf.kakao.com/_nsjmK"><i class="fas fa-comment"></i></a>
+			<div id="notes">
+				<div class="notes-title">
+					<span>토론게시판</span>
+					<a href="/debate"><i class="fas fa-plus"></i></a>
+				</div>
+				<ul class="list-style2">
+					<%debates.forEach((notice, i)=> {%>
+					<%if(i===0){%>
+					<li class="first"><a href="/debate/<%=notice.id%>">
+						<%=notice.title%>
+					</a></li>
+					<%}else{%>
+					<li><a href="/debate/<%=notice.id%>">
+						<%=notice.title%>
+					</a></li>
+					<%}%>
+					<%})%>
+				</ul>
 			</div>
-		</footer>
-		<%- include('calendar.ejs')%>
+			<div id="notes">
+				<div class="notes-title">
+					<span>이달의 일정</span>
+				</div>
+				<div class="auto-jsCalendar material-theme custom-red" style="margin-left: 23px;"></div>
+				<ul class="list-style2">
+					<%eduPosts.forEach((notice, i)=> {%>
+					<%if(i===0){%>
+					<li class="first"><a href="/edu/<%=notice.id%>">
+						<%=notice.title%>
+					</a></li>
+					<%}else{%>
+					<li><a href="/edu/<%=notice.id%>">
+						<%=notice.title%>
+					</a></li>
+					<%}%>
+					<%})%>
+				</ul>
+			</div>
+		</div>
+	</section>
+		<!-- end #page -->
+
+	<footer>
+		<div id="footer-content">
+			<ul>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">GUIDE</a></li>
+				<li>Email : <a href="#">dcrasee@gmail.com</a></li>
+			</ul>
+		</div>
+		<div id="qna">
+			<label>Q&A</label>
+			<a href="http://pf.kakao.com/_nsjmK"><i class="fas fa-comment"></i></a>
+		</div>
+	</footer>
 			<!-- end #footer -->
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn');
+		const menu = document.querySelector('#menu-items');
 
-			<script>
-				const toggleBtn = document.querySelector('.toggle-btn');
-				const menu = document.querySelector('#menu-items');
-
-				toggleBtn.addEventListener('click', () => {
-					menu.classList.toggle('active');
-				});
-			</script>
+		toggleBtn.addEventListener('click', () => {
+		menu.classList.toggle('active');
+		});
+	</script>
+	<%-include('jsCalendar.ejs')%>
 </body>
-
 </html>
