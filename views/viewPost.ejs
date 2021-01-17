@@ -1,177 +1,158 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>토론게시판</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-  <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <%- include('head.ejs') %>
+    <title>토론게시판</title>
 
-  <style>
-    table {
-      width: 100%;
-      border: 1px solid #444444;
-    }
+    <style> 
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+        }
 
-    .line {
-      border-bottom: 1px solid #444444;
-    }
+        .line {
+            border-bottom: 1px solid #444444;
+        }
 
-    input:focus {
-      outline: none;
-    }
+        input:focus {
+            outline: none;
+        }
 
-    button {
-      width: 50px;
-      height: 20px;
-      background-color: #D5D5D5;
-      font-size: 10px;
-      border: 0.5px solid black;
-      border-radius: 15px;
-      float: right;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-    }
+        button {
+            width: 50px;
+            height: 20px;
+            background-color: #D5D5D5;
+            font-size: 10px;
+            border: 0.5px solid black;
+            border-radius: 15px;
+            float: right;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
 
-    button:focus {
-      outline: 0;
-    }
+        button:focus {
+            outline: 0;
+        }
 
-    button:hover {
-      cursor: pointer;
-    }
+        button:hover {
+            cursor: pointer;
+        }
 
-    .minitable {
-      background-color: #EAEAEA;
-      width: 90%;
-      border: 1px solid #747474;
-      border-collapse: collapse;
-      float: right;
-      margin: 10px 30px 10px 10px;
-    }
-  </style>
+        .minitable {
+            background-color: #EAEAEA;
+            width: 90%;
+            border: 1px solid #747474;
+            border-collapse: collapse;
+            float: right;
+            margin: 10px 30px 10px 10px;
+        }
+    </style>
 </head>
 
 <body>
-  <table>
-    <caption style="margin: 2em;">토론게시판</caption>
-    <tr>
-      <td style="font-size: 20px; padding : 5px;"><b>제목</b></td>
-    </tr>
+    <table>
+        <caption style="margin: 2em;">토론게시판</caption>
+        <tr>
+            <td style="font-size: 20px; padding : 5px;"><b>제목</b></td>
+        </tr>
 
-    <tr>
-      <td style="color: #4C4C4C; font-size: 12px; padding-left: 5px;">
-        작성자 | 유저이름 &nbsp;
-        작성일 | <%= post.updatedAt %> &nbsp;
-          조회수 | <%= post.viewCount%>
+        <tr>
+            <td style="color: #4C4C4C; font-size: 12px; padding-left: 5px;">
+            작성자 | 유저이름 &nbsp;
+            작성일 | <%= post.updatedAt %> &nbsp;
+            조회수 | <%= post.viewCount%>
+                <input type="button" value="삭제" style="float: right; border: 0; outline: 0; cursor: pointer; background-color: transparent; font-size: 12px;">
+                <input type="button" value="수정" style="float: right; border: 0; outline: 0; cursor: pointer; background-color: transparent; font-size: 12px;">
+            </td>
+        </tr>
 
-            <input type="button" value="삭제" style="float: right; border: 0; outline: 0; cursor: pointer;
-                        background-color: transparent; font-size: 12px;">
+        <tr>
+            <td class="line"></td>
+        </tr>
 
-            <input type="button" value="수정" style="float: right; border: 0; outline: 0; cursor: pointer;
-                        background-color: transparent; font-size: 12px;">
-      </td>
-    </tr>
+        <tr>
+            <td>
+                <div style="font-size: 15px; padding: 5px;">
+                    <%= post.content%>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-    <tr>
-      <td class="line"></td>
-    </tr>
-
-    <tr>
-      <td>
-        <div style="font-size: 15px; padding: 5px;">
-          <%= post.content%>
-        </div>
-      </td>
-    </tr>
-  </table>
-
-  <% post.comment.forEach(comment=> {%>
+    <% post.comment.forEach(comment=> {%>
     <table style="border-collapse: collapse;">
-      <tr>
-        <td style="font-size: 13px; padding: 5px;"><b>
-            <%= comment.user.name%>
-          </b>
-          <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer;
-                      background-color: transparent; font-size: 12px;
-                      color:#A6192E">
-        </td>
-        </td>
-      <tr>
-        <td style="font-size: 14px; padding: 5px;">
-          <%= comment.content%>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">
-            <%=comment.updatedAt%>
-          </e>
-          <button>답글</button>
-
-          <table class="minitable">
-            <%comment.subComment.forEach(subComment=> { %>
-              <tr>
-                <td style="font-size: 13px; padding: 5px; width:70%;">
-                  <b>
-                    <%=subComment.user.name%>
-                  </b>
-                  <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer;
-                                        background-color: transparent; font-size: 12px;
-                                        color:#A6192E">
-                </td>
-        </td>
-      <tr>
-        <td style="font-size: 14px; padding: 5px;">
-          <%= subComment.content%>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">
-            <%= subComment.craetedAt%>
-          </e>
-        </td>
-      </tr>
-      </tr>
-
-      <%})%>
+        <tr>
+            <td style="font-size: 13px; padding: 5px;"><b>
+                <%= comment.user.name%>
+                </b>
+                <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer; background-color: transparent; font-size: 12px; color:#A6192E">
+            </td>
+        <tr>
+            <td style="font-size: 14px; padding: 5px;">
+                <%= comment.content%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">
+                    <%=comment.updatedAt%>
+                </e>
+                <button>답글</button>
+                <table class="minitable">
+                <%comment.subComment.forEach(subComment=> { %>
+                <tr>
+                    <td style="font-size: 13px; padding: 5px; width:70%;">
+                        <b>
+                        <%=subComment.user.name%>
+                        </b>
+                    <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer; background-color: transparent; font-size: 12px; color:#A6192E">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 14px; padding: 5px;">
+                        <%= subComment.content%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">
+                            <%= subComment.craetedAt%>
+                        </e>
+                    </td>
+                </tr>
+            </td>
+        </tr>
+        <%})%>
     </table>
 
     <tr style="background-color: #EAEAEA;">
-      <td>
-        <form action="/" class="subCommentForm" name="<%=comment.id%>">
-          <input type="text" name="subComment" class="subCommentInput" placeholder="대댓글을 입력하세요"
-            style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
-          <input type="submit" value="작성" style="float: right; border: 0; outline: 0; cursor: pointer;
-                                            margin-top: 5px; background-color: transparent;">
-      </td>
-      </form>
-    </tr>
-
-    </tr>
-    </table>
-    <%})%>
-
-      <tr>
-        <td class="line"></td>
-      </tr>
-      <tr style="background-color: #EAEAEA;">
         <td>
-          <form action="/" id="commentForm">
-            <input type=" text" name="comment" id="commentInput" placeholder="댓글을 입력하세요"
-              style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
-            <button type="submit" id="commentButton" value=",AA,<%=token%>" style="float: right; border: 0; outline: 0; cursor: pointer;
-                        margin-top: 5px; background-color: transparent;"></button>
-          </form>
+            <form action="/" class="subCommentForm" name="<%=comment.id%>">
+                <input type="text" name="subComment" class="subCommentInput" placeholder="대댓글을 입력하세요" style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
+                <input type="submit" value="작성" style="float: right; border: 0; outline: 0; cursor: pointer; margin-top: 5px; background-color: transparent;">
+            </form>
         </td>
-      </tr>
-      </table>
+    </tr>
+
+    </tr>
+    <table>
+        <%})%>
+        <tr>
+            <td class="line"></td>
+        </tr>
+        <tr style="background-color: #EAEAEA;">
+            <td>
+                <form action="/" id="commentForm">
+                    <input type=" text" name="comment" id="commentInput" placeholder="댓글을 입력하세요" style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
+                    <button type="submit" id="commentButton" value=",AA,<%=token%>" style="float: right; border: 0; outline: 0; cursor: pointer; margin-top: 5px; background-color: transparent;"></button>
+                </form>
+            </td>
+        </tr>
+    </table>
 </body>
 <%- include('footer.ejs')%>
 

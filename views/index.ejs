@@ -71,19 +71,6 @@ Released   : 20121201
 					<span>이달의 일정</span>
 				</div>
 				<div class="auto-jsCalendar material-theme custom-red" style="margin-left: 23px;"></div>
-				<ul class="list-style2">
-					<%eduPosts.forEach((notice, i)=> {%>
-					<%if(i===0){%>
-					<li class="first"><a href="/edu/<%=notice.id%>">
-						<%=notice.title%>
-					</a></li>
-					<%}else{%>
-					<li><a href="/edu/<%=notice.id%>">
-						<%=notice.title%>
-					</a></li>
-					<%}%>
-					<%})%>
-				</ul>
 			</div>
 		</div>
 	</section>
@@ -115,3 +102,4 @@ Released   : 20121201
 	<%-include('jsCalendar.ejs')%>
 </body>
 </html>
+
