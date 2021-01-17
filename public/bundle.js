@@ -9211,7 +9211,7 @@ var _loadPosts = _interopRequireDefault(require("./loadPosts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var backend = 'http://ec2-13-124-175-42.ap-northeast-2.compute.amazonaws.com';
+var backend = 'http://ec2-15-165-236-62.ap-northeast-2.compute.amazonaws.com';
 exports.backend = backend;
 
 if (document.querySelector('#register1-form')) {
@@ -9265,7 +9265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3244" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5560" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

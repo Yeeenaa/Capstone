@@ -7,7 +7,7 @@ import CreatePost from './createPost';
 import LoadPosts from './loadPosts';
 
 export const backend =
-    'http://ec2-13-124-175-42.ap-northeast-2.compute.amazonaws.com';
+    'http://ec2-15-165-236-62.ap-northeast-2.compute.amazonaws.com';
 
 if (document.querySelector('#register1-form')) {
     // register1.ejs

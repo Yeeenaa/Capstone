@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>토론게시판</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <style>
+    table {
+      width: 100%;
+      border: 1px solid #444444;
+    }
+
+    .line {
+      border-bottom: 1px solid #444444;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    button {
+      width: 50px;
+      height: 20px;
+      background-color: #D5D5D5;
+      font-size: 10px;
+      border: 0.5px solid black;
+      border-radius: 15px;
+      float: right;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    button:focus {
+      outline: 0;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    .minitable {
+      background-color: #EAEAEA;
+      width: 90%;
+      border: 1px solid #747474;
+      border-collapse: collapse;
+      float: right;
+      margin: 10px 30px 10px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <caption style="margin: 2em;">토론게시판</caption>
+    <tr>
+      <td style="font-size: 20px; padding : 5px;"><b>제목</b></td>
+    </tr>
+
+    <tr>
+      <td style="color: #4C4C4C; font-size: 12px; padding-left: 5px;">
+        작성자 | 유저이름 &nbsp;
+        작성일 | <%= post.createdAt %> &nbsp;
+          조회수 | <%= post.viewCount%>
+
+            <input type="button" value="삭제" style="float: right; border: 0; outline: 0; cursor: pointer;
+                        background-color: transparent; font-size: 12px;">
+
+            <input type="button" value="수정" style="float: right; border: 0; outline: 0; cursor: pointer;
+                        background-color: transparent; font-size: 12px;">
+      </td>
+    </tr>
+
+    <tr>
+      <td class="line"></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div style="font-size: 15px; padding: 5px;">
+          <%= post.content%>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse: collapse;">
+    <tr>
+      <td style="font-size: 13px; padding: 5px;"><b>학생1</b>
+        <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer;
+                        background-color: transparent; font-size: 12px;
+                        color:#A6192E">
+      </td>
+      </td>
+    <tr>
+      <td style="font-size: 14px; padding: 5px;">댓글입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">2021.01.16 22:01</e>
+        <button>답글</button>
+
+        <table class="minitable">
+          <tr>
+            <td style="font-size: 13px; padding: 5px; width:70%;">
+              <b>학생4</b>
+              <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer;
+                                        background-color: transparent; font-size: 12px;
+                                        color:#A6192E">
+            </td>
+      </td>
+    <tr>
+      <td style="font-size: 14px; padding: 5px;">대댓글입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">2021.01.16 22:36</e>
+      </td>
+    </tr>
+    </tr>
+
+    <tr>
+      <td class="line"></td>
+    </tr>
+
+    <tr style="background-color: #EAEAEA;">
+      <td style="font-size: 13px; padding: 5px; width:70%;">
+        <b>학생1</b>
+        <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer;
+                                        background-color: transparent; font-size: 12px;
+                                        color:#A6192E">
+      </td>
+      </td>
+    <tr style="background-color: #EAEAEA;">
+      <td style="font-size: 14px; padding: 5px;">대댓글입니다.</td>
+    </tr>
+    <tr style="background-color: #EAEAEA;">
+      <td>
+        <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">2021.01.17 02:42</e>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="line"></td>
+    </tr>
+
+    <tr style="background-color: #EAEAEA;">
+      <td><input type="text" name="comment" placeholder="댓글을 입력하세요"
+          style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
+        <input type="submit" value="작성" style="float: right; border: 0; outline: 0; cursor: pointer;
+                                            margin-top: 5px; background-color: transparent;">
+      </td>
+    </tr>
+
+    </tr>
+  </table>
+
+  </td>
+
+  </tr>
+  </tr>
+  <tr>
+    <td class="line"></td>
+  </tr>
+  <tr>
+    <td style="font-size: 13px; padding: 5px;"><b>학생2</b>
+      <input type="button" value="delete" style="float: right; border: 0; outline: 0; cursor: pointer;
+                        background-color: transparent; font-size: 12px;
+                        color:#A6192E">
+    </td>
+    </td>
+  <tr>
+    <td style="font-size: 14px; padding: 5px;">댓글2입니다.</td>
+  </tr>
+  <tr>
+    <td>
+      <e style="font-size: 10px; color:#4C4C4C; padding: 5px;">2021.01.16 21:21</e>
+      <button>답글</button>
+    </td>
+  </tr>
+  </tr>
+  <tr>
+    <td class="line"></td>
+  </tr>
+  <tr style="background-color: #EAEAEA;">
+    <td><input type="text" name="comment" placeholder="댓글을 입력하세요"
+        style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
+      <input type="submit" value="작성" style="float: right; border: 0; outline: 0; cursor: pointer;
+                        margin-top: 5px; background-color: transparent;">
+    </td>
+  </tr>
+  </table>
+
+  <input type="button" value="목록" style="float: right; margin-top: 1em;
+            font-size: 15px;" onclick="location.href= 'board.html';">
+</body>
+
+</html>
