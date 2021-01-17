@@ -14,6 +14,9 @@ Released   : 20121201
 
 <head>
 	<%- include('head.ejs') %>
+	<link rel="stylesheet" type="text/css" href="public/assets/css/jsCalendar.css">
+	<script type="text/javascript" src="public/jsCalendar.js"></script>
+
 </head>
 
 <body>
@@ -22,8 +25,7 @@ Released   : 20121201
 		<section id="sidebar">
 			<div class="left-calendar">
 				<h2>이달의 일정</h2>
-				<div id="calendar"></div>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+					<div class="auto-jsCalendar material-theme"></div>
 			</div>
 			<div class="right-notifications">
 				<div id="notes">
