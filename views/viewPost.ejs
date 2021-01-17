@@ -5,8 +5,7 @@
 
 <head>
     <%- include('head.ejs') %>
-    <title>토론게시판</title>
-
+    <title>토론게시판</title>    
     <style> 
         table {
             width: 100%;
@@ -25,7 +24,7 @@
             width: 50px;
             height: 20px;
             background-color: #D5D5D5;
-            font-size: 10px;
+            font-size: 15px;
             border: 0.5px solid black;
             border-radius: 15px;
             float: right;
@@ -54,6 +53,7 @@
 </head>
 
 <body>
+    <%-include('navigation.ejs')%>
     <table>
         <caption style="margin: 2em;">토론게시판</caption>
         <tr>
@@ -148,7 +148,7 @@
             <td>
                 <form action="/" id="commentForm">
                     <input type=" text" name="comment" id="commentInput" placeholder="댓글을 입력하세요" style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
-                    <button type="submit" id="commentButton" value=",AA,<%=token%>" style="float: right; border: 0; outline: 0; cursor: pointer; margin-top: 5px; background-color: transparent;"></button>
+                    <button type="submit" id="commentButton" value=",AA,<%=token%>" style="float: right; border: 0; outline: 0; cursor: pointer; margin-top: 5px; background-color: transparent;">작성</button>
                 </form>
             </td>
         </tr>
