@@ -1,5 +1,6 @@
 const axios = require('axios');
-const backend = 'http://ec2-13-124-175-42.ap-northeast-2.compute.amazonaws.com';
+const backend = 'https://dcrasee.tk';
+// const backend = 'http://localhost:4000';
 
 exports.checkLogin = async (req, res, next) => {
     if (req.cookies.jwt && req.cookies.jwt !== 'hi') {
@@ -252,7 +253,7 @@ exports.renderOnePost = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            res.send(response.data);
+            res.render('viewPost', {post: response.data.post});
         })
         .catch((e) => {
             console.log(e.message);
