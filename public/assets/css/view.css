@@ -1,14 +1,55 @@
+/* viewPost */
+
 table {
-    width: 100%;
-    border: 1px solid #444444;
+    border-collapse: collapse;
+    width: 80%;
+    border: 1px solid #cccccc;
+    color: black;
+    margin: auto;
+}
+
+td{
+    padding : 5px;
 }
 
 .line {
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #ccc;
+}
+
+.line2 {
+    border-top: 1px solid #ccc;
 }
 
 input:focus {
     outline: none;
+}
+
+#btn {
+    float: right; 
+    border: 0; 
+    outline: 0; 
+    cursor: pointer; 
+    background-color: transparent; 
+    font-size: 12px;
+    padding : 7px;
+    margin: auto;
+}
+
+#delBtn {
+    float: right; 
+    border: 0; 
+    outline: 0; 
+    background-color: transparent; 
+    font-size: 12px; 
+    color:#A6192E
+}
+
+#btn:hover, #delBtn:hover{
+    cursor: pointer;
+}
+
+#btn:focus, #delBtn:focus{
+    outline: 0;
 }
 
 button {
@@ -35,8 +76,31 @@ button:hover {
 .minitable {
     background-color: #EAEAEA;
     width: 90%;
-    border: 1px solid #747474;
+    border: 1px solid #ccc;
     border-collapse: collapse;
     float: right;
     margin: 10px 30px 10px 10px;
+    color : #444444;
+}
+
+#list-wrap {
+    float: right;
+    margin-right: 10%;
+    padding: 5px 0 5px 5px;
+}
+  
+#list-wrap a{
+    border: 1px solid var(--grey);
+    background-color: var(--light);
+    color: var(--back);
+    font-size: var(--mid);
+    font-weight: bolder;
+    height: fit-content;
+}
+  
+#list-wrap a:hover {
+    background-color: var(--back);
+    color: var(--light);
+    border-color: var(--back);
+    text-decoration: none;
 }

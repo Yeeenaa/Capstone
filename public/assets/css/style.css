@@ -443,11 +443,11 @@ input:focus {
 .writeTable{
   display: flex;
   flex-direction: column;
-  border-collapse: separate;
   border-spacing: 1px;
   text-align: left;
   line-height: 1.5;
-  margin : 20px 150px;
+  margin : auto;
+  width: 80%;
 }
 
 .writeTable table {
