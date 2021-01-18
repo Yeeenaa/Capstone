@@ -20,9 +20,7 @@
 
                 <tr>
                     <td colspan="2" class="ta">
-                        <textarea name="container" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다"
-                            onkeyup="checkWord()" onkeydown="checkWord()">
-                    </textarea>
+                        <textarea name="container" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다." onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
                     </td>
                 </tr>
 
@@ -46,8 +44,6 @@
                     alert("특수문자는 입력하실 수 없습니다.");
                     obj.value = obj.value.substring(0, obj.value.length - 1);
                 }
-
-
             }
 
             function checkWord() {
