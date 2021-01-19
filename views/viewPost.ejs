@@ -12,6 +12,15 @@
     <%-include('navigation.ejs')%>
     <table>
         <tr>
+            <td style="padding-top: 1em; font-size: 15px; color: #A6192E;
+            cursor: pointer;" onClick="location.href='post.ejs'">
+            <b>◀ 토론게시판</b>
+            </td>
+        </tr>
+        <tr>
+            <td class="line"></td>
+        </tr>
+        <tr>
             <td style="font-size: 20px; padding-top: 1em;"><b>                                                
                 <%=post.title%>
             </b></td>
@@ -58,9 +67,9 @@
                 <e style="font-size: 10px; color:#4C4C4C;">
                     <%=comment.updatedAt%>
                 </e>
-                <button>답글</button>
+                <button id="show" onclick="dis()">답글</button>
 
-                <table class="minitable">
+                <table id="dis" class="minitable">
                 <%comment.subComment.forEach(subComment=> { %>
                 <tr>
                     <td class="line2"></td>
@@ -85,19 +94,20 @@
                         </e>
                     </td>
                 </tr>
+                <%})%>
+                <tr style="background-color: #EAEAEA;">
+                    <td class="line2">
+                        <form action="/" class="subCommentForm" name="<%=comment.id%>">
+                            <input type="text" name="subComment" class="subCommentInput" 
+                            placeholder="대댓글을 입력하세요" style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
+                            <input id="btn" type="submit" value="작성">
+                        </form>
+                    </td>
+                </tr>
+                </table>
             </td>
         </tr>
-        <%})%>
     </table>
-
-    <tr style="background-color: #EAEAEA;">
-        <td class="line2">
-            <form action="/" class="subCommentForm" name="<%=comment.id%>">
-                <input type="text" name="subComment" class="subCommentInput" placeholder="대댓글을 입력하세요" style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
-                <input id="btn" type="submit" value="작성">
-            </form>
-        </td>
-    </tr>
 
     <%})%>
     <table>
@@ -117,6 +127,19 @@
     <div id="list-wrap">
         <a href="#">목록</a>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        function dis(){
+            if($('#dis').css('display') == 'none'){
+                $('#dis').show();
+            }
+            else{
+                $('#dis').hide();
+            }
+        }
+    </script>
 </body>
 <%- include('footer.ejs')%>
 
