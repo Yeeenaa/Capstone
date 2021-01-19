@@ -9185,18 +9185,18 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var viewApply = /*#__PURE__*/function () {
-  function viewApply() {
-    _classCallCheck(this, viewApply);
+var ViewApply = /*#__PURE__*/function () {
+  function ViewApply() {
+    _classCallCheck(this, ViewApply);
 
     this.permitBtn = document.querySelector('.candiate-permitBtn');
     this.events();
   }
 
-  _createClass(viewApply, [{
+  _createClass(ViewApply, [{
     key: "events",
     value: function events() {
-      permitBtn.addEventListener('click', function (e) {
+      this.permitBtn.addEventListener('click', function (e) {
         e.preventDefault();
         var result = confirm('입후보를 승인합니까?');
 
@@ -9217,10 +9217,10 @@ var viewApply = /*#__PURE__*/function () {
     }
   }]);
 
-  return viewApply;
+  return ViewApply;
 }();
 
-exports.default = viewApply;
+exports.default = ViewApply;
 },{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"viewPledge.js":[function(require,module,exports) {
 "use strict";
 
@@ -9252,7 +9252,7 @@ var viewPledge = /*#__PURE__*/function () {
   _createClass(viewPledge, [{
     key: "events",
     value: function events() {
-      voteBtn.addEventListener('click', function (e) {
+      this.voteBtn.addEventListener('click', function (e) {
         e.preventDefault();
         console.log(candidateId);
         var result = confirm('투표합니다?');
@@ -9627,7 +9627,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "13043" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

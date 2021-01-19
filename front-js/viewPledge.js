@@ -8,7 +8,7 @@ export default class viewPledge {
     }
 
     events() {
-        voteBtn.addEventListener('click', (e) => {
+        this.voteBtn.addEventListener('click', (e) => {
             e.preventDefault();
             console.log(candidateId);
             const result = confirm('투표합니다?');

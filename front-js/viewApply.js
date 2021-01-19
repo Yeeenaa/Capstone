@@ -1,15 +1,16 @@
 import axios from 'axios';
 import {backend} from './main';
 
-export default class viewApply {
+export default class ViewApply {
     constructor() {
         this.permitBtn = document.querySelector('.candiate-permitBtn');
         this.events();
     }
 
     events() {
-        permitBtn.addEventListener('click', (e) => {
+        this.permitBtn.addEventListener('click', (e) => {
             e.preventDefault();
+
             const result = confirm('입후보를 승인합니까?');
             if (result) {
                 axios
