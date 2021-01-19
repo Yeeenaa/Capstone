@@ -7,23 +7,23 @@
 
 <body>
     <%- include('navigation.ejs') %>
-	<div id="wrapper">
-        <div id="page" class="container">
-            <div id="content">
-                <div id="login-box">
-                    <form action="/login" method="POST">
-                        <div id="register-form">
-                        <input name="email" id="email" type="email" placeholder="Email">
-                        <input name="password" id="password" type="password" placeholder="Password">
-                        <input type="submit" value="LOGIN">
-                    </form>
-                    <div id="join-box">
-                        <a id="join" href="register1">JOIN</a>
+        <div id="wrapper">
+            <div id="page" class="container">
+                <div id="content">
+                    <div id="login-box">
+                        <form action="/login" method="POST">
+                            <div id="register-form">
+                                <input name="email" id="email" type="email" placeholder="Email">
+                                <input name="password" id="password" type="password" placeholder="Password">
+                                <input type="submit" value="LOGIN">
+                        </form>
+                        <div id="join-box">
+                            <a id="join" href="register1">JOIN</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <!-- Scripts -->
         <%- include('footer.ejs') %>
 

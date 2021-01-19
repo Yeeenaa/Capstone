@@ -68,6 +68,7 @@ export default class LoadPosts {
     }
 
     addDataToDOM(posts, category) {
+        console.log(category);
         posts.forEach((post) => {
             const postElement = document.createElement('tr');
             postElement.innerHTML = `
@@ -75,7 +76,7 @@ export default class LoadPosts {
                ${post.school}
             </td>
             <td width="300" text-align="center">
-               <a href="/${category}/ ${post.id}" style="color: black">
+               <a href="/${category}/${post.id}" style="color: black">
                ${post.title}
                </a>
             </td>
