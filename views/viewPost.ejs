@@ -12,6 +12,15 @@
     <%-include('navigation.ejs')%>
         <table>
             <tr>
+                <td style="padding-top: 1em; font-size: 15px; color: #A6192E;
+            cursor: pointer;" onClick="location.href='post.ejs'">
+                    <b>◀ 토론게시판</b>
+                </td>
+            </tr>
+            <tr>
+                <td class="line"></td>
+            </tr>
+            <tr>
                 <td style="font-size: 20px; padding-top: 1em;"><b>
                         <%=post.title%>
                     </b></td>
@@ -22,10 +31,8 @@
                     작성자 | <%= post.user.name%> &nbsp;
                         작성일 | <%= post.updatedAt %> &nbsp;
                             조회수 | <%= post.viewCount%>
-                                <%if(post.userId===user.id){%>
-                                    <input id="btn" class="post-delBtn" type="button" value="삭제">
-                                    <!-- <input id="btn" type="button" value="수정"> -->
-                                    <%}%>
+                                <input id="btn" type="button" value="삭제">
+                                <input id="btn" type="button" value="수정">
                 </td>
             </tr>
 
@@ -37,9 +44,6 @@
                 <td>
                     <div style="font-size: 15px; padding-top: 1em; padding-bottom: 1em;">
                         <%= post.content%>
-                            <%post.image.forEach(img=> {%>
-                                <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
-                                <%})%>
                     </div>
                 </td>
             </tr>
@@ -51,11 +55,7 @@
                     <td style="font-size: 13px;"><b>
                             <%= comment.user.name%>
                         </b>
-                        <%if(comment.userId===user.id){%>
-                            <input id="delBtn" class="comment-delBtn" type="button" value="delete"
-                                name="<%=comment.id%>">
-                            <%}%>
-
+                        <input id="delBtn" type="button" value="delete">
                     </td>
                 <tr>
                     <td style="font-size: 14px;">
@@ -67,9 +67,9 @@
                         <e style="font-size: 10px; color:#4C4C4C;">
                             <%=comment.updatedAt%>
                         </e>
-                        <button>답글</button>
+                        <button id="show" onclick="dis()">답글</button>
 
-                        <table class="minitable">
+                        <table id="dis" class="minitable">
                             <%comment.subComment.forEach(subComment=> { %>
                                 <tr>
                                     <td class="line2"></td>
@@ -79,10 +79,7 @@
                                         <b>
                                             <%=subComment.user.name%>
                                         </b>
-                                        <%if(subComment.userId===user.id){%>
-                                            <input id="delBtn" class="subComment-delBtn" type="button" value="delete"
-                                                name="<%=subComment.id%>">
-                                            <%}%>
+                                        <input id="delBtn" type="button" value="delete">
                                     </td>
                                 </tr>
                                 <tr>
@@ -97,20 +94,21 @@
                                         </e>
                                     </td>
                                 </tr>
+                                <%})%>
+                                    <tr style="background-color: #EAEAEA;">
+                                        <td class="line2">
+                                            <form action="/" class="subCommentForm" name="<%=comment.id%>">
+                                                <input type="text" name="subComment" class="subCommentInput"
+                                                    placeholder="대댓글을 입력하세요"
+                                                    style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
+                                                <input id="btn" type="submit" value="작성">
+                                            </form>
+                                        </td>
+                                    </tr>
+                        </table>
                     </td>
                 </tr>
-                <%})%>
             </table>
-
-            <tr style="background-color: #EAEAEA;">
-                <td class="line2">
-                    <form action="/" class="subCommentForm" name="<%=comment.id%>">
-                        <input type="text" name="subComment" class="subCommentInput" placeholder="대댓글을 입력하세요"
-                            style="width:80%; border: 0; height: 30px; background-color: transparent; float: left;">
-                        <input id="btn" type="submit" value="작성">
-                    </form>
-                </td>
-            </tr>
 
             <%})%>
                 <table>
@@ -129,6 +127,19 @@
                 <div id="list-wrap">
                     <a href="#">목록</a>
                 </div>
+
+                <!-- Scripts -->
+                <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script>
+                    function dis() {
+                        if ($('#dis').css('display') == 'none') {
+                            $('#dis').show();
+                        }
+                        else {
+                            $('#dis').hide();
+                        }
+                    }
+                </script>
 </body>
 <%- include('footer.ejs')%>
 
