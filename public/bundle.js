@@ -8670,7 +8670,7 @@ var CreatePost = /*#__PURE__*/function () {
             category = _this$button$value$sp2[0],
             token = _this$button$value$sp2[1];
 
-        if (category === 'pledge') {
+        if (['apply', 'pledge'].includes(category)) {
           var form = new FormData();
           form.append('title', _this.title.value);
           form.append('content', _this.content.value);
@@ -8679,10 +8679,8 @@ var CreatePost = /*#__PURE__*/function () {
             _toConsumableArray(_this.file.files).forEach(function (f, i) {
               if (f.type.split('/')[0] === 'image') {
                 form.append('images', _this.file.files[i]);
-              } else if (f.type.split('/')[0] === 'video') {
-                form.append('video', _this.file.files[i]);
               } else {
-                alert('이미지나 동영상만 첨부 가능합니다.');
+                alert('이미지만 첨부 가능합니다.');
                 error = true;
                 return window.location.replace("/".concat(category, "/create"));
               }
@@ -8690,34 +8688,19 @@ var CreatePost = /*#__PURE__*/function () {
           }
 
           if (!error) {
-            _axios.default.post("".concat(_main.backend, "/api/pledge"), form, {
+            _axios.default.post("".concat(_main.backend, "/api/").concat(category), form, {
               headers: {
                 Authorization: "Bearer ".concat(token),
                 'Content-Type': 'multipart/form-data'
               }
             }).then(function (response) {
               alert('게시글 작성 완료');
-              window.location.replace("/pledge");
+              window.location.replace("/".concat(category));
             }).catch(function (error) {
               alert('입력값을 확인하세요');
-              window.location.replace("/pledge/create");
+              window.location.replace("/".concat(category, "/create"));
             });
           }
-        } else if (category === 'apply') {
-          _axios.default.post("".concat(_main.backend, "/api/apply"), {
-            title: _this.title.value,
-            content: _this.content.value
-          }, {
-            headers: {
-              Authorization: "Bearer ".concat(token)
-            }
-          }).then(function (response) {
-            alert('게시글 작성 완료');
-            window.location.replace("/apply");
-          }).catch(function (error) {
-            alert('입력값을 확인하세요');
-            window.location.replace("/apply/create");
-          });
         } else {
           var _form = new FormData();
 
@@ -8922,9 +8905,10 @@ var LoadPosts = /*#__PURE__*/function () {
     value: function addDataToDOM(posts, category) {
       var _this2 = this;
 
+      console.log(category);
       posts.forEach(function (post) {
         var postElement = document.createElement('tr');
-        postElement.innerHTML = "\n            <td width=\"100\" text-align=\"center\">\n               ".concat(post.school, "\n            </td>\n            <td width=\"300\" text-align=\"center\">\n               <a href=\"/").concat(category, "/ ").concat(post.id, "\" style=\"color: black\">\n               ").concat(post.title, "\n               </a>\n            </td>\n            <td width=\" 300\" text-align=\"center\">\n               ").concat(post.user.name, "\n            </td>\n            <td width=\"100\" text-align=\"center\">\n               ").concat(post.createdAt, "\n            </td>\n            <td width=\"100\" text-align=\"center\">\n               ").concat(post.commentCount, "\uAC1C\n            </td>\n            <td width=\"100\" text-align=\"center\">\n               ").concat(post.viewCount, "\n            </td>\n            ");
+        postElement.innerHTML = "\n            <td width=\"100\" text-align=\"center\">\n               ".concat(post.school, "\n            </td>\n            <td width=\"300\" text-align=\"center\">\n               <a href=\"/").concat(category, "/").concat(post.id, "\" style=\"color: black\">\n               ").concat(post.title, "\n               </a>\n            </td>\n            <td width=\" 300\" text-align=\"center\">\n               ").concat(post.user.name, "\n            </td>\n            <td width=\"100\" text-align=\"center\">\n               ").concat(post.createdAt, "\n            </td>\n            <td width=\"100\" text-align=\"center\">\n               ").concat(post.commentCount, "\uAC1C\n            </td>\n            <td width=\"100\" text-align=\"center\">\n               ").concat(post.viewCount, "\n            </td>\n            ");
 
         _this2.container.appendChild(postElement);
       });
@@ -8948,6 +8932,14 @@ var _axios = _interopRequireDefault(require("axios"));
 var _main = require("./main");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -8979,6 +8971,9 @@ var viewPost = /*#__PURE__*/function () {
     this.commentInput = document.querySelector('#commentInput');
     this.subCommentForm = document.querySelectorAll('.subCommentForm');
     this.subCommentInput = document.querySelectorAll('.subCommentInput');
+    this.commentDeleteBtn = document.querySelectorAll('.comment-delBtn');
+    this.subCommentDeleteBtn = document.querySelectorAll('.subComment-delBtn');
+    this.postDeleteBtn = document.querySelector('.post-delBtn');
     this.token = document.querySelector('#commentButton').value.split(',AA,')[1];
     this.events();
   }
@@ -8996,7 +8991,7 @@ var viewPost = /*#__PURE__*/function () {
               switch (_context.prev = _context.next) {
                 case 0:
                   e.preventDefault();
-                  postId = window.location.pathname.split('/debate/')[1];
+                  postId = window.location.pathname.split('/')[2];
 
                   _axios.default.post("".concat(_main.backend, "/api/post/").concat(postId), {
                     content: _this.commentInput.value
@@ -9033,7 +9028,7 @@ var viewPost = /*#__PURE__*/function () {
                 switch (_context2.prev = _context2.next) {
                   case 0:
                     e.preventDefault();
-                    postId = window.location.pathname.split('/debate/')[1];
+                    postId = window.location.pathname.split('/')[2];
                     commentId = subForm.name;
 
                     _axios.default.post("".concat(_main.backend, "/api/post/").concat(postId, "/comment/").concat(commentId), {
@@ -9062,6 +9057,107 @@ var viewPost = /*#__PURE__*/function () {
           };
         }());
       });
+
+      _toConsumableArray(this.commentDeleteBtn).forEach(function (btn) {
+        btn.addEventListener('click', /*#__PURE__*/function () {
+          var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(e) {
+            var postId, commentId, result;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    e.preventDefault();
+                    postId = window.location.pathname.split('/')[2];
+                    commentId = btn.name;
+                    result = confirm('삭제합니까?');
+
+                    if (result) {
+                      _axios.default.delete("".concat(_main.backend, "/api/post/").concat(postId, "/comment/").concat(commentId), {
+                        headers: {
+                          Authorization: "Bearer ".concat(_this.token)
+                        }
+                      }).then(function (response) {
+                        location.reload(true);
+                      }).catch(function (e) {
+                        alert('입력값을 확인하세요');
+                      });
+                    }
+
+                  case 5:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          return function (_x3) {
+            return _ref3.apply(this, arguments);
+          };
+        }());
+      });
+
+      _toConsumableArray(this.subCommentDeleteBtn).forEach(function (btn) {
+        btn.addEventListener('click', /*#__PURE__*/function () {
+          var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(e) {
+            var subCommentId, result;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    e.preventDefault();
+                    subCommentId = btn.name;
+                    result = confirm('삭제합니까?');
+
+                    if (result) {
+                      _axios.default.delete("".concat(_main.backend, "/api/post/subComment/").concat(subCommentId), {
+                        headers: {
+                          Authorization: "Bearer ".concat(_this.token)
+                        }
+                      }).then(function (response) {
+                        location.reload(true);
+                      }).catch(function (e) {
+                        alert('입력값을 확인하세요');
+                      });
+                    }
+
+                  case 4:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4);
+          }));
+
+          return function (_x4) {
+            return _ref4.apply(this, arguments);
+          };
+        }());
+      });
+
+      this.postDeleteBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var _window$location$path = window.location.pathname.split('/'),
+            _window$location$path2 = _slicedToArray(_window$location$path, 3),
+            a = _window$location$path2[0],
+            category = _window$location$path2[1],
+            postId = _window$location$path2[2];
+
+        var result = confirm('삭제합니까?');
+
+        if (result) {
+          _axios.default.delete("".concat(_main.backend, "/api/post/").concat(postId, "/"), {
+            headers: {
+              Authorization: "Bearer ".concat(_this.token)
+            }
+          }).then(function (response) {
+            window.location.replace("/".concat(category));
+          }).catch(function (e) {
+            alert('입력값을 확인하세요');
+          });
+        }
+      });
     }
   }]);
 
@@ -9069,6 +9165,117 @@ var viewPost = /*#__PURE__*/function () {
 }();
 
 exports.default = viewPost;
+},{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"viewApply.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _main = require("./main");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ViewApply = /*#__PURE__*/function () {
+  function ViewApply() {
+    _classCallCheck(this, ViewApply);
+
+    this.permitBtn = document.querySelector('.candiate-permitBtn');
+    this.events();
+  }
+
+  _createClass(ViewApply, [{
+    key: "events",
+    value: function events() {
+      this.permitBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var result = confirm('입후보를 승인합니까?');
+
+        if (result) {
+          _axios.default.post("".concat(_main.backend, "/api/apply/").concat(userId), {
+            permission: 'true'
+          }, {
+            headers: {
+              Authorization: "Bearer ".concat(token)
+            }
+          }).then(function (response) {
+            location.replace('/apply');
+          }).catch(function (e) {
+            alert('입력값을 확인하세요');
+          });
+        }
+      });
+    }
+  }]);
+
+  return ViewApply;
+}();
+
+exports.default = ViewApply;
+},{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"viewPledge.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _main = require("./main");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var viewPledge = /*#__PURE__*/function () {
+  function viewPledge() {
+    _classCallCheck(this, viewPledge);
+
+    this.voteBtn = document.querySelector('#voteBtn');
+    this.events();
+  }
+
+  _createClass(viewPledge, [{
+    key: "events",
+    value: function events() {
+      this.voteBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log(candidateId);
+        var result = confirm('투표합니다?');
+
+        if (result) {
+          _axios.default.put("".concat(_main.backend, "/api/pledge/").concat(candidateId), {}, {
+            headers: {
+              Authorization: "Bearer ".concat(token)
+            }
+          }).then(function (response) {
+            location.reload(true);
+          }).catch(function (e) {
+            alert('입력값을 확인하세요');
+          });
+        }
+      });
+    }
+  }]);
+
+  return viewPledge;
+}();
+
+exports.default = viewPledge;
 },{"axios":"../node_modules/axios/index.js","./main":"main.js"}],"main.js":[function(require,module,exports) {
 "use strict";
 
@@ -9333,6 +9540,8 @@ require("core-js/modules/web.dom.iterable.js");
 
 require("regenerator-runtime/runtime.js");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _register = _interopRequireDefault(require("./register1"));
 
 var _register2 = _interopRequireDefault(require("./register2"));
@@ -9345,10 +9554,14 @@ var _loadPosts = _interopRequireDefault(require("./loadPosts"));
 
 var _viewPost = _interopRequireDefault(require("./viewPost"));
 
+var _viewApply = _interopRequireDefault(require("./viewApply"));
+
+var _viewPledge = _interopRequireDefault(require("./viewPledge"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var backend = 'https://dcrasee.tk'; // export const backend = 'http://localhost:4000';
-
+// export const backend = 'https://dcrasee.tk';
+var backend = 'http://localhost:4000';
 exports.backend = backend;
 
 if (document.querySelector('#register1-form')) {
@@ -9378,7 +9591,15 @@ if (document.querySelector('#write-wrap > input[type=text]')) {
 if (document.querySelector('#commentForm')) {
   new _viewPost.default();
 }
-},{"core-js/modules/es6.array.copy-within.js":"../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill.js":"../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.find.js":"../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index.js":"../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map.js":"../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from.js":"../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes.js":"../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator.js":"../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.of.js":"../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.sort.js":"../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es6.array.species.js":"../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-primitive.js":"../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance.js":"../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name.js":"../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map.js":"../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh.js":"../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh.js":"../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh.js":"../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt.js":"../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32.js":"../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh.js":"../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1.js":"../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround.js":"../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot.js":"../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul.js":"../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p.js":"../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10.js":"../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2.js":"../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign.js":"../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh.js":"../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh.js":"../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc.js":"../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor.js":"../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon.js":"../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite.js":"../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer.js":"../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan.js":"../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer.js":"../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer.js":"../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer.js":"../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float.js":"../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int.js":"../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign.js":"../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter.js":"../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter.js":"../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries.js":"../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze.js":"../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor.js":"../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors.js":"../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names.js":"../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of.js":"../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter.js":"../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter.js":"../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions.js":"../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string.js":"../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is.js":"../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen.js":"../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed.js":"../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible.js":"../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys.js":"../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal.js":"../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es7.object.values.js":"../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise.js":"../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally.js":"../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply.js":"../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct.js":"../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property.js":"../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property.js":"../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get.js":"../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor.js":"../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of.js":"../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has.js":"../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible.js":"../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys.js":"../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions.js":"../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set.js":"../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of.js":"../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor.js":"../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags.js":"../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match.js":"../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace.js":"../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split.js":"../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search.js":"../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string.js":"../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set.js":"../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol.js":"../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator.js":"../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor.js":"../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big.js":"../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink.js":"../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold.js":"../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at.js":"../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with.js":"../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed.js":"../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor.js":"../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize.js":"../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point.js":"../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes.js":"../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics.js":"../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator.js":"../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link.js":"../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start.js":"../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end.js":"../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw.js":"../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat.js":"../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small.js":"../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with.js":"../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike.js":"../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub.js":"../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup.js":"../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left.js":"../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right.js":"../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer.js":"../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array.js":"../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array.js":"../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array.js":"../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array.js":"../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array.js":"../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array.js":"../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array.js":"../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array.js":"../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array.js":"../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map.js":"../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set.js":"../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers.js":"../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate.js":"../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable.js":"../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime.js":"../node_modules/regenerator-runtime/runtime.js","./register1":"register1.js","./register2":"register2.js","./userAuth":"userAuth.js","./createPost":"createPost.js","./loadPosts":"loadPosts.js","./viewPost":"viewPost.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+if (document.querySelector('.candiate-permitBtn')) {
+  new _viewApply.default();
+}
+
+if (document.querySelector('#voteBtn')) {
+  new _viewPledge.default();
+}
+},{"core-js/modules/es6.array.copy-within.js":"../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill.js":"../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.find.js":"../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index.js":"../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map.js":"../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from.js":"../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes.js":"../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator.js":"../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.of.js":"../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.sort.js":"../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es6.array.species.js":"../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-primitive.js":"../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance.js":"../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name.js":"../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map.js":"../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh.js":"../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh.js":"../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh.js":"../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt.js":"../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32.js":"../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh.js":"../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1.js":"../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround.js":"../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot.js":"../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul.js":"../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p.js":"../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10.js":"../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2.js":"../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign.js":"../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh.js":"../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh.js":"../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc.js":"../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor.js":"../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon.js":"../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite.js":"../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer.js":"../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan.js":"../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer.js":"../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer.js":"../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer.js":"../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float.js":"../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int.js":"../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign.js":"../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter.js":"../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter.js":"../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries.js":"../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze.js":"../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor.js":"../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors.js":"../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names.js":"../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of.js":"../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter.js":"../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter.js":"../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions.js":"../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string.js":"../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is.js":"../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen.js":"../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed.js":"../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible.js":"../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys.js":"../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal.js":"../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es7.object.values.js":"../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise.js":"../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally.js":"../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply.js":"../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct.js":"../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property.js":"../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property.js":"../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get.js":"../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor.js":"../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of.js":"../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has.js":"../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible.js":"../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys.js":"../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions.js":"../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set.js":"../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of.js":"../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor.js":"../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags.js":"../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match.js":"../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace.js":"../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split.js":"../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search.js":"../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string.js":"../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set.js":"../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol.js":"../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator.js":"../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor.js":"../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big.js":"../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink.js":"../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold.js":"../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at.js":"../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with.js":"../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed.js":"../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor.js":"../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize.js":"../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point.js":"../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes.js":"../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics.js":"../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator.js":"../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link.js":"../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start.js":"../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end.js":"../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw.js":"../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat.js":"../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small.js":"../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with.js":"../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike.js":"../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub.js":"../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup.js":"../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left.js":"../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right.js":"../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer.js":"../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array.js":"../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array.js":"../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array.js":"../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array.js":"../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array.js":"../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array.js":"../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array.js":"../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array.js":"../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array.js":"../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map.js":"../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set.js":"../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers.js":"../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate.js":"../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable.js":"../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime.js":"../node_modules/regenerator-runtime/runtime.js","axios":"../node_modules/axios/index.js","./register1":"register1.js","./register2":"register2.js","./userAuth":"userAuth.js","./createPost":"createPost.js","./loadPosts":"loadPosts.js","./viewPost":"viewPost.js","./viewApply":"viewApply.js","./viewPledge":"viewPledge.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9406,7 +9627,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3786" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

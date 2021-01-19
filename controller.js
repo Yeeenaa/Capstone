@@ -1,6 +1,6 @@
 const axios = require('axios');
-const backend = 'https://dcrasee.tk';
-// const backend = 'http://localhost:4000';
+// const backend = 'https://dcrasee.tk';
+const backend = 'http://localhost:4000';
 
 exports.checkLogin = async (req, res, next) => {
     if (req.cookies.jwt && req.cookies.jwt !== 'hi') {
@@ -144,19 +144,12 @@ exports.renderApplications = (req, res) => {
 };
 
 exports.renderOneApplication = (req, res) => {
-    if (req.user.role !== 'admin') {
-        return res.send('관리자 전용: 권한이 없습니다');
-    }
-
     axios
         .get(`${backend}/api/apply/${req.params.id}`, {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            res.send(
-                `${response.data.application[0]}
-                <button id="permitButton" value="true,AA,<%=token%>">승인</button>`
-            );
+            res.render('viewApply', {post: response.data.application});
         })
         .catch((e) => {
             console.log(e.message);
@@ -188,7 +181,7 @@ exports.renderOnePledge = (req, res) => {
         })
         .then((response) => {
             console.log(response.data);
-            res.send(response.data.pledge);
+            res.render('viewPledge', {pledge: response.data.pledge});
         })
         .catch((e) => {
             console.log(e.message);

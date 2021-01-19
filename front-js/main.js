@@ -1,4 +1,5 @@
 import '@babel/polyfill';
+import axios from 'axios';
 
 import Register1 from './register1';
 import Register2 from './register2';
@@ -6,9 +7,11 @@ import UserAuth from './userAuth';
 import CreatePost from './createPost';
 import LoadPosts from './loadPosts';
 import ViewPost from './viewPost';
+import ViewApply from './viewApply';
+import ViewPledge from './viewPledge';
 
-export const backend = 'https://dcrasee.tk';
-// export const backend = 'http://localhost:4000';
+// export const backend = 'https://dcrasee.tk';
+export const backend = 'http://localhost:4000';
 
 if (document.querySelector('#register1-form')) {
     // register1.ejs
@@ -36,4 +39,11 @@ if (document.querySelector('#write-wrap > input[type=text]')) {
 
 if (document.querySelector('#commentForm')) {
     new ViewPost();
+}
+
+if (document.querySelector('.candiate-permitBtn')) {
+    new ViewApply();
+}
+if (document.querySelector('#voteBtn')) {
+    new ViewPledge();
 }

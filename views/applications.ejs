@@ -4,15 +4,18 @@
 
 <head>
     <%- include('head.ejs') %>
-    <title>입후보 신청</title>
-    <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+        <title>입후보 신청</title>
+        <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
     <div id="wrapper">
         <%- include('navigation.ejs') %>
             <%if(user.role==='student' ){%>
-                <button onclick="location.href= '/apply/create';">글쓰기</button>
+
+                <div id="post-wrap">
+                    <button onclick="location.href= '/apply/create';">글쓰기</button>
+                </div>
                 <%}%>
                     <form action="#" method="GET">
                         <table>
@@ -57,17 +60,17 @@
                                     <option value="title">제목</option>
                                     <option value="name">작성자</option>
                                 </select>
-                                
+
                                 <input type="text" name="search" size="30" required="required">
                                 <button>
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
-                            
+
                         </form>
                     </div>
-                    
-	<%- include('footer.ejs')%>
+
+                    <%- include('footer.ejs')%>
 </body>
 
 </html>

@@ -5,8 +5,8 @@
 
 <head>
     <%- include('head.ejs') %>
-    <title>토론게시판</title>
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <title>토론게시판</title>
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -21,14 +21,15 @@
 
                 <tr>
                     <td colspan="2" class="ta">
-                        <textarea name="container" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다." onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
+                        <textarea name="container" id="content" cols=180 rows=30 placeholder="욕설 및 비방하는 글은 제한하고 있습니다."
+                            onkeyup="checkWord()" onkeydown="checkWord()"></textarea>
                     </td>
                 </tr>
-
                 <tr>
                     <td>첨부하기</td>
                     <td><input type="file" multiple="multiple" id="file" name="FileName"></td>
                 </tr>
+
             </table>
             <div id="list-wrap">
                 <button id="postButton" value="<%=category%>,AA,<%=token%>">작성</button>
