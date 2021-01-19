@@ -524,6 +524,7 @@ td.ta {
 
 textarea#content {
   margin: 0;
+  padding: 5px;
 }
 
 
@@ -569,6 +570,42 @@ textarea#content {
   color: var(--light);
   border-color: var(--back);
   text-decoration: none;
+}
+
+/*edu*/
+.edu-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: absolute;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  padding: 0 10%;
+  box-sizing: border-box;
+  /*슬라이드 안의 높이가 다르더라도 
+  중앙 정렬 하려고 설정*/
+  top: 50%;
+  transform: translateY(-50%);
+  /* ==============*/
+  /* text-align: center; */
+  overflow: hidden;
+}
+
+.slider-container.animated {
+  -webkit-transition: left .3s ease-in;
+  transition: left .3s ease-in;
+}
+
+#prev, #next {
+  position: absolute;
+  
 }
 
 /*
