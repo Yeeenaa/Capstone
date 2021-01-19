@@ -17,7 +17,7 @@ export default class CreatePost {
 
             const [category, token] = this.button.value.split(',AA,');
 
-            if (category === 'pledge') {
+            if (['apply', 'pledge'].includes(category)) {
                 const form = new FormData();
 
                 form.append('title', this.title.value);
@@ -27,10 +27,8 @@ export default class CreatePost {
                     [...this.file.files].forEach((f, i) => {
                         if (f.type.split('/')[0] === 'image') {
                             form.append('images', this.file.files[i]);
-                        } else if (f.type.split('/')[0] === 'video') {
-                            form.append('video', this.file.files[i]);
                         } else {
-                            alert('이미지나 동영상만 첨부 가능합니다.');
+                            alert('이미지만 첨부 가능합니다.');
                             error = true;
                             return window.location.replace(
                                 `/${category}/create`
@@ -41,7 +39,7 @@ export default class CreatePost {
 
                 if (!error) {
                     axios
-                        .post(`${backend}/api/pledge`, form, {
+                        .post(`${backend}/api/${category}`, form, {
                             headers: {
                                 Authorization: `Bearer ${token}`,
                                 'Content-Type': 'multipart/form-data',
@@ -49,35 +47,13 @@ export default class CreatePost {
                         })
                         .then((response) => {
                             alert('게시글 작성 완료');
-                            window.location.replace(`/pledge`);
+                            window.location.replace(`/${category}`);
                         })
                         .catch((error) => {
                             alert('입력값을 확인하세요');
-                            window.location.replace(`/pledge/create`);
+                            window.location.replace(`/${category}/create`);
                         });
                 }
-            } else if (category === 'apply') {
-                axios
-                    .post(
-                        `${backend}/api/apply`,
-                        {
-                            title: this.title.value,
-                            content: this.content.value,
-                        },
-                        {
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    )
-                    .then((response) => {
-                        alert('게시글 작성 완료');
-                        window.location.replace(`/apply`);
-                    })
-                    .catch((error) => {
-                        alert('입력값을 확인하세요');
-                        window.location.replace(`/apply/create`);
-                    });
             } else {
                 const form = new FormData();
 

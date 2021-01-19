@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <%- include('head.ejs') %>
+        <title>토론게시판</title>
+        <link href="/assets/css/view.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+    <%-include('navigation.ejs')%>
+        <table>
+            <tr>
+                <td style="font-size: 20px; padding-top: 1em;"><b>
+                        <%=pledge.title%>
+                    </b></td>
+            </tr>
+
+            <tr>
+                <td style="color: #4C4C4C; font-size: 12px;">
+                    작성자 | <%= pledge.candidate.name%> &nbsp;
+                        작성일 | <%= pledge.updatedAt %> &nbsp;
+                            <%if(user.role==='admin'){%>
+                                <input id="btn" class="candiate-permitBtn" type="button" value="입후보 승인">
+                                <!-- <input id="btn" type="button" value="수정"> -->
+                                <%}%>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="line"></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div style="font-size: 15px; padding-top: 1em; padding-bottom: 1em;">
+                        <%= pledge.content%>
+                            <%pledge.image.forEach(img=> {%>
+                                <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
+                                <%})%>
+                    </div>
+                    <%if(['student', 'candidate' ].includes(user.role) && !user.isVote && pledge.canVote){%>
+                        <input id="voteBtn" type="button" value="투표하기">
+                        <!-- <input id="btn" type="button" value="수정"> -->
+                        <%}%>
+                </td>
+            </tr>
+
+        </table>
+
+        <div id="list-wrap">
+            <a href="#">목록</a>
+        </div>
+</body>
+<script>
+    const candidateId = "<%=pledge.candidateId%>"
+    const token = "<%= token%>"
+</script>
+<%- include('footer.ejs') %>
+
+
+</html>
