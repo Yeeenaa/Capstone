@@ -31,8 +31,11 @@
                     작성자 | <%= post.user.name%> &nbsp;
                         작성일 | <%= post.updatedAt %> &nbsp;
                             조회수 | <%= post.viewCount%>
-                                <input id="btn" type="button" value="삭제">
-                                <input id="btn" type="button" value="수정">
+                                <%if(user.id===post.userId){%>
+                                    <input id="btn" class="post-delBtn" type="button" value="삭제">
+                                    <!-- <input id="btn" type="button" value="수정"> -->
+
+                                    <% }%>
                 </td>
             </tr>
 
@@ -55,7 +58,10 @@
                     <td style="font-size: 13px;"><b>
                             <%= comment.user.name%>
                         </b>
-                        <input id="delBtn" type="button" value="delete">
+                        <%if(user.id===comment.userId){%>
+                            <input id="delBtn" class="comment-delBtn" type="button" value="delete"
+                                name="<%=comment.id%>">
+                            <%}%>
                     </td>
                 <tr>
                     <td style="font-size: 14px;">
@@ -79,7 +85,10 @@
                                         <b>
                                             <%=subComment.user.name%>
                                         </b>
-                                        <input id="delBtn" type="button" value="delete">
+                                        <%if(user.id===subComment.userId){%>
+                                            <input id="delBtn" class="subComment-delBtn" type="button"
+                                                name="<%=subComment.id%>" value="delete">
+                                            <%}%>
                                     </td>
                                 </tr>
                                 <tr>
