@@ -8,17 +8,58 @@
 <body>
 	<section class="edu-wrap">
 		<ul class="slider-container">
-			<li class="slide"></li>
-			<li class="slide"></li>
-			<li class="slide"></li>
-			<li class="slide"></li>
-			<li class="slide"></li>
-			<li class="slide"></li>
-			<li class="slide"></li>
+			<li class="slide">
+				<img src="public\img\01-1.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="public\img\01-2.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="public\img\01-3.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="public\img\01-4.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="public\img\01-5.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="public\img\01-6.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="public\img\01-7.jpg" alt="">
+			</li>
 		</ul>
 
-		<a href="#" id="prev"></a>
-		<a href="#" id="next"></a>
+		<a href="#" id="prev">
+			<i style="color: black;" class="fas fa-chevron-left"></i>
+		</a>
+		<a href="#" id="next">
+			<i style="color: black;" class="fas fa-chevron-right"></i>
+		</a>
 	</section>
+
+	<script>
+		const sliderWrapper = document.getElementsByClassName('edu-wrap');
+		const sliderContainer = document.getElementsByClassName('slider-container');
+		const slides = document.getElementsByClassName('slide');
+		const slideCount = slides.length;
+		const currentIndex = 0;
+		const prev = document.getElementById('prev');
+		const next = document.getElementById('next');
+
+		for(let i=0; i<slideCount; i++){
+			slides[i].style.left = i * - 100 + '%';
+		}
+
+		function goToSlide(idx) {
+			sliderContainer[0].style.left = idx * -100 + '%';
+			currentIndex = idx;	
+		}
+
+		goToSlide(1);
+
+
+	</script>
 </body>
 </html>

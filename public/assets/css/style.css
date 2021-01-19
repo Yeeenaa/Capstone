@@ -572,41 +572,6 @@ textarea#content {
   text-decoration: none;
 }
 
-/*edu*/
-.edu-wrap {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.slider-container {
-  position: absolute;
-  width: 100%;
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  padding: 0 10%;
-  box-sizing: border-box;
-  /*슬라이드 안의 높이가 다르더라도 
-  중앙 정렬 하려고 설정*/
-  top: 50%;
-  transform: translateY(-50%);
-  /* ==============*/
-  /* text-align: center; */
-  overflow: hidden;
-}
-
-.slider-container.animated {
-  -webkit-transition: left .3s ease-in;
-  transition: left .3s ease-in;
-}
-
-#prev, #next {
-  position: absolute;
-  
-}
 
 /*
 .post {
@@ -703,12 +668,21 @@ textarea#content {
   margin-right: 10px;
 }
 
-.right-notifications {
+.notifications {
   display: flex;
   flex-flow: row wrap;
   margin-top: 100px;
   width: 100vw;
   justify-content: space-evenly;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+}
+
+#todays {
+
 }
 
 #sidebar a {
@@ -823,10 +797,11 @@ footer {
   margin-left: 20px;
 }
 
-#footer-content ul {
+div#footer-content ul {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-left: 0;
+  margin-left: 0;
 }
 
 #footer-content ul a, #footer-content ul li, #qna{
@@ -872,6 +847,22 @@ footer {
 	text-decoration: none;
 	color: #383838;
 }
+
+footer #back-top i {
+  color: var(--back);
+  font-size: var(--super);
+  position: fixed;
+  bottom: 60px;
+  right: 50px;
+}
+
+footer #back-top i:hover {
+  color: var(--grey);
+}
+/* 
+footer #back-top i.visible {
+  opacity: 1;
+} */
 
 /* Banner */
   .banner {position: relative; width: 600px; height: 900px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}

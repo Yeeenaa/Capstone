@@ -27,46 +27,49 @@ Released   : 20121201
 				<li><img src="/img/poster3.jpg"></li>
 			</ul>		
 		</div>
-		<div class="right-notifications">
-			<div id="notes">
-				<div class="notes-title">
-					<span>공지사항</span>
-					<a href="/notice"><i class="fas fa-plus"></i></a>
+		<div class="notifications">
+			<div class="left-side">
+				<div id="notes">
+					<div class="notes-title">
+						<span>공지사항</span>
+						<a href="/notice"><i class="fas fa-plus"></i></a>
+					</div>
+					<ul class="list-style2">
+						<%notices.forEach((notice, i)=> {%>
+						<%if(i===0){%>
+							<li class="first"><a href="/notice/<%=notice.id%>">
+								<%=notice.title%>
+							</a></li>
+							<%}else{%>
+							<li><a href="/notice/<%=notice.id%>">
+								<%=notice.title%>
+							</a></li>
+							<%}%>
+							<%})%>
+					</ul>
 				</div>
-				<ul class="list-style2">
-					<%notices.forEach((notice, i)=> {%>
-					<%if(i===0){%>
-						<li class="first"><a href="/notice/<%=notice.id%>">
+				<div id="notes">
+					<div class="notes-title">
+						<span>토론게시판</span>
+						<a href="/debate"><i class="fas fa-plus"></i></a>
+					</div>
+					<ul class="list-style2">
+						<%debates.forEach((notice, i)=> {%>
+						<%if(i===0){%>
+						<li class="first"><a href="/debate/<%=notice.id%>">
 							<%=notice.title%>
 						</a></li>
 						<%}else{%>
-						<li><a href="/notice/<%=notice.id%>">
+						<li><a href="/debate/<%=notice.id%>">
 							<%=notice.title%>
 						</a></li>
 						<%}%>
 						<%})%>
-				</ul>
-			</div>
-			<div id="notes">
-				<div class="notes-title">
-					<span>토론게시판</span>
-					<a href="/debate"><i class="fas fa-plus"></i></a>
+					</ul>
 				</div>
-				<ul class="list-style2">
-					<%debates.forEach((notice, i)=> {%>
-					<%if(i===0){%>
-					<li class="first"><a href="/debate/<%=notice.id%>">
-						<%=notice.title%>
-					</a></li>
-					<%}else{%>
-					<li><a href="/debate/<%=notice.id%>">
-						<%=notice.title%>
-					</a></li>
-					<%}%>
-					<%})%>
-				</ul>
 			</div>
-			<div id="notes">
+			
+			<div id="toays">
 				<div class="notes-title">
 					<span>이달의 일정</span>
 				</div>
@@ -76,20 +79,8 @@ Released   : 20121201
 	</section>
 		<!-- end #page -->
 
-	<footer>
-		<div id="footer-content">
-			<ul>
-				<li><a href="#">ABOUT</a></li>
-				<li><a href="#">PRIVACY</a></li>
-				<li><a href="#">GUIDE</a></li>
-				<li>Email : <a href="#">dcrasee@gmail.com</a></li>
-			</ul>
-		</div>
-		<div id="qna">
-			<label>Q&A</label>
-			<a href="http://pf.kakao.com/_nsjmK"><i class="fas fa-comment"></i></a>
-		</div>
-	</footer>
+	
+		<%- include('footer.ejs')%>
 			<!-- end #footer -->
 	<script>
 		const toggleBtn = document.querySelector('.toggle-btn');
