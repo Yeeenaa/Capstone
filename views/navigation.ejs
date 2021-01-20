@@ -1,6 +1,6 @@
 <header>
 	<div id="wrapper">
-		
+
 		<div id="menu-wrapper">
 			<div id="logo-top">
 				<img src="/img/icon.png" width="40" alt="icon">
@@ -31,11 +31,11 @@
 					</a>
 				</div>
 		</div>
-	
+
 		<a href="#" class="toggle-btn">
 			<i class="fas fa-bars"></i>
 		</a>
-		
+
 		<%}else if(user && user.role==='teacher' ){%>
 			<div id="access">
 				<a href="/teacher">
@@ -48,13 +48,22 @@
 			<a href="#" class="toggle-btn">
 				<i class="fas fa-bars"></i>
 			</a>
-			<%}else{%>
+			<%}else if(user && user.role==='admin' ){%>
 				<div id="access">
+					<a href="/admin">
+						<i class="far fa-clipboard"></i>
+					</a>
 					<a href="/logout">
 						<i class="fas fa-sign-out-alt"></i>
 					</a>
 				</div>
-				<%}%>
+				<%}else{%>
+					<div id="access">
+						<a href="/logout">
+							<i class="fas fa-sign-out-alt"></i>
+						</a>
+					</div>
+					<%}%>
 	</div>
 
 	<div id="logo">

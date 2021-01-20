@@ -1,5 +1,4 @@
 import '@babel/polyfill';
-import axios from 'axios';
 
 import Register1 from './register1';
 import Register2 from './register2';
@@ -9,6 +8,7 @@ import LoadPosts from './loadPosts';
 import ViewPost from './viewPost';
 import ViewApply from './viewApply';
 import ViewPledge from './viewPledge';
+import Admin from './admin';
 
 // export const backend = 'https://dcrasee.tk';
 export const backend = 'http://localhost:4000';
@@ -46,4 +46,8 @@ if (document.querySelector('.candiate-permitBtn')) {
 }
 if (document.querySelector('#voteBtn')) {
     new ViewPledge();
+}
+
+if (document.querySelector('#admin-table')) {
+    new Admin();
 }
