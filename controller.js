@@ -127,6 +127,28 @@ exports.renderNotAuths = (req, res) => {
         });
 };
 
+exports.renderAdminPage = (req, res) => {
+    axios
+        .get(`${backend}/api/pledge`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            const canVote = response.data.pledges[0].canVote;
+            let president;
+            const candidate = response.data.pledges.map((p) => {
+                if (p.candidate.role === 'president') {
+                    president = p.candidate.name;
+                }
+                return p.candidate.name;
+            });
+            res.render('admin', {canVote, candidate, president});
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
 exports.renderApplications = (req, res) => {
     axios
         .get(`${backend}/api/apply`, {
@@ -163,7 +185,6 @@ exports.renderPledges = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            console.log(response.data.pledges);
             res.render('pledges', {
                 pledges: response.data.pledges,
             });
@@ -180,7 +201,6 @@ exports.renderOnePledge = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            console.log(response.data);
             res.render('viewPledge', {pledge: response.data.pledge});
         })
         .catch((e) => {

@@ -56,7 +56,6 @@ export default class viewPost {
                         }
                     )
                     .then((response) => {
-                        console.log(response.data);
                         location.reload(true);
                     })
                     .catch((e) => {
