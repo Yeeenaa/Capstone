@@ -86,6 +86,7 @@ router.get('/edu/create', mustLogin, (req, res) => {
     }
     res.render('createPost', {category: 'edu'});
 });
+router.get('/edu/:id', mustLogin, renderOnePost);
 
 router.get('/notice', mustLogin, renderNotices);
 router.get('/notice/create', mustLogin, (req, res) => {
