@@ -36,10 +36,10 @@
                 <td>
                     <div style="font-size: 15px; padding-top: 1em; padding-bottom: 1em;">
                         <%= post.content%>
-                            <%post.image.forEach(img=> {%>
-                                <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
-                                <%})%>
                     </div>
+                    <%post.image.forEach(img=> {%>
+                        <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
+                        <%})%>
                 </td>
             </tr>
         </table>

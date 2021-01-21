@@ -40,7 +40,7 @@
                                             </a>
                                         </td>
                                         <td width=" 100" text-align="center">
-                                            이름
+                                            <%= app.user.name%>
                                         <td width="100" text-align="center">
                                             <%=app.isConclude%>
                                         </td>
@@ -53,22 +53,6 @@
                             </tbody>
                         </table>
                     </form>
-                    <div class="container">
-                        <form style="margin :auto" , action="#" , method="GET">
-                            <div id="write-wrap">
-                                <select>
-                                    <option value="title">제목</option>
-                                    <option value="name">작성자</option>
-                                </select>
-
-                                <input type="text" name="search" size="30" required="required">
-                                <button>
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
 
                     <%- include('footer.ejs')%>
 </body>
