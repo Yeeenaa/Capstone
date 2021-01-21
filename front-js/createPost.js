@@ -50,8 +50,9 @@ export default class CreatePost {
                             window.location.replace(`/${category}`);
                         })
                         .catch((error) => {
-                            alert('입력값을 확인하세요');
-                            window.location.replace(`/${category}/create`);
+                            alert('신청기간이나 입력값을 확인하세요');
+                            console.log(error);
+                            // window.location.replace(`/${category}/create`);
                         });
                 }
             } else {

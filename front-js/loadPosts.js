@@ -34,7 +34,7 @@ export default class LoadPosts {
             });
 
             this.container.innerHTML = ``;
-            this.addDataToDOM(response.data.posts);
+            this.addDataToDOM(response.data.posts, category);
         });
 
         window.addEventListener('scroll', async (e) => {
@@ -68,7 +68,6 @@ export default class LoadPosts {
     }
 
     addDataToDOM(posts, category) {
-        console.log(category);
         posts.forEach((post) => {
             const postElement = document.createElement('tr');
             postElement.innerHTML = `

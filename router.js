@@ -7,6 +7,7 @@ const {
     logout,
     renderIndex,
     renderNotAuths,
+    renderAdminPage,
     renderApplications,
     renderDebates,
     renderEduPosts,
@@ -36,6 +37,7 @@ router.get('/login', checkLogin, function (req, res) {
 router.post('/login', login);
 
 router.get('/teacher', mustLogin, renderNotAuths);
+router.get('/admin', mustLogin, renderAdminPage);
 
 router.get('/logout', checkLogin, logout);
 

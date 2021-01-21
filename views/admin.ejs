@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <%- include('head.ejs') %>
+    <title>관리자</title>
+    <link href="/assets/css/board.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <%- include('navigation.ejs') %>
+
+      <div id="post-wrap">
+        <button id="applyOpenBtn">입후보 게시판 활성화</button>
+        <button id="voteOpenBtn">투표 시작 또는 종료</button>
+        <button id="getResultBtn">투표 결과 보기</button>
+        <button id="voteResetBtn">투표 초기화</button>
+        <a href="/admin">
+          <button>메인 화면</button>
+        </a>
+      </div>
+
+      <form action="#" method="GET">
+        <table id="admin-table">
+          <thread>
+            <tr>
+              <td width="300">입후보 게시판</td>
+              <td width="300">투표 가능 여부</td>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td width="300" text-align="center">
+                <%=user.schoolClass%>
+              </td>
+              <td width="300" text-align="center">
+                <%= canVote%>
+              </td>
+            </tr>
+          </tbody>
+
+          <thread>
+            <tr>
+              <td width="300">입후보자 명단</td>
+              <td width="300">당선인</td>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td width="300" text-align="center">
+                <%candidate.forEach(c=> {%>
+                  <%= c%>,
+                    <%})%>
+              </td>
+              <td width="300" text-align="center">
+                <%if(president){ %>
+                  <%=president%>
+                    <% }else{%>
+                      미선출
+                      <%}%>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+
+  </div>
+  <script>
+    const token = '<%=token%>'
+    const canVote = '<%= canVote%>'
+  </script>
+  <%- include('footer.ejs')%>
+</body>
+
+</html>
