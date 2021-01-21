@@ -32,14 +32,20 @@
                 <td>
                     <div style="font-size: 15px; padding-top: 1em; padding-bottom: 1em;">
                         <%= pledge.content%>
-                            <%pledge.image.forEach(img=> {%>
-                                <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
-                                <%})%>
+
                     </div>
-                    <%if(['student', 'candidate' ].includes(user.role) && !user.isVote && pledge.canVote){%>
-                        <input id="voteBtn" type="button" value="투표하기">
-                        <!-- <input id="btn" type="button" value="수정"> -->
-                        <%}%>
+                    <div>
+                        <%pledge.image.forEach(img=> {%>
+                            <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
+                            <%})%>
+                    </div>
+                    <div>
+                        <%if(['student', 'candidate' ].includes(user.role) && !user.isVote && pledge.canVote){%>
+                            <input id="voteBtn" type="button" value="투표하기">
+                            <!-- <input id="btn" type="button" value="수정"> -->
+                            <%}%>
+
+                    </div>
                 </td>
             </tr>
 

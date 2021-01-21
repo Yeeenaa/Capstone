@@ -6,6 +6,9 @@
     <%- include('head.ejs') %>
         <title>토론게시판</title>
         <link href="/assets/css/view.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+        <script src="http://vjs.zencdn.net/c/video.js"></script>
+
 </head>
 
 <body>
@@ -48,6 +51,16 @@
                     <div style="font-size: 15px; padding-top: 1em; padding-bottom: 1em;">
                         <%= post.content%>
                     </div>
+                    <%if(post.video){%>
+
+                        <video id=home_video controls preload=auto width=640 height=320>
+                            <source src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=post.video%>"
+                                type='video/mp4' />
+                        </video>
+                        <%}%>
+                            <%post.image.forEach(img=> {%>
+                                <img src="http://d1z5ds739c5ast.cloudfront.net/democracy-app/public/<%=img%>" alt="img">
+                                <%})%>
                 </td>
             </tr>
         </table>
