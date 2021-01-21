@@ -850,19 +850,23 @@ div#footer-content ul {
 
 footer #back-top i {
   color: var(--back);
+}
+
+footer #back-top {
   font-size: var(--super);
   position: fixed;
   bottom: 60px;
   right: 50px;
+  opacity: 0;
 }
 
 footer #back-top i:hover {
   color: var(--grey);
 }
-/* 
-footer #back-top i.visible {
+
+footer #back-top.visible {
   opacity: 1;
-} */
+}
 
 /* Banner */
   .banner {position: relative; width: 600px; height: 900px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
