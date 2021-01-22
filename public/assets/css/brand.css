@@ -1,27 +1,41 @@
  /*brand*/
 
+   #contents{
+      margin-right: 20px;
+      float : right;
+      width : 80%;
+      height : 650px;
+      border: 1px solid #ccc;
+      padding: 10px;
+  }
+
+  #miniContents{
+      margin: auto;
+      padding: 15px;
+      line-height: 2em;
+      text-align: center;
+  }
+
+  #sidemenu {
+      float: left;
+  }
+
   .rounded{
     background : #A6192E;
     width : 200px;
     height : 10px;
-    margin : 15px;
-    margin-left: 20px;
-    border-top-left-radius: 2em;
-    border-top-right-radius: 2em;
+    margin-left: 30px;
     text-align: center;
     padding : 100px 0px;
     color : #FFFFFF;
     font-size: 20px;
-  }
-
-  #sidemenu{
-    float : left;
+    float: left;
   }
 
   .brand ul{
       list-style : none;
       margin : 0px;
-      margin-left : 20px;
+      margin-left : 30px;
       padding : 0px;
       position : relative;
       text-align : center;
@@ -49,13 +63,5 @@
 
   .brand ul li:hover > ul{
       display:block;
-  }
-
-  #contents{
-      float : left;
-      width : 80%;
-      height : 600px;
-      margin-left: 20px;
-      padding: 10px;
   }
 
