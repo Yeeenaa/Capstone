@@ -4,62 +4,68 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>card news</title>
+	<link rel="stylesheet" href="public\assets\css\edu.css">
+	<script src="https://kit.fontawesome.com/b4fd1295e3.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<section class="edu-wrap">
-		<ul class="slider-container">
-			<li class="slide">
-				<img src="public\img\01-1.jpg" alt="">
-			</li>
-			<li class="slide">
-				<img src="public\img\01-2.jpg" alt="">
-			</li>
-			<li class="slide">
-				<img src="public\img\01-3.jpg" alt="">
-			</li>
-			<li class="slide">
-				<img src="public\img\01-4.jpg" alt="">
-			</li>
-			<li class="slide">
-				<img src="public\img\01-5.jpg" alt="">
-			</li>
-			<li class="slide">
-				<img src="public\img\01-6.jpg" alt="">
-			</li>
-			<li class="slide">
-				<img src="public\img\01-7.jpg" alt="">
-			</li>
+
+	<div class="slide_wrapper">
+		<ul class="slides">
+			<li><img src="public\img\01-1.jpg" alt=""></li>
+			<li><img src="public\img\01-2.jpg" alt=""></li>
+			<li><img src="public\img\01-3.jpg" alt=""></li>
+			<li><img src="public\img\01-4.jpg" alt=""></li>
+			<li><img src="public\img\01-5.jpg" alt=""></li>
+			<li><img src="public\img\01-6.jpg" alt=""></li>
+			<li><img src="public\img\01-7.jpg" alt=""></li>
 		</ul>
 
-		<a href="#" id="prev">
+	</div>
+	<div class="controls">
+		<span class="prev">
 			<i style="color: black;" class="fas fa-chevron-left"></i>
-		</a>
-		<a href="#" id="next">
+		</span>
+		<span class="next">
 			<i style="color: black;" class="fas fa-chevron-right"></i>
-		</a>
-	</section>
+		</span>
+	</div>
 
 	<script>
-		const sliderWrapper = document.getElementsByClassName('edu-wrap');
-		const sliderContainer = document.getElementsByClassName('slider-container');
-		const slides = document.getElementsByClassName('slide');
-		const slideCount = slides.length;
-		const currentIndex = 0;
-		const prev = document.getElementById('prev');
-		const next = document.getElementById('next');
+			let slides = document.querySelector('.slides'),
+					slide = document.querySelectorAll('.slides li'),
+					currentIdx = 0,
+					slideCount = slide.length,
+					slideWidth = 400,
+					slideMargin = 30,
+					prevBtn = document.querySelector('.prev'),
+					nextBtn = document.querySelector('.next');
 
-		for(let i=0; i<slideCount; i++){
-			slides[i].style.left = i * - 100 + '%';
-		}
+					//슬라이드가 작동하자마자 넓이를 계산해 줘야함
+					slides.style.width = 	(slideWidth + slideMargin*2) * slideCount + 'px';
 
-		function goToSlide(idx) {
-			sliderContainer[0].style.left = idx * -100 + '%';
-			currentIndex = idx;	
-		}
+					//몇번째를 보고싶은지 계산해서 이동해주는 함수
+					const moveSlide =  (num) => {
+						slides.style.left = -num * (slideWidth + slideMargin) + 'px';
+						currentIdx = num; //현재 보고있는 인덱스를 num으로 바꿔줌
+					}
 
-		goToSlide(1);
+					nextBtn.addEventListener('click', () => {
+						
+						if(currentIdx < slideCount - 1) {
+							moveSlide(currentIdx + 1);
+						} else {
+							moveSlide(0);
+						}
+					});
 
-
+					prevBtn.addEventListener('click', () => {
+						
+						if(currentIdx > 0) {
+							moveSlide(currentIdx - 1);
+						} else {
+							moveSlide(slideCount - 1);
+						}
+					});
 	</script>
 </body>
 </html>
