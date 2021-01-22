@@ -1,0 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.slide_wrapper .slides img {
+	width: 400px;
+}
+
+.slide_wrapper {
+	position: relative;
+	width: 400px;
+	margin: 0 auto;
+	height: 400px;
+	overflow: hidden;
+}
+
+.slides {
+	position: absolute;
+	left: 0; top: 0;
+	transition: left 0.5s ease-out;
+}
+
+.slides li:not(:last-child) {
+	float: left;
+	margin-right: 30px;
+}
+
+.controls {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.controls span {
+	padding: 10px 20px;
+	cursor: pointer;
+}
