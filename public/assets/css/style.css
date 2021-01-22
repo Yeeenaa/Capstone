@@ -572,6 +572,27 @@ textarea#content {
   text-decoration: none;
 }
 
+/*edu*/
+div.edu-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: red;
+}
+.slider-container .slide img {
+  width: 400px;
+}
+
+ul.slider-container {
+  position: absolute;
+  width: 100%;
+  margin-left: 0;
+}
+
+/* 
+.slide {
+  position: absolute;
+} */
 
 /*
 .post {
@@ -858,7 +879,7 @@ footer #back-top {
   bottom: 60px;
   right: 50px;
   opacity: 0;
-  transition: all .1s ease-in-out;
+  transition: all .s ease-in-out;
 }
 
 footer #back-top i:hover {
