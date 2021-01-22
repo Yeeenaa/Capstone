@@ -10,8 +10,8 @@ import ViewApply from './viewApply';
 import ViewPledge from './viewPledge';
 import Admin from './admin';
 
-// export const backend = 'https://dcrasee.tk';
-export const backend = 'http://localhost:4000';
+export const backend = 'https://dcrasee.tk';
+// export const backend = 'http://localhost:4000';
 
 if (document.querySelector('#register1-form')) {
     // register1.ejs

@@ -1,6 +1,6 @@
 const axios = require('axios');
-// const backend = 'https://dcrasee.tk';
-const backend = 'http://localhost:4000';
+const backend = 'https://dcrasee.tk';
+// const backend = 'http://localhost:`4000';
 
 exports.checkLogin = async (req, res, next) => {
     if (req.cookies.jwt && req.cookies.jwt !== 'hi') {
@@ -88,24 +88,15 @@ exports.renderIndex = async function (req, res) {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         });
 
-        let eduPosts = axios.get(`${backend}/api/post?page=1&category=edu`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        });
-        [notices, debates, eduPosts] = await Promise.all([
-            notices,
-            debates,
-            eduPosts,
-        ]);
+        [notices, debates] = await Promise.all([notices, debates]);
 
-        notices = notices.data.posts.splice(0, 4);
-        debates = debates.data.posts.splice(0, 4);
-        eduPosts = eduPosts.data.posts.splice(0, 4);
+        notices = notices.data.posts.splice(0, 10);
+        debates = debates.data.posts.splice(0, 10);
 
         // console.log(debates);
         res.render('index', {
             notices,
             debates,
-            eduPosts,
         });
     } catch (e) {
         console.log(e);
@@ -133,8 +124,11 @@ exports.renderAdminPage = (req, res) => {
             headers: {authorization: `Bearer ${req.cookies.jwt}`},
         })
         .then((response) => {
-            const canVote = response.data.pledges[0].canVote;
-            let president;
+            let canVote = false;
+            if (response.data.pledges[0]) {
+                canVote = response.data.pledges[0].canVote;
+            }
+            let president = '미선출';
             const candidate = response.data.pledges.map((p) => {
                 if (p.candidate.role === 'president') {
                     president = p.candidate.name;
@@ -145,6 +139,7 @@ exports.renderAdminPage = (req, res) => {
         })
         .catch((e) => {
             console.log(e.message);
+
             return res.send('invalid input');
         });
 };
