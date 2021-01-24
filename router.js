@@ -98,4 +98,8 @@ router.get('/notice/create', mustLogin, (req, res) => {
 
 router.get('/notice/:id', mustLogin, renderOnePost);
 
+router.get('/brand/', checkLogin, (req, res) => {
+    res.render('brand');
+});
+
 module.exports = router;

@@ -200,36 +200,3 @@ export default class Admin {
         }
     }
 }
-
-{
-    /* <thread>
-<tr>
-  <td width="100">학교</td>
-  <td width="500">제목</td>
-  <td width="100">작성자</td>
-  <td width="100">여부</td>
-  <td width="200">작성일</td>
-</tr>
-</thread>
-<tbody>
-<tr>
-  <td width="100" text-align="center">
-    서울고
-  </td>
-  <td width="500" text-align="center">
-    <a href="#" style="color: black">
-      젬족ㅁㅇㄴ
-    </a>
-  </td>
-  <td width=" 100" text-align="center">
-    작성자
-  <td width="100" text-align="center">
-    ㅇㅇ
-  </td>
-  <td width="200" text-align="center">
-    2020-21-12
-  </td>
-  </td>
-</tr>
-</tbody> */
-}

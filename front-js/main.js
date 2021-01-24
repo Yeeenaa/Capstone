@@ -49,5 +49,6 @@ if (document.querySelector('#voteBtn')) {
 }
 
 if (document.querySelector('#admin-table')) {
+    alert('hi');
     new Admin();
 }

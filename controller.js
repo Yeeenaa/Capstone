@@ -1,6 +1,6 @@
 const axios = require('axios');
 const backend = 'https://dcrasee.tk';
-// const backend = 'http://localhost:`4000';
+// const backend = 'http://localhost:4000';
 
 exports.checkLogin = async (req, res, next) => {
     if (req.cookies.jwt && req.cookies.jwt !== 'hi') {
