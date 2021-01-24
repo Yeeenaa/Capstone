@@ -1,3 +1,17 @@
+:root {
+	--back:  #373737;
+	--light: #fffdfa;
+	--red: #A6192E;
+	--red-point: #76232F;
+  --grey:  #909090;
+  --light-grey: #d9d9d9;
+
+  --min: 9px;
+  --mid: 10px;
+  --max: 12px;
+  --super: 20px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -6,10 +20,6 @@
 ul {
 	list-style: none;
 	margin: 0;
-}
-
-a {
-	text-decoration: none;
 }
 
 .slide_wrapper .slides img {
@@ -43,4 +53,5 @@ a {
 .controls span {
 	padding: 10px 20px;
 	cursor: pointer;
+	color: var(--back);
 }
