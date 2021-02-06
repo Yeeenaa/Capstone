@@ -277,9 +277,13 @@ input:focus {
   font-family: 'Yeon Sung';
 }
 
-.toggle-btn {
-  display: none;
-}
+a.toggle-btn {
+  position: absolute;
+  left: 32px;
+  color: var(--light);
+  font-size: var(--super);
+  opacity: 0;
+} 
 
 /* Page */
 
@@ -702,10 +706,6 @@ ul.slider-container {
   flex-direction: column;
 }
 
-#todays {
-
-}
-
 #sidebar a {
 	border: none;
 }
@@ -948,11 +948,17 @@ footer #back-top.visible {
 	background: url(images/img04.png) no-repeat center top;
 } 
 
-@media screen and (max-width: 950px) {
+@media (max-width: 768px) {
+  * {margin: 0; padding: 0;}
+
   #menu-wrapper {
     flex-direction: column-reverse;
     justify-content: flex-end;
     align-items: flex-end;
+  }
+
+  a.toggle-btn {
+    opacity: 1;
   }
 
   #access {
@@ -963,21 +969,53 @@ footer #back-top.visible {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-top: 25px;
     display: none;
+  }
+
+  #menu-items li {
+    margin: 3px 0;
   }
 
   #logo-top {
     display: none;
   }
 
-  .toggle-btn {
-    display: block;
-    position: absolute;
-    left: 32px;
-    font-size: var(--super);
-  }
-
   #menu-items.active {
     display: flex;
+  }
+
+  footer {
+    margin-top: 70px;
+  }
+
+  div#footer-content ul li {
+    padding: 10px;
+  }
+
+  div#qna {
+    margin-top: 10px;
+  }
+  footer #back-top {
+    bottom: 30px;
+  }
+
+  #notes {
+    width: 80vw;
+    margin-bottom: 50px;
+  }
+
+  div.notes-title {
+    margin-top: 20px;
+  }
+
+  .banner {position: relative; width: 300px; height: 500px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+  .banner ul li {float: left; width:300px; height: 500px; margin:0; padding:0;}
+  .banner img {
+    width: 100%;
+  }
+
+  div#logo a img {
+    width: 100%;
   }
 }
