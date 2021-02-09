@@ -1,0 +1,7 @@
+node_modules
+build
+Dockerfile
+.git
+.github
+config.env
+*/.html
