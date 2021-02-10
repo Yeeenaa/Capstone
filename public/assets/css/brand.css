@@ -1,23 +1,36 @@
  /*brand*/
 
+ @import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
+    h1{
+        font-family: 'Song Myung', serif;
+        color: black;
+    }
+
    #contents{
-      margin-right: 20px;
-      float : right;
-      width : 80%;
-      height : 650px;
-      border: 1px solid #ccc;
-      padding: 10px;
-  }
+       margin-right: 25px;
+       float : right;
+       width : 80%;
+       border: 1px solid #ccc;
+       padding: 10px;
+       color: black;
+    }
 
   #miniContents{
       margin: auto;
-      padding: 15px;
+      padding: 20px;
       line-height: 2em;
       text-align: center;
+      font-size: 14px;
   }
-
+  
   #sidemenu {
       float: left;
+  }
+
+  #foot {
+      clear: both;
+      padding: 20px;
   }
 
   .rounded{
@@ -30,6 +43,7 @@
     color : #FFFFFF;
     font-size: 20px;
     float: left;
+    position: relative;
   }
 
   .brand ul{

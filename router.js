@@ -102,4 +102,12 @@ router.get('/brand/', checkLogin, (req, res) => {
     res.render('brand');
 });
 
+router.get('/brand2/', checkLogin, (req, res) => {
+    res.render('brand2');
+});
+
+router.get('/brand3/', checkLogin, (req, res) => {
+    res.render('brand3');
+});
+
 module.exports = router;
