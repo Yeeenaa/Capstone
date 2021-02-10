@@ -9,6 +9,7 @@ const {
     renderNotAuths,
     renderAdminPage,
     renderApplications,
+    renderHearings,
     renderDebates,
     renderEduPosts,
     renderNotices,
@@ -16,6 +17,8 @@ const {
     renderOneApplication,
     renderPledges,
     renderOnePledge,
+    renderEvaluations,
+    renderOneEvaluation,
 } = require('./controller');
 
 const router = express.Router();
@@ -59,19 +62,23 @@ router.get('/pledge/create', mustLogin, (req, res) => {
 });
 router.get('/pledge/:id', mustLogin, renderOnePledge);
 
-router.get('/evaluation', mustLogin, async (req, res) => {
-    const response = await axios
-        .get(`${backend}/api/evaluation`, {
-            headers: {authorization: `Bearer ${req.cookies.jwt}`},
-        })
-        .catch((e) => {
-            console.log(e.message);
-            return res.send('invalid input');
-        });
-    console.log(response.data);
-
-    res.send(`reponse: ${response.data}`);
+router.get('/evaluation', checkLogin, renderEvaluations);
+router.get('/evaluation/create', mustLogin, (req, res) => {
+    // if (req.user.role !== 'admin') {
+    //     return res.send('관리자 권한이 필요합니다.');
+    // }
+    res.render('createPost', {category: 'evaluation'});
 });
+router.get('/evaluation/:id', mustLogin, renderOneEvaluation);
+
+router.get('/hearing', mustLogin, renderHearings);
+router.get('/hearing/create', mustLogin, (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.send('관리자 권한이 필요합니다.');
+    }
+    res.render('createPost', {category: 'hearing'});
+});
+router.get('/hearing/:id', mustLogin, renderOnePost);
 
 router.get('/debate', mustLogin, renderDebates);
 router.get('/debate/create', mustLogin, (req, res) =>
@@ -98,7 +105,7 @@ router.get('/notice/create', mustLogin, (req, res) => {
 
 router.get('/notice/:id', mustLogin, renderOnePost);
 
-router.get('/brand/', checkLogin, (req, res) => {
+router.get('/brand', checkLogin, (req, res) => {
     res.render('brand');
 });
 

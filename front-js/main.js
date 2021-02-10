@@ -8,6 +8,7 @@ import LoadPosts from './loadPosts';
 import ViewPost from './viewPost';
 import ViewApply from './viewApply';
 import ViewPledge from './viewPledge';
+import ViewEvaluation from './evaluation';
 import Admin from './admin';
 
 export const backend = 'https://dcrasee.tk';
@@ -49,6 +50,9 @@ if (document.querySelector('#voteBtn')) {
 }
 
 if (document.querySelector('#admin-table')) {
-    alert('hi');
     new Admin();
+}
+
+if (document.querySelector('#evalForm')) {
+    new ViewEvaluation();
 }
