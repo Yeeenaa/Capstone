@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <%- include('head.ejs') %>
+    <title>BRAND</title>
+    <link href="/assets/css/brand.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+    <%- include('navigation.ejs') %>
+    <div class="rounded"><b>BRAND <br> 소개 </b></div>
+
+    <!--brand story-->
+    <div>
+        <div id="contents">
+            <div id="miniContents">
+            </div>
+        </div>
+        <div class="brand" id="sidemenu">
+            <ul>
+                <li><a href="brand">브랜드 스토리</a></li>
+                <li><a href="brand2">브랜드 상징</a></li>
+                <li><a href="brand3">브랜드 포트폴리오</a></li>
+            </ul>
+        </div>
+        <div id="foot">
+            <%- include('footer.ejs') %>
+        </div>
+    </div>
+    
+</body>
+
+</html>
