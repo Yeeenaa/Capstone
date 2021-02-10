@@ -10,7 +10,6 @@ export default class viewPledge {
     events() {
         this.voteBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log(candidateId);
             const result = confirm('투표합니다?');
             if (result) {
                 axios

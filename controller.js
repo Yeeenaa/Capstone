@@ -204,6 +204,40 @@ exports.renderOnePledge = (req, res) => {
         });
 };
 
+exports.renderHearings = (req, res) => {
+    axios
+        .get(`${backend}/api/post?page=1&category=hearing`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            res.render('posts', {
+                posts: response.data.posts,
+                category: 'hearing',
+            });
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderEvaluations = (req, res) => {
+    axios
+        .get(`${backend}/api/post?page=1&category=evaluation`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            res.render('posts', {
+                posts: response.data.posts,
+                category: 'evaluation',
+            });
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
 exports.renderDebates = (req, res) => {
     axios
         .get(`${backend}/api/post?page=1&category=debate`, {
@@ -262,6 +296,31 @@ exports.renderOnePost = (req, res) => {
         })
         .then((response) => {
             res.render('viewPost', {post: response.data.post});
+        })
+        .catch((e) => {
+            console.log(e.message);
+            return res.send('invalid input');
+        });
+};
+
+exports.renderOneEvaluation = async (req, res) => {
+    const rates = await axios.get(
+        `${backend}/api/evaluation/${req.params.id}`,
+        {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        }
+    );
+
+    console.log(rates.data);
+    axios
+        .get(`${backend}/api/post/${req.params.id}`, {
+            headers: {authorization: `Bearer ${req.cookies.jwt}`},
+        })
+        .then((response) => {
+            res.render('viewEvaluation', {
+                post: response.data.post,
+                rates: rates.data.rates,
+            });
         })
         .catch((e) => {
             console.log(e.message);
