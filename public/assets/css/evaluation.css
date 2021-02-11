@@ -39,6 +39,16 @@ textarea {
     margin: 20px;
 }
 
+@keyframes p-0 {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 0%
+    }
+}
+
 
 @keyframes p-5 {
     from {
@@ -240,6 +250,10 @@ textarea {
     }
 }
 
+li.p-0 {
+    display: none;
+}
+
 li.p-5 {
     width: 5%;
     animation: p-5 .1s
@@ -338,6 +352,10 @@ li.p-95 {
 li.p-100 {
     width: 100%;
     animation: p-100 2s
+}
+
+li.p-0::before {
+    display: none;
 }
 
 li.p-5::before {
@@ -448,15 +466,16 @@ li.p-100::before {
 *,
 *::before,
 *::after {
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .graph-wrapper {
+    color: #444444;
     position: relative;
     padding: 25px;
     border: 1px solid #AAAAAA;
     max-width: 800px;
-    margin: auto
+    margin: auto;
 }
 
 .graph-wrapper h3 {
@@ -492,7 +511,7 @@ li.p-100::before {
 }
 
 .percent-indicator .per-0 {
-    transform: translateX(1px)
+    transform: translateX(1px);
 }
 
 .percent-indicator div::before,
@@ -507,7 +526,7 @@ li.p-100::before {
 }
 
 .percent-indicator div::after {
-    top: 21px
+    top: 21px;
 }
 
 .percent-indicator .per-0::after {
@@ -539,7 +558,7 @@ li.p-100::before {
     margin: 100px auto;
     padding: 0 20px;
     list-style: none;
-    z-index: 2
+    z-index: 2;
 }
 
 .graph li {
@@ -552,12 +571,12 @@ li.p-100::before {
 
 li::before,
 li:hover::after {
-    display: none
+    display: none;
 }
 
 li::after,
 li:hover::before {
-    display: block
+    display: block;
 }
 
 li.item1::after {
